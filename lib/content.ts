@@ -1,0 +1,381 @@
+export const profile = {
+  name: "Rangga Maulana Ramadhan Wiharto",
+  shortName: "Rangga",
+  role: "Developer & Mahasiswa Sistem Informasi",
+  location: "Serang, Banten",
+  timezone: "Asia/Jakarta",
+  email: "ranggamaulana111111@gmail.com",
+  status: "Sedang belajar Docker dan membangun RabegLab",
+  socials: {
+    github: "https://github.com/ranggamaulana111111-bit",
+    linkedin: "https://www.linkedin.com/in/rangga-maulana-ramadhan-wiharto-022077337/",
+    whatsapp: "https://wa.me/6285774138047",
+    email: "mailto:ranggamaulana111111@gmail.com",
+  },
+};
+
+export const navItems = [
+  { id: "hari-ini", label: "Hari ini" },
+  { id: "perjalanan", label: "Perjalanan" },
+  { id: "cara-kerja", label: "Cara kerja" },
+  { id: "project", label: "Project" },
+  { id: "catatan", label: "Catatan" },
+  { id: "rencana", label: "Rencana" },
+  { id: "berbincang", label: "Berbincang" },
+];
+
+export const todayStatus = {
+  greeting: "Selamat datang di meja kerja saya.",
+  intro: "Ini bukan portfolio. Ini ruang kerja saya — tempat saya belajar, membangun, dan sesekali gagal. Silakan lihat-lihat.",
+  focus: "Yang sedang saya fokuskan hari ini:",
+  focusItems: [
+    "Menuntaskan fitur ekspor & riwayat di AlkonekPlus",
+    "Menyiapkan rencana pengadaan hardware untuk RabegLab",
+    "Latihan Flutter: CRUD + SQLite untuk tugas kuliah",
+  ],
+  gitCommits: [
+    { repo: "speedtest", message: "feat: tambah export hasil tes ke PDF", time: "2 jam lalu" },
+    { repo: "homelab", message: "docs: lengkapi runbook fase deployment", time: "5 jam lalu" },
+    { repo: "foodmate", message: "feat: filter rekomendasi berdasarkan harga", time: "kemarin" },
+  ],
+  listeningTo: "Lo-fi beats — Focus Mix",
+  mood: "Tenang, sedikit penasaran",
+};
+
+export const journey = [
+  {
+    year: "2021",
+    title: "Pertama kali menyentuh kode",
+    body: "Masuk SMKN 4 Pandeglang jurusan PPLG / RPL. Belum paham apa itu variabel, fungsi, atau loop. Tapi saya penasaran.",
+  },
+  {
+    year: "2022",
+    title: "HTML pertama kali jalan di browser",
+    body: "Belajar HTML, CSS, JavaScript secara mandiri lewat YouTube dan dokumentasi. Membuat website pertama yang isinya cuma 'Hello World' — tapi rasanya seperti menaklukkan dunia.",
+  },
+  {
+    year: "2023",
+    title: "Project pertama yang selesai",
+    body: "Mengerjakan project kecil untuk tugas sekolah. Saya belajar satu hal penting: menyelesaikan project itu lebih sulit dari memulainya.",
+  },
+  {
+    year: "2024",
+    title: "Masuk kuliah, dunia lebih luas",
+    body: "Diterima di UNPAM jurusan Sistem Informasi. Mulai belajar backend, database, dan bagaimana sistem bekerja secara keseluruhan. Baru sadar ada banyak yang belum saya tahu.",
+  },
+  {
+    year: "2025",
+    title: "Membangun untuk orang lain",
+    body: "Membangun portal desa untuk Desa Kumpay, sistem billing untuk ISP kecil. Belajar bahwa software yang baik bukan yang paling canggih, tapi yang menyelesaikan masalah nyata.",
+  },
+  {
+    year: "2026",
+    title: "Masih belajar, masih membangun",
+    body: "Mendalami Next.js, Docker, Linux, networking. Menerima bahwa menjadi developer adalah proses yang tidak pernah benar-benar selesai — dan itu OK.",
+  },
+];
+
+export const howIWork = [
+  {
+    label: "01",
+    title: "Mulai dari masalah, bukan solusi",
+    body: "Sebelum menulis satu baris kode pun, saya coba pahami masalahnya dulu. Siapa yang terdampak? Apa yang mereka butuhkan? Solusi yang baik dimulai dari pertanyaan yang benar.",
+  },
+  {
+    label: "02",
+    title: "Bangun, gagal, perbaiki, ulang",
+    body: "Saya tidak percaya pada perencanaan sempurna. Saya percaya pada iterasi cepat. Bangun versi paling sederhana, jalankan, lihat apa yang rusak, perbaiki. Ulangi.",
+  },
+  {
+    label: "03",
+    title: "Dokumentasi untuk diri sendiri",
+    body: "Saya menulis catatan bukan untuk orang lain, tapi untuk versi saya di masa depan. Kode yang hari ini terasa jelas, tiga minggu lagi mungkin sudah lupa kenapa ditulis.",
+  },
+  {
+    label: "04",
+    title: "Sederhana > Canggih",
+    body: "Saya lebih suka kode yang bisa dibaca dan dimaintain daripada kode yang pintar tapi membingungkan. Kesan pertama bukan segalanya — kemudahan berikutnya yang penting.",
+  },
+];
+
+export const projects = [
+  {
+    slug: "alkonek",
+    title: "ALKONEK",
+    kind: "ISP Billing System",
+    year: "2025",
+    summary:
+      "Sistem billing ISP FTTH berbasis Laravel untuk penagihan otomatis, pembayaran online, hingga monitoring jaringan fiber real-time.",
+    role: "Pembuat & Developer",
+    stack: ["Laravel 12", "PHP 8.2", "MySQL", "Midtrans", "MikroTik API", "Leaflet"],
+    challenge:
+      "ISP kecil kesulitan menagih manual, memantau OLT multi-brand, dan mengelola peta distribusi fiber yang tidak terstruktur.",
+    solution:
+      "Membangun sistem multi-tenant dengan workflow billing otomatis, driver OLT multi-brand, peta ODP interaktif, voucher hotspot, dan topologi jaringan live.",
+    result:
+      "Sudah dipakai di lingkungan produksi dengan alur isolir otomatis dan notifikasi WhatsApp.",
+    metrics: [
+      { value: "v1.2", label: "Versi" },
+      { value: "Live", label: "Produksi" },
+      { value: "4", label: "Brand OLT" },
+    ],
+    link: "https://github.com/ranggamaulana111111-bit/billing",
+    live: "https://billing.alkonek.online",
+    learnings: [
+      "Billing system bukan sekadar CRUD — ada banyak edge case di pembayaran berulang",
+      "Integrasi dengan hardware jaringan membutuhkan pemahaman protokol yang solid",
+      "Multi-tenant dari awal lebih sulit dari yang dibayangkan, tapi worth it",
+    ],
+  },
+  {
+    slug: "prodesa",
+    title: "Prodesa",
+    kind: "Portal Desa Digital",
+    year: "2025",
+    summary:
+      "Web desa untuk pengajuan surat online, ketatausahaan, inventaris, APBDesa, hingga laporan desa kuantitatif.",
+    role: "Pembuat & Developer",
+    stack: ["Laravel 11", "PHP 8.2", "MySQL", "Alpine.js", "Chart.js", "DomPDF"],
+    challenge:
+      "Proses birokrasi desa konvensional lambat dan tidak transparan bagi warga yang mengajukan surat.",
+    solution:
+      "Membangun layanan surat daring dengan RBAC multi-level, workflow approval, versioning dokumen, dan generator laporan berbasis data.",
+    result:
+      "Melayani warga Desa Kumpay dengan 14 jenis surat dinamis dan dashboard analitik peran.",
+    metrics: [
+      { value: "14", label: "Jenis Surat" },
+      { value: "7", label: "Role" },
+      { value: "9", label: "Modul Laporan" },
+    ],
+    link: "https://github.com/ranggamaulana111111-bit/desamoderen",
+    live: "https://desa.ranggamrw.my.id",
+    learnings: [
+      "User desa butuh UI yang sangat sederhana — yang terasa jelas bagi developer belum tentu jelas bagi mereka",
+      "PDF generation lebih kompleks dari yang dikira, terutama untuk format surat resmi",
+      "Mendengarkan feedback pengguna sungguhan mengubah cara saya memikirkan UX",
+    ],
+  },
+  {
+    slug: "perpustakaan-digital",
+    title: "Perpustakaan Digital",
+    kind: "Aplikasi Mobile (Flutter)",
+    year: "2025",
+    summary:
+      "Aplikasi perpustakaan digital berbasis Flutter dengan SQLite offline-first, dua role Admin & Peminjam lengkap dengan katalog, peminjaman, dan laporan.",
+    role: "Pembuat & Developer",
+    stack: ["Flutter", "Dart", "SQLite", "Material 3", "fl_chart", "mobile_scanner"],
+    challenge:
+      "Perpustakaan butuh sistem katalog dan peminjaman yang bisa jalan tanpa backend/koneksi, sekaligus punya alur approval dan laporan yang rapi.",
+    solution:
+      "Membangun app offline-first dengan SQLite, dua role (Admin CRUD penuh + Peminjam request pinjam), grafik statistik, scan barcode ISBN, dan export laporan CSV.",
+    result:
+      "Aplikasi jalan penuh offline dengan 15 buku seed, dashboard statistik, dan alur peminjaman pending → disetujui → riwayat.",
+    metrics: [
+      { value: "2", label: "Role" },
+      { value: "15", label: "Buku Seed" },
+      { value: "100", label: "% Offline" },
+    ],
+    link: "https://github.com/ranggamaulana111111-bit/rangga_perpus",
+    learnings: [
+      "Offline-first memaksa saya berpikir tentang data synchronization dari awal",
+      "Flutter state management untuk app dengan banyak role itu challenging",
+      "Barcode scanning di mobile butuh handling permission yang baik di berbagai device",
+    ],
+  },
+  {
+    slug: "alkonekplus",
+    title: "AlkonekPlus",
+    kind: "Network Speed Test",
+    year: "2026",
+    summary:
+      "Aplikasi pengujian kecepatan internet profesional berbasis Next.js 16. Ukur unduh, unggah, ping, jitter, dan packet loss dengan visualisasi real-time.",
+    role: "Pembuat & Developer",
+    stack: [
+      "Next.js 16",
+      "React 19",
+      "TypeScript",
+      "Tailwind CSS v4",
+      "Zustand",
+      "TanStack Query",
+      "Recharts",
+      "Vitest",
+      "Playwright",
+      "Docker",
+    ],
+    challenge:
+      "ISP butuh alat pengujian jaringan yang akurat dan profesional untuk mendiagnosis kualitas layanan — bukan sekadar speedtest instan.",
+    solution:
+      "Membangun mesin pengujian dengan endpoint download/upload sendiri, pengukuran ping/jitter/packet loss, riwayat tes di localStorage, dan ekspor hasil ke PDF, PNG, CSV, atau JSON.",
+    result:
+      "Didesain sebagai produk profesional: mode gelap/terang, aksesibilitas, testing end-to-end Playwright, dan deployment Docker + Nginx.",
+    metrics: [
+      { value: "5", label: "Metrik Kualitas" },
+      { value: "4", label: "Format Ekspor" },
+      { value: "35", label: "Iterasi Ping" },
+    ],
+    link: "https://github.com/ranggamaulana111111-bit/speedtest",
+    learnings: [
+      "Menguji jaringan memaksa saya memahami bagaimana data benar-benar mengalir di internet",
+      "Visualisasi real-time (Recharts) butuh perf tuning supaya tidak lag saat tes berjalan",
+      "E2E testing dengan Playwright worth investasi untuk app yang mengandalkan banyak state",
+    ],
+  },
+  {
+    slug: "rabeglab",
+    title: "RabegLab",
+    kind: "Personal HomeLab",
+    year: "2026",
+    summary:
+      "HomeLab pribadi berarsitektur enterprise — Proxmox VE, Docker, dan dokumentasi lengkap dari fase analisis sampai deployment.",
+    role: "Arsitek & Operator",
+    stack: ["Proxmox VE", "Docker", "Linux", "Ansible", "Terraform", "MkDocs"],
+    challenge:
+      "Saya ingin membangun ekosistem pribadi (software, AI, jaringan, monitoring) tapi tidak asal memasang server — harus dirancang seperti sistem produksi.",
+    solution:
+      "Mendokumentasikan RabegLab sebagai proyek enterprise-grade: fase analysis, design, ADR, runbook, sampai infrastructure-as-code dengan Docker Compose dan Ansible.",
+    result:
+      "Fase fondasi hingga dokumentasi selesai; implementasi menunggu pengadaan hardware Proxmox.",
+    metrics: [
+      { value: "10", label: "Fase" },
+      { value: "4", label: "Fase Selesai" },
+      { value: "0.1", label: "Versi" },
+    ],
+    link: "https://github.com/ranggamaulana111111-bit/homelab",
+    learnings: [
+      "Merancang sistem di atas kertas lebih dulu menyelamatkan banyak kesalahan saat implementasi",
+      "Threat modeling dan runbook bukan hal berlebihan — bahkan untuk homelab",
+      "Batas terbesar sebuah proyek kadang bukan kode, tapi hardware",
+    ],
+  },
+  {
+    slug: "prime-care",
+    title: "Prime Care Hospital",
+    kind: "Aplikasi Mobile (Flutter)",
+    year: "2026",
+    summary:
+      "Aplikasi antrean online rumah sakit berbasis Flutter dan SQLite — daftar poli, pilih dokter, dan ambil nomor antrean tanpa harus datang duluan.",
+    role: "Pembuat & Developer",
+    stack: ["Flutter", "Dart", "SQLite", "Material 3"],
+    challenge:
+      "Pasien harus datang ke rumah sakit hanya untuk mengambil nomor antrean poli spesialis.",
+    solution:
+      "Membangun aplikasi mobile dengan alur registrasi pasien, pemilihan poli/dokter/jadwal, generate nomor antrean otomatis, dan pelacakan status antrean.",
+    result:
+      "Aplikasi Flutter berjalan di Android, iOS, dan Windows dengan 4 tabel database dan manajemen CRUD dokter dan poli.",
+    metrics: [
+      { value: "4", label: "Tabel DB" },
+      { value: "3", label: "Platform" },
+      { value: "3", label: "Status Antrean" },
+    ],
+    link: "https://github.com/ranggamaulana111111-bit/antrianrs",
+    learnings: [
+      "Alur antrean butuh desain state yang hati-hati supaya tidak ada nomor yang hilang",
+      "SQLite cukup untuk aplikasi lokal jika skema didesain sejak awal",
+      "UI untuk pasien harus meminimalkan langkah, bukan memaksimalkan fitur",
+    ],
+  },
+  {
+    slug: "foodmate",
+    title: "FoodMate AI",
+    kind: "Aplikasi Mobile (Flutter)",
+    year: "2026",
+    summary:
+      "Sistem rekomendasi makanan berbasis preferensi pengguna dengan Flutter + SQLite. Dibangun untuk tugas mata kuliah Flutter Mobile Programming.",
+    role: "Pembuat & Developer",
+    stack: ["Flutter", "Dart", "SQLite", "Provider", "Material 3"],
+    challenge:
+      "Tugas kuliah menuntut aplikasi lengkap: CRUD, filter multi-kriteria, relasi database, dan UI modern — sekaligus lulus dari rubrik penilaian ketat.",
+    solution:
+      "Membangun app dengan autentikasi, CRUD makanan, rekomendasi filter kategori/harga/rasa/pedas, favorit dengan foreign key, dan kombinasi bottom nav + drawer.",
+    result:
+      "flutter analyze lulus bersih dan siap build APK — seluruh 20 komponen rubrik penilaian terpenuhi.",
+    metrics: [
+      { value: "20", label: "Rubrik" },
+      { value: "2", label: "Tabel" },
+      { value: "10", label: "Halaman" },
+    ],
+    link: "https://github.com/ranggamaulana111111-bit/foodmate",
+    learnings: [
+      "Tugas kuliah yang terstruktur memaksa saya belajar komponen Flutter secara menyeluruh",
+      "Foreign key dan relasi di SQLite jadi lebih jelas setelah mempraktikkannya di app sungguhan",
+      "State management (Provider) menyederhanakan banyak screen yang saling berbagi data",
+    ],
+  },
+];
+
+export const currentWork = [
+  {
+    title: "RabegLab",
+    percent: 35,
+    desc: "HomeLab pribadi berarsitektur enterprise. Perencanaan dan dokumentasi fase analisis sampai deployment selesai, sedang menunggu hardware Proxmox untuk implementasi.",
+    tags: ["Proxmox", "Docker", "Linux"],
+  },
+  {
+    title: "AlkonekPlus",
+    percent: 80,
+    desc: "Speed test network profesional untuk kebutuhan ISP. Mesin pengujian dan visualisasi real-time hampir selesai, tinggal penyempurnaan riwayat dan ekspor hasil.",
+    tags: ["Next.js", "TypeScript", "Recharts"],
+  },
+  {
+    title: "Flutter Mobile",
+    percent: 75,
+    desc: "Belajar Flutter lewat tugas kuliah: FoodMate AI, Prime Care Hospital, dan aplikasi CRUD + SQLite lainnya. Mempelajari state management dan desain skema database lokal.",
+    tags: ["Flutter", "Dart", "SQLite"],
+  },
+  {
+    title: "Docker & Linux",
+    percent: 60,
+    desc: "Memahami containerisasi dan deployment dari dasar. Dockerfile, docker-compose, dan bagaimana mengoperasikan layanan di atas VPS.",
+    tags: ["Docker", "Linux", "CLI"],
+  },
+];
+
+export const posts = [
+  {
+    title: "Cara Saya Belajar Coding Tanpa Burnout",
+    excerpt:
+      "Belajar sedikit tapi rutin jauh lebih awet daripada begadang sekali lalu lelah seminggu.",
+    category: "Belajar",
+    readTime: 6,
+    date: "Jun 2025",
+  },
+  {
+    title: "Membangun Project Pertama yang Benar-benar Selesai",
+    excerpt:
+      "Rahasia menyelesaikan project bukan ide hebat, tapi batas ruang lingkup yang masuk akal.",
+    category: "Project",
+    readTime: 5,
+    date: "Mei 2025",
+  },
+  {
+    title: "Kenapa Saya Mulai Menulis Tiap Selesai Belajar",
+    excerpt:
+      "Menuliskan apa yang dipelajari membuatnya benar-benar menempel di kepala.",
+    category: "Catatan",
+    readTime: 4,
+    date: "Apr 2025",
+  },
+];
+
+export const plans = [
+  {
+    title: "Deploy RabegLab ke produksi",
+    timeline: "Q4 2026",
+    desc: "Dapatkan hardware, setup node Proxmox, dan jalankan fase implementasi sampai monitoring berjalan.",
+  },
+  {
+    title: "Rilis AlkonekPlus",
+    timeline: "Q3 2026",
+    desc: "Sempurnakan riwayat dan ekspor hasil, tambah informasi jaringan, lalu buka untuk dipakai publik.",
+  },
+  {
+    title: "Belajar Kubernetes",
+    timeline: "Q3-Q4 2026",
+    desc: "Setelah nyaman dengan Docker, lanjut ke orkestrasi. Pahami cluster, pod, service, dan deployment.",
+  },
+  {
+    title: "Bangun SaaS kecil",
+    timeline: "2026+",
+    desc: "Membangun produk kecil dari nol — dari ide sampai ada yang pakai. Belajar tentang pricing, deployment, dan user acquisition.",
+  },
+];
