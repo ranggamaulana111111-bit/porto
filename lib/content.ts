@@ -5,7 +5,7 @@ export const profile = {
   location: "Serang, Banten",
   timezone: "Asia/Jakarta",
   email: "ranggamaulana111111@gmail.com",
-  status: "Sedang belajar Docker dan membangun RabegLab",
+  status: "Online dari server sendiri via Cloudflare Tunnel",
   socials: {
     github: "https://github.com/ranggamaulana111111-bit",
     linkedin: "https://www.linkedin.com/in/rangga-maulana-ramadhan-wiharto-022077337/",
@@ -29,17 +29,17 @@ export const todayStatus = {
   intro: "Ini bukan portfolio. Ini ruang kerja saya — tempat saya belajar, membangun, dan sesekali gagal. Silakan lihat-lihat.",
   focus: "Yang sedang saya fokuskan hari ini:",
   focusItems: [
-    "Menuntaskan fitur ekspor & riwayat di AlkonekPlus",
-    "Menyiapkan rencana pengadaan hardware untuk RabegLab",
-    "Latihan Flutter: CRUD + SQLite untuk tugas kuliah",
+    "Deploy portfolio ke server sendiri via Cloudflare Tunnel",
+    "Menyempurnakan AlkonekPlus: ekspor hasil & riwayat tes",
+    "Rencana pengadaan hardware Proxmox untuk RabegLab",
   ],
   gitCommits: [
-    { repo: "speedtest", message: "feat: tambah export hasil tes ke PDF", time: "2 jam lalu" },
-    { repo: "homelab", message: "docs: lengkapi runbook fase deployment", time: "5 jam lalu" },
-    { repo: "foodmate", message: "feat: filter rekomendasi berdasarkan harga", time: "kemarin" },
+    { repo: "porto", message: "deploy: setup Cloudflare Tunnel + PM2", time: "hari ini" },
+    { repo: "cp", message: "feat: company profile CV Chilva Computer", time: "2 hari lalu" },
+    { repo: "billing", message: "fix: tagihan otomatis mid-cycle", time: "3 hari lalu" },
   ],
   listeningTo: "Lo-fi beats — Focus Mix",
-  mood: "Tenang, sedikit penasaran",
+  mood: " Produktif, lagi fire",
 };
 
 export const journey = [
@@ -221,6 +221,33 @@ export const projects = [
     ],
   },
   {
+    slug: "cp-chilva",
+    title: "CV. Chilva Computer",
+    kind: "Company Profile Website",
+    year: "2026",
+    summary:
+      "Website company profile untuk CV. Chilva Computer — mitra terpercaya pengadaan hardware, instalasi CCTV, dan optimasi jaringan. Dibangun dengan Astro untuk performa cepat.",
+    role: "Pembuat & Developer",
+    stack: ["Astro", "TypeScript", "Tailwind CSS v4", "Docker", "Nginx", "Cloudflare Tunnel"],
+    challenge:
+      "Bisnis IT lokal butuh kehadiran digital yang profesional tanpa biaya hosting mahal atau maintenance rumit.",
+    solution:
+      "Membangun static site dengan Astro yang sangat cepat, containerized dengan Docker + Nginx, dan di-deploy lewat Cloudflare Tunnel dari server pribadi.",
+    result:
+      "Website live dengan section About, Portfolio, Procurement, Testimonials, dan Contact — semuanya ringan dan SEO-friendly.",
+    metrics: [
+      { value: "<1s", label: "Load Time" },
+      { value: "100", label: "Lighthouse" },
+      { value: "5", label: "Section" },
+    ],
+    link: "https://github.com/ranggamaulana111111-bit/cp",
+    learnings: [
+      "Astro mengajarkan tentang island architecture — render statis sebanyak mungkin, hydrate hanya yang perlu interaktif",
+      "Docker + Cloudflare Tunnel membuat deployment dari jaringan lokal jadi dead simple",
+      "Company profile yang baik bukan soal banyak konten, tapi konten yang tepat dan cepat diakses",
+    ],
+  },
+  {
     slug: "rabeglab",
     title: "RabegLab",
     kind: "Personal HomeLab",
@@ -305,28 +332,28 @@ export const projects = [
 
 export const currentWork = [
   {
-    title: "RabegLab",
-    percent: 35,
-    desc: "HomeLab pribadi berarsitektur enterprise. Perencanaan dan dokumentasi fase analisis sampai deployment selesai, sedang menunggu hardware Proxmox untuk implementasi.",
-    tags: ["Proxmox", "Docker", "Linux"],
+    title: "Portfolio (porto)",
+    percent: 90,
+    desc: "Personal portfolio berbasis Next.js 16, deployed ke server sendiri lewat Cloudflare Tunnel. Single-page, dark-only, data-driven.",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Cloudflare"],
   },
   {
     title: "AlkonekPlus",
     percent: 80,
-    desc: "Speed test network profesional untuk kebutuhan ISP. Mesin pengujian dan visualisasi real-time hampir selesai, tinggal penyempurnaan riwayat dan ekspor hasil.",
+    desc: "Speed test network profesional untuk ISP. Mesin pengujian dan visualisasi real-time hampir selesai, tinggal penyempurnaan riwayat dan ekspor hasil.",
     tags: ["Next.js", "TypeScript", "Recharts"],
+  },
+  {
+    title: "RabegLab",
+    percent: 35,
+    desc: "HomeLab pribadi berarsitektur enterprise. Dokumentasi fase analisis sampai deployment selesai, menunggu hardware Proxmox.",
+    tags: ["Proxmox", "Docker", "Linux"],
   },
   {
     title: "Flutter Mobile",
     percent: 75,
-    desc: "Belajar Flutter lewat tugas kuliah: FoodMate AI, Prime Care Hospital, dan aplikasi CRUD + SQLite lainnya. Mempelajari state management dan desain skema database lokal.",
+    desc: "Kumpulan app Flutter dari tugas kuliah: FoodMate AI, Prime Care Hospital, Perpustakaan Digital, Kasir, dan lainnya.",
     tags: ["Flutter", "Dart", "SQLite"],
-  },
-  {
-    title: "Docker & Linux",
-    percent: 60,
-    desc: "Memahami containerisasi dan deployment dari dasar. Dockerfile, docker-compose, dan bagaimana mengoperasikan layanan di atas VPS.",
-    tags: ["Docker", "Linux", "CLI"],
   },
 ];
 
