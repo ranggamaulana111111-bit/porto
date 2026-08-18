@@ -6,6 +6,8 @@ import { projects } from "@/lib/content";
 import { SectionHeading } from "@/components/section-heading";
 import { Reveal } from "@/components/reveal";
 import { FlowDiagram } from "@/components/flow-diagram";
+import { FramedSnippet } from "@/components/framed-snippet";
+import { AlkonekMapMockup, AlkonekPlusChartMockup } from "@/components/project-visuals";
 
 const tabColors = ["bg-accent", "bg-green", "bg-teal", "bg-amber", "bg-coral", "bg-sky"];
 const textColors = ["text-accent", "text-green", "text-teal", "text-amber", "text-coral", "text-sky"];
@@ -14,6 +16,7 @@ export function ProjectFavorit() {
   const [active, setActive] = useState(projects[0].slug);
   const activeProject = projects.find((p) => p.slug === active)!;
   const activeIndex = projects.findIndex((p) => p.slug === active);
+  const visual = (activeProject as { visual?: { caption: string; image?: string } }).visual;
 
   return (
     <section id="project" className="px-6 py-24">
@@ -75,6 +78,41 @@ export function ProjectFavorit() {
                 {activeProject.summary}
               </p>
 
+              {visual && (
+                <div className="mb-10">
+                  <FramedSnippet
+                    src={visual.image}
+                    alt={visual.caption}
+                    caption={visual.caption}
+                    chrome={
+                      activeProject.slug === "alkonek"
+                        ? "billing.alkonek.online/peta-odp"
+                        : activeProject.slug === "alkonekplus"
+                          ? "alkonekplus · speed test"
+                          : "rabeglab · topologi"
+                    }
+                  >
+                    {activeProject.slug === "alkonek" ? (
+                      <AlkonekMapMockup />
+                    ) : activeProject.slug === "alkonekplus" ? (
+                      <AlkonekPlusChartMockup />
+                    ) : (
+                      <div className="w-full px-4">
+                        <FlowDiagram
+                          steps={[
+                            { label: "Proxmox VE", sub: "Node" },
+                            { label: "Docker", sub: "Containers" },
+                            { label: "Cloudflare Tunnel", sub: "Ingress" },
+                            { label: "Internet", sub: "Public" },
+                          ]}
+                          arrows={["→", "→", "→"]}
+                        />
+                      </div>
+                    )}
+                  </FramedSnippet>
+                </div>
+              )}
+
               {/* case study sections */}
               <div className="space-y-8 mb-10">
                 <CaseStudy label="Konteks & Masalah" text={activeProject.challenge} />
@@ -109,15 +147,10 @@ export function ProjectFavorit() {
 
               {/* architecture / integration diagram */}
               {(activeProject.slug === "alkonek" ||
-                activeProject.slug === "rabeglab" ||
                 activeProject.slug === "prodesa") && (
                 <div className="mb-10">
                   <p className="font-mono text-xs text-fg-muted uppercase tracking-wider mb-3">
-                    {activeProject.slug === "alkonek"
-                      ? "Alur integrasi"
-                      : activeProject.slug === "rabeglab"
-                        ? "Diagram arsitektur"
-                        : "Alur layanan"}
+                    {activeProject.slug === "alkonek" ? "Alur integrasi" : "Alur layanan"}
                   </p>
                   <FlowDiagram
                     steps={
@@ -127,25 +160,14 @@ export function ProjectFavorit() {
                             { label: "Laravel Billing", sub: "MySQL · Midtrans" },
                             { label: "WhatsApp Gateway", sub: "Notifikasi" },
                           ]
-                        : activeProject.slug === "rabeglab"
-                          ? [
-                              { label: "Proxmox VE", sub: "Node" },
-                              { label: "Docker", sub: "Containers" },
-                              { label: "Cloudflare Tunnel", sub: "Ingress" },
-                              { label: "Internet", sub: "Public" },
-                            ]
-                          : [
-                              { label: "Warga Desa", sub: "Pengaju" },
-                              { label: "Portal Desa", sub: "Laravel + Alpine" },
-                              { label: "Surat · APBDesa · Laporan", sub: "Output" },
-                            ]
+                        : [
+                            { label: "Warga Desa", sub: "Pengaju" },
+                            { label: "Portal Desa", sub: "Laravel + Alpine" },
+                            { label: "Surat · APBDesa · Laporan", sub: "Output" },
+                          ]
                     }
                     arrows={
-                      activeProject.slug === "alkonek"
-                        ? ["↔", "↔"]
-                        : activeProject.slug === "rabeglab"
-                          ? ["→", "→", "→"]
-                          : ["→", "→"]
+                      activeProject.slug === "alkonek" ? ["↔", "↔"] : ["→", "→"]
                     }
                   />
                 </div>

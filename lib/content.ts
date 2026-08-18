@@ -122,6 +122,10 @@ export const projects = [
       "Integrasi dengan hardware jaringan membutuhkan pemahaman protokol yang solid",
       "Multi-tenant dari awal lebih sulit dari yang dibayangkan, tapi worth it",
     ],
+    visual: {
+      caption: "Peta ODP interaktif (Leaflet) — penanda titik jaringan & status",
+      image: "/shots/alkonek-odp.png",
+    },
   },
   {
     slug: "prodesa",
@@ -215,6 +219,9 @@ export const projects = [
       "Visualisasi real-time (Recharts) butuh perf tuning supaya tidak lag saat tes berjalan",
       "E2E testing dengan Playwright worth investasi untuk app yang mengandalkan banyak state",
     ],
+    visual: {
+      caption: "Grafik kecepatan real-time (Recharts) — download & upload",
+    },
   },
   {
     slug: "cp-chilva",
@@ -270,6 +277,9 @@ export const projects = [
       "Threat modeling dan runbook bukan hal berlebihan — bahkan untuk homelab",
       "Batas terbesar sebuah proyek kadang bukan kode, tapi hardware",
     ],
+    visual: {
+      caption: "Topologi homelab — Proxmox VE → Docker → Cloudflare Tunnel",
+    },
   },
   {
     slug: "prime-care",
