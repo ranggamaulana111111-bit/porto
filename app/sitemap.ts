@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const base = "https://rangga.dev";
+const base = "https://ranggamrw.my.id";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -9,6 +9,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
+    },
+    {
+      url: `${base}/cv`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.6,
     },
   ];
 }

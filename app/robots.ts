@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://rangga.dev/sitemap.xml",
+    sitemap: "https://ranggamrw.my.id/sitemap.xml",
   };
 }
