@@ -1,16 +1,17 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const sans = Inter({
+const sans = localFont({
+  src: "./fonts/original-salmon.otf",
   variable: "--font-sans",
-  subsets: ["latin"],
   display: "swap",
 });
 
-const display = Space_Grotesk({
+const display = localFont({
+  src: "./fonts/original-salmon.otf",
   variable: "--font-display",
-  subsets: ["latin"],
   display: "swap",
 });
 
@@ -20,7 +21,7 @@ const mono = JetBrains_Mono({
   display: "swap",
 });
 
-const siteUrl = "https://rangga.dev";
+const siteUrl = "https://ranggamrw.my.id";
 const name = "Rangga Maulana Ramadhan Wiharto";
 
 export const metadata: Metadata = {
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
     template: `%s · ${name}`,
   },
   description:
-    "Ruang kerja digital Rangga — tempat saya belajar, membangun, dan menulis tentang proses jadi developer.",
+    "Ruang kerja digital rangga.mrw — tempat saya belajar, membangun, dan menulis tentang proses jadi developer.",
   keywords: [
     "Developer",
     "Software Engineer",
@@ -46,16 +47,16 @@ export const metadata: Metadata = {
     url: siteUrl,
     title: `${name} — Digital Workspace`,
     description:
-      "Ruang kerja digital Rangga — tempat saya belajar, membangun, dan menulis tentang proses jadi developer.",
+      "Ruang kerja digital rangga.mrw — tempat saya belajar, membangun, dan menulis tentang proses jadi developer.",
     siteName: name,
     locale: "id_ID",
-    images: [{ url: `${siteUrl}/og.png`, width: 1200, height: 630, alt: "rangga.dev — ruang kerja digital" }],
+    images: [{ url: `${siteUrl}/og.png`, width: 1200, height: 630, alt: "rangga.mrw — ruang kerja digital" }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${name} — Digital Workspace`,
     description:
-      "Ruang kerja digital Rangga — tempat saya belajar, membangun, dan menulis tentang proses jadi developer.",
+      "Ruang kerja digital rangga.mrw — tempat saya belajar, membangun, dan menulis tentang proses jadi developer.",
     creator: "@rangga",
     images: [`${siteUrl}/og.png`],
   },

@@ -3,6 +3,7 @@
 import { useEffect, useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { todayStatus, profile } from "@/lib/content";
+import { NowPlaying } from "@/components/now-playing";
 
 function LiveClock() {
   const [time, setTime] = useState("");
@@ -118,6 +119,16 @@ export function HariIni() {
               ngobrol dengan saya
               <span className="text-fg-faint group-hover:text-accent">]</span>
             </a>
+            <a
+              href="/cv"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2 font-mono text-sm text-fg-muted transition-colors hover:text-accent"
+            >
+              <span className="text-fg-faint group-hover:text-accent">[</span>
+              lihat cv
+              <span className="text-fg-faint group-hover:text-accent">]</span>
+            </a>
           </motion.div>
 
           {/* focus section */}
@@ -145,7 +156,7 @@ export function HariIni() {
             </div>
           </motion.div>
 
-          {/* bottom row: git + music + mood */}
+          {/* bottom row: tech stack + music + mood */}
           <motion.div
             variants={{
               hidden: { opacity: 0 },
@@ -153,18 +164,19 @@ export function HariIni() {
             }}
             className="mt-14 grid gap-8 sm:grid-cols-3"
           >
-            {/* git */}
+            {/* tech stack */}
             <div>
               <p className="font-mono text-xs text-fg-muted uppercase tracking-wider mb-3">
-                Commit terakhir
+                Tech stack
               </p>
-              <div className="space-y-2.5">
-                {todayStatus.gitCommits.map((c, i) => (
-                  <div key={i} className="text-sm">
-                    <span className="text-fg-muted">{c.repo}/</span>
-                    <span className="text-fg">{c.message}</span>
-                    <span className="block text-xs text-fg-muted mt-0.5">{c.time}</span>
-                  </div>
+              <div className="flex flex-wrap gap-2">
+                {todayStatus.techStack.map((tech) => (
+                  <span
+                    key={tech}
+                    className="rounded-full border border-border px-2.5 py-1 text-xs text-fg-secondary"
+                  >
+                    {tech}
+                  </span>
                 ))}
               </div>
             </div>
@@ -174,15 +186,13 @@ export function HariIni() {
               <p className="font-mono text-xs text-fg-muted uppercase tracking-wider mb-3">
                 Mendengarkan
               </p>
-              <p className="text-sm text-fg-secondary">
-                {todayStatus.listeningTo}
-              </p>
+              <NowPlaying fallback={todayStatus.listeningTo} />
             </div>
 
             {/* mood */}
             <div>
               <p className="font-mono text-xs text-fg-muted uppercase tracking-wider mb-3">
-                Suasana hari ini
+                Suasana
               </p>
               <p className="text-sm text-fg-secondary">
                 {todayStatus.mood}

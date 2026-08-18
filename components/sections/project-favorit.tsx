@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { projects } from "@/lib/content";
 import { SectionHeading } from "@/components/section-heading";
 import { Reveal } from "@/components/reveal";
+import { FlowDiagram } from "@/components/flow-diagram";
 
 const tabColors = ["bg-accent", "bg-green", "bg-teal", "bg-amber", "bg-coral", "bg-sky"];
 const textColors = ["text-accent", "text-green", "text-teal", "text-amber", "text-coral", "text-sky"];
@@ -105,6 +106,50 @@ export function ProjectFavorit() {
                   ))}
                 </div>
               </div>
+
+              {/* architecture / integration diagram */}
+              {(activeProject.slug === "alkonek" ||
+                activeProject.slug === "rabeglab" ||
+                activeProject.slug === "prodesa") && (
+                <div className="mb-10">
+                  <p className="font-mono text-xs text-fg-muted uppercase tracking-wider mb-3">
+                    {activeProject.slug === "alkonek"
+                      ? "Alur integrasi"
+                      : activeProject.slug === "rabeglab"
+                        ? "Diagram arsitektur"
+                        : "Alur layanan"}
+                  </p>
+                  <FlowDiagram
+                    steps={
+                      activeProject.slug === "alkonek"
+                        ? [
+                            { label: "MikroTik OLT", sub: "Multi-brand" },
+                            { label: "Laravel Billing", sub: "MySQL · Midtrans" },
+                            { label: "WhatsApp Gateway", sub: "Notifikasi" },
+                          ]
+                        : activeProject.slug === "rabeglab"
+                          ? [
+                              { label: "Proxmox VE", sub: "Node" },
+                              { label: "Docker", sub: "Containers" },
+                              { label: "Cloudflare Tunnel", sub: "Ingress" },
+                              { label: "Internet", sub: "Public" },
+                            ]
+                          : [
+                              { label: "Warga Desa", sub: "Pengaju" },
+                              { label: "Portal Desa", sub: "Laravel + Alpine" },
+                              { label: "Surat · APBDesa · Laporan", sub: "Output" },
+                            ]
+                    }
+                    arrows={
+                      activeProject.slug === "alkonek"
+                        ? ["↔", "↔"]
+                        : activeProject.slug === "rabeglab"
+                          ? ["→", "→", "→"]
+                          : ["→", "→"]
+                    }
+                  />
+                </div>
+              )}
 
               {/* learnings - editorial highlight */}
               <div className="bg-bg-warm border border-border p-6">

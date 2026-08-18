@@ -1,6 +1,6 @@
 export const profile = {
   name: "Rangga Maulana Ramadhan Wiharto",
-  shortName: "Rangga",
+  shortName: "rangga.mrw",
   role: "Developer & Mahasiswa Sistem Informasi",
   location: "Serang, Banten",
   timezone: "Asia/Jakarta",
@@ -33,13 +33,9 @@ export const todayStatus = {
     "Menyempurnakan AlkonekPlus: ekspor hasil & riwayat tes",
     "Rencana pengadaan hardware Proxmox untuk RabegLab",
   ],
-  gitCommits: [
-    { repo: "porto", message: "deploy: setup Cloudflare Tunnel + PM2", time: "hari ini" },
-    { repo: "cp", message: "feat: company profile CV Chilva Computer", time: "2 hari lalu" },
-    { repo: "billing", message: "fix: tagihan otomatis mid-cycle", time: "3 hari lalu" },
-  ],
+  techStack: ["Laravel", "Next.js", "Flutter", "Astro", "TypeScript", "Docker", "Linux"],
   listeningTo: "Lo-fi beats — Focus Mix",
-  mood: " Produktif, lagi fire",
+  mood: "Produktif, lagi fire",
 };
 
 export const journey = [

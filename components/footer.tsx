@@ -1,14 +1,14 @@
 "use client";
 
 import { profile } from "@/lib/content";
-import { GitHub, LinkedIn, WhatsApp, Mail } from "@/components/icons";
+import { GitHub, LinkedIn, WhatsApp } from "@/components/icons";
+import { CopyEmail } from "@/components/copy-email";
 
 export function Footer() {
   const socials = [
-    { label: "GitHub", href: profile.socials.github, Icon: GitHub },
+    { label: "github.com/ranggamaulana", href: profile.socials.github, Icon: GitHub },
     { label: "LinkedIn", href: profile.socials.linkedin, Icon: LinkedIn },
     { label: "WhatsApp", href: profile.socials.whatsapp, Icon: WhatsApp },
-    { label: "Email", href: profile.socials.email, Icon: Mail },
   ];
 
   return (
@@ -21,10 +21,17 @@ export function Footer() {
               className="font-display text-lg font-bold tracking-tight text-fg"
             >
               {profile.shortName}
-              <span className="text-accent">.</span>
             </a>
-            <p className="mt-1 text-sm text-fg-muted">{profile.role}</p>
-          </div>
+              <p className="mt-1 text-sm text-fg-muted">{profile.role}</p>
+              <a
+                href="/cv"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-center gap-2 border border-border px-3 py-1.5 text-xs text-fg-secondary transition-colors hover:border-fg-faint hover:text-fg"
+              >
+                Lihat CV
+              </a>
+            </div>
 
           <ul className="flex items-center gap-5">
             {socials.map(({ label, href, Icon }) => (
@@ -41,6 +48,9 @@ export function Footer() {
                 </a>
               </li>
             ))}
+            <li>
+              <CopyEmail variant="inline" />
+            </li>
           </ul>
         </div>
 

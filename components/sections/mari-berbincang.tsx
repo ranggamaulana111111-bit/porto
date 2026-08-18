@@ -5,7 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { profile } from "@/lib/content";
 import { SectionHeading } from "@/components/section-heading";
 import { Reveal } from "@/components/reveal";
-import { GitHub, LinkedIn, WhatsApp, Mail, ArrowUpRight } from "@/components/icons";
+import { GitHub, LinkedIn, WhatsApp, ArrowUpRight } from "@/components/icons";
+import { CopyEmail } from "@/components/copy-email";
 
 const WEB3FORMS_KEY = "2c3ff6d4-b75e-4ad1-897b-25d663a1f035";
 
@@ -44,10 +45,9 @@ export function MariBerbincang() {
   };
 
   const channels = [
-    { label: "GitHub", href: profile.socials.github, Icon: GitHub },
+    { label: "github.com/ranggamaulana", href: profile.socials.github, Icon: GitHub },
     { label: "LinkedIn", href: profile.socials.linkedin, Icon: LinkedIn },
     { label: "WhatsApp", href: profile.socials.whatsapp, Icon: WhatsApp },
-    { label: "Email", href: profile.socials.email, Icon: Mail },
   ];
 
   return (
@@ -82,6 +82,7 @@ export function MariBerbincang() {
                       <ArrowUpRight size={14} className="text-fg-faint group-hover:text-fg-muted transition-colors" />
                     </a>
                   ))}
+                  <CopyEmail />
                 </div>
               </div>
 

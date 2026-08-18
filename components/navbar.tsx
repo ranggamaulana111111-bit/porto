@@ -63,7 +63,6 @@ export function Navbar() {
             className="font-display text-base font-semibold tracking-tight text-fg"
           >
             {profile.shortName}
-            <span className="text-accent">.</span>
           </a>
 
           <ul className="hidden items-center gap-1 md:flex">
