@@ -241,6 +241,7 @@ export const projects = [
       { value: "5", label: "Section" },
     ],
     link: "https://github.com/ranggamaulana111111-bit/cp",
+    live: "http://cp.ranggamrw.my.id/",
     learnings: [
       "Astro mengajarkan tentang island architecture — render statis sebanyak mungkin, hydrate hanya yang perlu interaktif",
       "Docker + Cloudflare Tunnel membuat deployment dari jaringan lokal jadi dead simple",
