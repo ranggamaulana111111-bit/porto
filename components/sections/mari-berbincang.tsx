@@ -7,22 +7,40 @@ import { SectionHeading } from "@/components/section-heading";
 import { Reveal } from "@/components/reveal";
 import { GitHub, LinkedIn, WhatsApp, Mail, ArrowUpRight } from "@/components/icons";
 
+const WEB3FORMS_KEY = "2c3ff6d4-b75e-4ad1-897b-25d663a1f035";
+
 export function MariBerbincang() {
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
+
     const data = new FormData(e.currentTarget);
-    const name = String(data.get("name") ?? "").trim();
-    const email = String(data.get("email") ?? "").trim();
-    const message = String(data.get("message") ?? "").trim();
 
-    const subject = encodeURIComponent(`Pesan dari ${name} — rangga.dev`);
-    const body = encodeURIComponent(`${message}\n\n— ${name}\n${email}`);
-    window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
+    try {
+      await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          name: data.get("name"),
+          email: data.get("email"),
+          message: data.get("message"),
+          subject: `Pesan dari ${data.get("name")} — rangga.dev`,
+          from_name: "rangga.dev",
+        }),
+      });
 
-    setSent(true);
-    setTimeout(() => setSent(false), 3500);
+      setSent(true);
+      setTimeout(() => setSent(false), 3500);
+      (e.target as HTMLFormElement).reset();
+    } catch {
+      alert("Gagal mengirim pesan. Coba lagi atau hubungi lewat WhatsApp.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const channels = [
@@ -123,9 +141,10 @@ export function MariBerbincang() {
                 </div>
                 <button
                   type="submit"
-                  className="mt-2 border border-fg px-6 py-2.5 text-sm font-medium text-fg transition-colors hover:bg-fg hover:text-bg"
+                  disabled={loading}
+                  className="mt-2 border border-fg px-6 py-2.5 text-sm font-medium text-fg transition-colors hover:bg-fg hover:text-bg disabled:opacity-50"
                 >
-                  Kirim pesan
+                  {loading ? "Mengirim..." : "Kirim pesan"}
                 </button>
               </div>
 
@@ -140,10 +159,10 @@ export function MariBerbincang() {
                   >
                     <div className="text-center">
                       <p className="font-display text-lg font-semibold">
-                        Aplikasi email dibuka
+                        Pesan terkirim!
                       </p>
                       <p className="mt-1 text-sm text-fg-muted">
-                        Pesan Anda sudah disiapkan — tinggal kirim.
+                        Terima kasih — saya akan segera membalas.
                       </p>
                     </div>
                   </motion.div>
