@@ -7,7 +7,7 @@ import { SectionHeading } from "@/components/section-heading";
 import { Reveal } from "@/components/reveal";
 import { FlowDiagram } from "@/components/flow-diagram";
 import { FramedSnippet } from "@/components/framed-snippet";
-import { AlkonekMapMockup, AlkonekPlusChartMockup } from "@/components/project-visuals";
+import { AlkonekMapMockup, AlkonekPlusChartMockup, ProdesaAnalyticsMockup } from "@/components/project-visuals";
 
 const tabColors = ["bg-accent", "bg-green", "bg-teal", "bg-amber", "bg-coral", "bg-sky"];
 const textColors = ["text-accent", "text-green", "text-teal", "text-amber", "text-coral", "text-sky"];
@@ -89,13 +89,17 @@ export function ProjectFavorit() {
                         ? "billing.alkonek.online/peta-odp"
                         : activeProject.slug === "alkonekplus"
                           ? "alkonekplus · speed test"
-                          : "rabeglab · topologi"
+                          : activeProject.slug === "prodesa"
+                            ? "prodesa · dashboard"
+                            : "rabeglab · topologi"
                     }
                   >
                     {activeProject.slug === "alkonek" ? (
                       <AlkonekMapMockup />
                     ) : activeProject.slug === "alkonekplus" ? (
                       <AlkonekPlusChartMockup />
+                    ) : activeProject.slug === "prodesa" ? (
+                      <ProdesaAnalyticsMockup />
                     ) : (
                       <div className="w-full px-4">
                         <FlowDiagram

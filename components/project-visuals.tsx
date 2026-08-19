@@ -159,3 +159,60 @@ export function AlkonekPlusChartMockup() {
     </svg>
   );
 }
+
+export function ProdesaAnalyticsMockup() {
+  const kpis = [
+    { n: "14", l: "Jenis Surat", c: "#8db8cf" },
+    { n: "7", l: "Role", c: "#7cc49a" },
+    { n: "9", l: "Modul Laporan", c: "#d4b48a" },
+  ];
+  const bars = [
+    { l: "Domisili", v: 5, c: "#8db8cf" },
+    { l: "Keterangan", v: 4, c: "#7cc49a" },
+    { l: "Usaha", v: 3, c: "#5fb6ad" },
+    { l: "Pengantar", v: 2, c: "#d4b48a" },
+  ];
+
+  return (
+    <svg
+      viewBox="0 0 400 250"
+      className="h-full w-full"
+      preserveAspectRatio="xMidYMid meet"
+      role="img"
+      aria-label="Dashboard analitik Prodesa"
+    >
+      {kpis.map((k, i) => (
+        <g key={k.l} transform={`translate(${12 + i * 126},10)`}>
+          <rect width="114" height="46" rx="8" fill="#182230" stroke="#233040" />
+          <text x="12" y="30" fontSize="20" fontWeight="700" fill={k.c} fontFamily="monospace">
+            {k.n}
+          </text>
+          <text x="12" y="40" fontSize="9" fill="#7e8a9c" fontFamily="monospace">
+            {k.l}
+          </text>
+        </g>
+      ))}
+
+      <text x="12" y="80" fontSize="10" fill="#a7b3c2" fontFamily="monospace">
+        Surat per kategori
+      </text>
+
+      {bars.map((b, i) => {
+        const y = 92 + i * 38;
+        const w = (b.v / 5) * 170;
+        return (
+          <g key={b.l} transform={`translate(0,${y})`}>
+            <text x="12" y="14" fontSize="9" fill="#a7b3c2" fontFamily="monospace">
+              {b.l}
+            </text>
+            <rect x="110" y="4" width="180" height="14" rx="7" fill="#13202b" stroke="#1a2430" />
+            <rect x="110" y="4" width={w} height="14" rx="7" fill={b.c} />
+            <text x="296" y="14" fontSize="9" fill="#7e8a9c" fontFamily="monospace">
+              {b.v}
+            </text>
+          </g>
+        );
+      })}
+    </svg>
+  );
+}

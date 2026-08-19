@@ -154,6 +154,9 @@ export const projects = [
       "PDF generation lebih kompleks dari yang dikira, terutama untuk format surat resmi",
       "Mendengarkan feedback pengguna sungguhan mengubah cara saya memikirkan UX",
     ],
+    visual: {
+      caption: "Dashboard analitik — distribusi surat per kategori & aktivitas per role",
+    },
   },
   {
     slug: "perpustakaan-digital",
