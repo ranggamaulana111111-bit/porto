@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { JetBrains_Mono } from "next/font/google";
 import localFont from "next/font/local";
+import { profile } from "@/lib/content";
 import "./globals.css";
 
 const sans = localFont({
@@ -24,6 +25,26 @@ const mono = JetBrains_Mono({
 const siteUrl = "https://ranggamrw.my.id";
 const name = "Rangga Maulana Ramadhan Wiharto";
 
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name,
+  alternateName: "rangga.mrw",
+  url: siteUrl,
+  jobTitle: profile.role,
+  description:
+    "Developer & mahasiswa Sistem Informasi; pembuat ALKONEK, RabegLab, AlkonekPlus, dan Prodesa.",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: profile.location,
+  },
+  sameAs: [
+    profile.socials.github,
+    profile.socials.linkedin,
+    profile.socials.whatsapp,
+  ],
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
@@ -33,11 +54,19 @@ export const metadata: Metadata = {
   description:
     "Ruang kerja digital rangga.mrw — tempat saya belajar, membangun, dan menulis tentang proses jadi developer.",
   keywords: [
+    "rangga.mrw",
+    "rangga dev",
+    "rangga.mrw portfolio",
     "Developer",
     "Software Engineer",
+    "Systems Engineer",
     "Laravel",
     "Next.js",
     "Digital Workspace",
+    "ALKONEK",
+    "RabegLab",
+    "AlkonekPlus",
+    "Prodesa",
     "Rangga Maulana Ramadhan Wiharto",
   ],
   authors: [{ name, url: siteUrl }],
@@ -159,6 +188,10 @@ export default function RootLayout({
             />
           </svg>
         </div>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         {children}
       </body>
     </html>
