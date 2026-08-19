@@ -87,6 +87,8 @@ function TypingTagline({ words, className = "" }: { words: string[]; className?:
 }
 
 export function HariIni() {
+  const [mixActive, setMixActive] = useState(false);
+
   return (
     <section id="hari-ini" className="px-6 pt-32 pb-24">
       <div className="mx-auto max-w-3xl">
@@ -246,22 +248,37 @@ export function HariIni() {
               <p className="font-mono text-xs text-fg-muted uppercase tracking-wider mb-3">
                 Mendengarkan
               </p>
-              <NowPlaying fallback={todayStatus.listeningTo} />
+              <NowPlaying
+                fallback={
+                  mixActive ? todayStatus.listeningPlaylist.title : todayStatus.listeningTo
+                }
+              />
               <p className="mt-4 font-mono text-xs text-fg-muted uppercase tracking-wider mb-2">
                 Mix dari playlist
               </p>
-              <iframe
-                src={todayStatus.listeningPlaylist.embed}
-                title={todayStatus.listeningPlaylist.title}
-                loading="lazy"
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                className="w-full rounded-xl"
-                style={{ border: 0, borderRadius: 12, height: 152 }}
-              />
+              <div
+                className="cursor-pointer"
+                onClick={() => setMixActive(true)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") setMixActive(true);
+                }}
+              >
+                <iframe
+                  src={todayStatus.listeningPlaylist.embed}
+                  title={todayStatus.listeningPlaylist.title}
+                  loading="lazy"
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  className="w-full rounded-xl pointer-events-none"
+                  style={{ border: 0, borderRadius: 12, height: 152 }}
+                />
+              </div>
               <a
                 href={todayStatus.listeningPlaylist.url}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => setMixActive(true)}
                 className="mt-2 inline-flex items-center gap-1 text-xs text-fg-muted transition-colors hover:text-accent"
               >
                 Buka di Spotify
