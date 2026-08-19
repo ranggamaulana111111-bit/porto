@@ -247,6 +247,28 @@ export function HariIni() {
                 Mendengarkan
               </p>
               <NowPlaying fallback={todayStatus.listeningTo} />
+              <p className="mt-4 font-mono text-xs text-fg-muted uppercase tracking-wider mb-2">
+                Mix dari playlist
+              </p>
+              <iframe
+                src={todayStatus.listeningPlaylist.embed}
+                title={todayStatus.listeningPlaylist.title}
+                loading="lazy"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                className="w-full rounded-xl"
+                style={{ border: 0, borderRadius: 12, height: 152 }}
+              />
+              <a
+                href={todayStatus.listeningPlaylist.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 inline-flex items-center gap-1 text-xs text-fg-muted transition-colors hover:text-accent"
+              >
+                Buka di Spotify
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M7 17 17 7M8 7h9v9" />
+                </svg>
+              </a>
             </div>
 
             {/* mood */}

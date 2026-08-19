@@ -36,6 +36,11 @@ export const todayStatus = {
   techStack: ["Laravel", "Next.js", "Flutter", "Astro", "TypeScript", "Docker", "Linux"],
   listeningTo: "Lo-fi beats — Focus Mix",
   mood: "Produktif, lagi fire",
+  listeningPlaylist: {
+    title: "Mix Harian",
+    url: "https://open.spotify.com/playlist/1dd0RgxyoiRiFLptOChO6e?si=02ad28709f664a86",
+    embed: "https://open.spotify.com/embed/playlist/1dd0RgxyoiRiFLptOChO6e?utm_source=generator&theme=0",
+  },
 };
 
 export const journey = [
