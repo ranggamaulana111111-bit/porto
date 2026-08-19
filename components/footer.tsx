@@ -33,7 +33,7 @@ export function Footer() {
               </a>
             </div>
 
-          <ul className="flex items-center gap-5">
+          <ul className="flex flex-wrap items-center gap-x-5 gap-y-3">
             {socials.map(({ label, href, Icon }) => (
               <li key={label}>
                 <a

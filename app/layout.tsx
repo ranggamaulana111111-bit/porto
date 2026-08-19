@@ -114,7 +114,7 @@ export default function RootLayout({
       <body className="bg-bg text-fg antialiased">
         <div
           aria-hidden="true"
-          className="pointer-events-none fixed inset-0 -z-10"
+          className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
         >
           <svg
             className="h-full w-full"

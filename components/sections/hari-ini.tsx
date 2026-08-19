@@ -40,7 +40,7 @@ function LiveDate() {
     []
   );
 
-  return <span>{date}</span>;
+  return <span suppressHydrationWarning>{date}</span>;
 }
 
 function TypingTagline({ words, className = "" }: { words: string[]; className?: string }) {
