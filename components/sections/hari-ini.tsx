@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useMemo } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { todayStatus, profile } from "@/lib/content";
 import { NowPlaying } from "@/components/now-playing";
 
@@ -43,6 +43,49 @@ function LiveDate() {
   return <span>{date}</span>;
 }
 
+function TypingTagline({ words, className = "" }: { words: string[]; className?: string }) {
+  const reduced = useReducedMotion();
+  const [text, setText] = useState(reduced ? words[0] : "");
+  const [wi, setWi] = useState(0);
+  const [ci, setCi] = useState(0);
+  const [deleting, setDeleting] = useState(false);
+
+  useEffect(() => {
+    if (reduced) {
+      setText(words[0]);
+      return;
+    }
+    const word = words[wi];
+    if (!deleting && ci === word.length) {
+      const id = setTimeout(() => setDeleting(true), 1400);
+      return () => clearTimeout(id);
+    }
+    if (deleting && ci === 0) {
+      setDeleting(false);
+      setWi((p) => (p + 1) % words.length);
+      return;
+    }
+    const delay = deleting ? 45 : 80;
+    const id = setTimeout(() => {
+      if (!deleting && ci < word.length) {
+        setCi(ci + 1);
+        setText(word.slice(0, ci + 1));
+      } else if (deleting && ci > 0) {
+        setCi(ci - 1);
+        setText(word.slice(0, ci - 1));
+      }
+    }, delay);
+    return () => clearTimeout(id);
+  }, [text, wi, ci, deleting, reduced, words]);
+
+  return (
+    <span className={className}>
+      {text}
+      <span className="ml-0.5 inline-block h-4 w-[2px] -translate-y-0.5 bg-accent align-middle animate-pulse" />
+    </span>
+  );
+}
+
 export function HariIni() {
   return (
     <section id="hari-ini" className="px-6 pt-32 pb-24">
@@ -64,13 +107,17 @@ export function HariIni() {
             className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-fg-muted"
           >
             <span className="flex items-center gap-1.5">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-online animate-pulse" />
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-online opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-online" />
+              </span>
               Online
             </span>
             <span className="text-fg-faint">·</span>
             <LiveDate />
             <span className="text-fg-faint">·</span>
             <LiveClock />
+            <span className="text-fg-faint">WIB</span>
             <span className="text-fg-faint">·</span>
             <span>{profile.location}</span>
           </motion.div>
@@ -94,6 +141,19 @@ export function HariIni() {
             className="mt-4 text-base leading-relaxed text-fg-secondary max-w-xl"
           >
             {todayStatus.intro}
+          </motion.p>
+
+          <motion.p
+            variants={{
+              hidden: { opacity: 0, y: 12 },
+              show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
+            }}
+            className="mt-3 text-base text-fg-secondary"
+          >
+            <span className="text-fg-muted">Sekarang lagi: </span>
+            <TypingTagline
+              words={["belajar", "membangun", "gagal", "belajar lagi", "deploy ke server"]}
+            />
           </motion.p>
 
           <motion.div
