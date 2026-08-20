@@ -48,99 +48,9 @@ export const LinkedIn = (p: IconProps) => (
   </svg>
 );
 
-export const Twitter = (p: IconProps) => (
-  <svg {...base(p)}>
-    <path d="M4 4l7 9M4 20l7-7M20 4l-7 8M14 13l6 7" />
-  </svg>
-);
-
 export const WhatsApp = (p: IconProps) => (
   <svg {...base(p)}>
     <path d="M3 21l1.6-4.3A8 8 0 1 1 8 19l-5 2z" />
     <path d="M9 9c0 3 2 5 5 5 .8 0 1.4-.2 2-.5" />
-  </svg>
-);
-
-export const Compass = (p: IconProps) => (
-  <svg {...base(p)}>
-    <circle cx="12" cy="12" r="9" />
-    <path d="m15.5 8.5-2 5-5 2 2-5 5-2z" />
-  </svg>
-);
-
-export const Gauge = (p: IconProps) => (
-  <svg {...base(p)}>
-    <path d="M4 18a8 8 0 1 1 16 0" />
-    <path d="M12 14l4-4" />
-    <circle cx="12" cy="14" r="1" />
-  </svg>
-);
-
-export const Sparkle = (p: IconProps) => (
-  <svg {...base(p)}>
-    <path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2 2M16 16l2 2M18 6l-2 2M8 16l-2 2" />
-  </svg>
-);
-
-export const Handshake = (p: IconProps) => (
-  <svg {...base(p)}>
-    <path d="M3 13l4-4 4 4M21 13l-4-4-4 4M7 13l3 3 4-4 3 4" />
-  </svg>
-);
-
-export const Send = (p: IconProps) => (
-  <svg {...base(p)}>
-    <path d="M4 12l16-8-6 16-3-7-7-1z" />
-  </svg>
-);
-
-export const Menu = (p: IconProps) => (
-  <svg {...base(p)}>
-    <path d="M4 7h16M4 12h16M4 17h16" />
-  </svg>
-);
-
-export const Close = (p: IconProps) => (
-  <svg {...base(p)}>
-    <path d="M6 6l12 12M18 6 6 18" />
-  </svg>
-);
-
-export const Check = (p: IconProps) => (
-  <svg {...base(p)}>
-    <path d="M5 12l5 5 9-10" />
-  </svg>
-);
-
-export const Clock = (p: IconProps) => (
-  <svg {...base(p)}>
-    <circle cx="12" cy="12" r="9" />
-    <path d="M12 7v5l3 2" />
-  </svg>
-);
-
-export const Pin = (p: IconProps) => (
-  <svg {...base(p)}>
-    <path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z" />
-    <circle cx="12" cy="9" r="2.5" />
-  </svg>
-);
-
-export const Quote = (p: IconProps) => (
-  <svg {...base(p)}>
-    <path d="M7 7h4v4c0 2-1.5 3.5-4 4M13 7h4v4c0 2-1.5 3.5-4 4" />
-  </svg>
-);
-
-export const Search = (p: IconProps) => (
-  <svg {...base(p)}>
-    <circle cx="11" cy="11" r="7" />
-    <path d="m20 20-3.5-3.5" />
-  </svg>
-);
-
-export const External = (p: IconProps) => (
-  <svg {...base(p)}>
-    <path d="M14 5h5v5M19 5l-8 8M19 13v6H5V5h6" />
   </svg>
 );

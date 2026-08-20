@@ -99,6 +99,30 @@ export interface Plan {
   desc: string;
 }
 
+export interface TechStackCategory {
+  category: string;
+  technologies: string[];
+}
+
+export const techStackCategories: TechStackCategory[] = [
+  {
+    category: "Backend & Data Engine",
+    technologies: ["PHP", "Laravel", "MySQL", "PostgreSQL", "Redis", "TypeScript"],
+  },
+  {
+    category: "Frontend & Mobile",
+    technologies: ["Flutter", "Dart", "TailwindCSS", "Alpine.js", "HTML5", "CSS3"],
+  },
+  {
+    category: "Cloud, Infra & DevOps",
+    technologies: ["Proxmox", "Docker", "Ansible", "MikroTik", "Linux Mint / Ubuntu", "Bash"],
+  },
+  {
+    category: "Integrasi & API",
+    technologies: ["REST API", "MikroTik API", "Telegram Bot API", "Webhooks"],
+  },
+];
+
 export interface SiteContent {
   profile: Profile;
   navItems: NavItem[];

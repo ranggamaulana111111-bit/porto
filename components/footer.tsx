@@ -25,8 +25,6 @@ export function Footer() {
               <p className="mt-1 text-sm text-fg-muted">{profile.role}</p>
               <a
                 href="/cv"
-                target="_blank"
-                rel="noopener noreferrer"
                 className="mt-4 inline-flex items-center gap-2 border border-border px-3 py-1.5 text-xs text-fg-secondary transition-colors hover:border-fg-faint hover:text-fg"
               >
                 Lihat CV

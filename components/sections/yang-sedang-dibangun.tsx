@@ -26,7 +26,7 @@ function ProgressBar({ percent, tone = "bg-fg" }: { percent: number; tone?: stri
 
 export function YangSedangDibangun() {
   return (
-    <section id="yang-sedang" className="px-6 py-24">
+    <section id="yang-sedang" className="px-6 pt-6 pb-24">
       <div className="mx-auto max-w-3xl">
         <SectionHeading
           index="01"

@@ -28,6 +28,10 @@
       "label": "Cara kerja"
     },
     {
+      "id": "stack",
+      "label": "Stack"
+    },
+    {
       "id": "project",
       "label": "Project"
     },

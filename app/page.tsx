@@ -4,6 +4,7 @@ import { HariIni } from "@/components/sections/hari-ini";
 import { YangSedangDibangun } from "@/components/sections/yang-sedang-dibangun";
 import { Perjalanan } from "@/components/sections/perjalanan";
 import { CaraBekerja } from "@/components/sections/cara-bekerja";
+import { StackTeknologi } from "@/components/sections/stack-teknologi";
 import { ProjectFavorit } from "@/components/sections/project-favorit";
 import { Catatan } from "@/components/sections/catatan";
 import { Rencana } from "@/components/sections/rencana";
@@ -18,6 +19,7 @@ export default function Home() {
         <YangSedangDibangun />
         <Perjalanan />
         <CaraBekerja />
+        <StackTeknologi />
         <ProjectFavorit />
         <Catatan />
         <Rencana />

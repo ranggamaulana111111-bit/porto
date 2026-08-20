@@ -8,8 +8,6 @@ import { Reveal } from "@/components/reveal";
 import { GitHub, LinkedIn, WhatsApp, ArrowUpRight } from "@/components/icons";
 import { CopyEmail } from "@/components/copy-email";
 
-const WEB3FORMS_KEY = "2c3ff6d4-b75e-4ad1-897b-25d663a1f035";
-
 export function MariBerbincang() {
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -21,16 +19,13 @@ export function MariBerbincang() {
     const data = new FormData(e.currentTarget);
 
     try {
-      await fetch("https://api.web3forms.com/submit", {
+      await fetch("/api/submit-message", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
-          access_key: WEB3FORMS_KEY,
           name: data.get("name"),
           email: data.get("email"),
           message: data.get("message"),
-          subject: `Pesan dari ${data.get("name")} — rangga.dev`,
-          from_name: "rangga.dev",
         }),
       });
 

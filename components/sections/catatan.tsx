@@ -3,6 +3,7 @@
 import { posts } from "@/lib/content";
 import { SectionHeading } from "@/components/section-heading";
 import { Reveal } from "@/components/reveal";
+import { ArrowUpRight } from "@/components/icons";
 
 const categoryColor: Record<string, string> = {
   Belajar: "text-green",
@@ -23,7 +24,7 @@ export function Catatan() {
         <div className="space-y-0">
           {posts.map((post, i) => (
             <Reveal key={post.title} delay={i * 0.06}>
-              <div className="group block border-b border-border py-6 px-4 -mx-4">
+              <div className="group border-b border-border py-6 px-4 -mx-4">
                 <div className="flex items-center gap-3 text-xs text-fg-muted mb-2">
                   <span className={`font-mono ${categoryColor[post.category] ?? "text-accent"}`}>{post.category}</span>
                   <span className="text-fg-faint">·</span>
@@ -37,6 +38,10 @@ export function Catatan() {
                 <p className="mt-1 text-sm text-fg-secondary">
                   {post.excerpt}
                 </p>
+                <span className="mt-3 inline-flex items-center gap-1.5 text-xs text-fg-faint font-mono">
+                  <span className="rounded-full border border-border px-2 py-0.5">draft</span>
+                  <ArrowUpRight size={12} />
+                </span>
               </div>
             </Reveal>
           ))}

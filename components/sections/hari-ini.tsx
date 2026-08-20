@@ -189,9 +189,9 @@ export function HariIni() {
             className="mt-3 text-base text-fg-secondary"
           >
             <span className="text-fg-muted">Sekarang lagi: </span>
-            <TypingTagline
-              words={["belajar", "membangun", "gagal", "belajar lagi", "deploy ke server"]}
-            />
+              <TypingTagline
+                words={["belajar", "membangun", "menguji", "deploy", "mengulang"]}
+              />
           </motion.p>
 
           <motion.div
@@ -219,8 +219,6 @@ export function HariIni() {
             </a>
             <a
               href="/cv"
-              target="_blank"
-              rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 font-mono text-sm text-fg-muted transition-colors hover:text-accent"
             >
               <span className="text-fg-faint group-hover:text-accent">[</span>
@@ -373,7 +371,7 @@ export function HariIni() {
               hidden: { opacity: 0 },
               show: { opacity: 1, transition: { duration: 1 } },
             }}
-            className="mt-20 border-t border-border"
+                        className="mt-4 border-t border-border"
           />
         </motion.div>
       </div>
