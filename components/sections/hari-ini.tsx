@@ -2,8 +2,23 @@
 
 import { useEffect, useState, useMemo } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import Image from "next/image";
 import { todayStatus, profile } from "@/lib/content";
-import { NowPlaying } from "@/components/now-playing";
+
+type NowPlayingData = {
+  isPlaying: boolean;
+  title?: string;
+  artist?: string;
+  album?: string;
+  albumImageUrl?: string;
+  songUrl?: string;
+};
+
+function toSpotifyEmbed(url: string): string {
+  const m = url.match(/open\.spotify\.com\/(track|album|playlist)\/([A-Za-z0-9]+)/);
+  if (!m) return url;
+  return `https://open.spotify.com/embed/${m[1]}/${m[2]}`;
+}
 
 function LiveClock() {
   const [time, setTime] = useState("");
@@ -51,19 +66,18 @@ function TypingTagline({ words, className = "" }: { words: string[]; className?:
   const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
-    if (reduced) {
-      setText(words[0]);
-      return;
-    }
+    if (reduced) return;
     const word = words[wi];
     if (!deleting && ci === word.length) {
       const id = setTimeout(() => setDeleting(true), 1400);
       return () => clearTimeout(id);
     }
     if (deleting && ci === 0) {
-      setDeleting(false);
-      setWi((p) => (p + 1) % words.length);
-      return;
+      const id = setTimeout(() => {
+        setDeleting(false);
+        setWi((p) => (p + 1) % words.length);
+      }, 0);
+      return () => clearTimeout(id);
     }
     const delay = deleting ? 45 : 80;
     const id = setTimeout(() => {
@@ -87,7 +101,29 @@ function TypingTagline({ words, className = "" }: { words: string[]; className?:
 }
 
 export function HariIni() {
-  const [mixActive, setMixActive] = useState(false);
+  const [nowPlaying, setNowPlaying] = useState<NowPlayingData | null>(null);
+  const [showTrack, setShowTrack] = useState(false);
+
+  useEffect(() => {
+    let active = true;
+
+    const load = async () => {
+      try {
+        const res = await fetch("/api/now-playing", { cache: "no-store" });
+        const json = (await res.json()) as NowPlayingData;
+        if (active) setNowPlaying(json);
+      } catch {
+        if (active) setNowPlaying({ isPlaying: false });
+      }
+    };
+
+    load();
+    const id = setInterval(load, 15000);
+    return () => {
+      active = false;
+      clearInterval(id);
+    };
+  }, []);
 
   return (
     <section id="hari-ini" className="px-6 pt-32 pb-24">
@@ -248,37 +284,69 @@ export function HariIni() {
               <p className="font-mono text-xs text-fg-muted uppercase tracking-wider mb-3">
                 Mendengarkan
               </p>
-              <NowPlaying
-                fallback={
-                  mixActive ? todayStatus.listeningPlaylist.title : todayStatus.listeningTo
-                }
-              />
+              {nowPlaying?.isPlaying && (
+                <button
+                  type="button"
+                  onClick={() => setShowTrack((v) => !v)}
+                  aria-label={
+                    showTrack
+                      ? "Kembali ke playlist"
+                      : "Putar lagu ini di pemutar"
+                  }
+                  className="group flex w-full items-center gap-3 rounded-lg text-left transition-colors hover:bg-bg-card/60"
+                >
+                  {nowPlaying.albumImageUrl && (
+                    <Image
+                      src={nowPlaying.albumImageUrl}
+                      alt=""
+                      width={40}
+                      height={40}
+                      unoptimized
+                      className="h-10 w-10 rounded object-cover"
+                    />
+                  )}
+                  <div className="min-w-0 flex-1">
+                    <span className="block truncate text-sm text-fg transition-colors group-hover:text-accent">
+                      {nowPlaying.title}
+                    </span>
+                    <span className="block truncate text-xs text-fg-muted">
+                      {nowPlaying.artist}
+                    </span>
+                  </div>
+                  <span className="shrink-0 font-mono text-[10px] uppercase tracking-wider text-fg-faint transition-colors group-hover:text-accent">
+                    {showTrack ? "playlist" : "putar di sini"}
+                  </span>
+                </button>
+              )}
+
               <p className="mt-4 font-mono text-xs text-fg-muted uppercase tracking-wider mb-2">
-                Mix dari playlist
+                {showTrack && nowPlaying?.isPlaying ? "Sedang diputar" : "Mix dari playlist"}
               </p>
-              <div
-                className="cursor-pointer"
-                onClick={() => setMixActive(true)}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") setMixActive(true);
-                }}
-              >
-                <iframe
-                  src={todayStatus.listeningPlaylist.embed}
-                  title={todayStatus.listeningPlaylist.title}
-                  loading="lazy"
-                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                  className="w-full rounded-xl pointer-events-none"
-                  style={{ border: 0, borderRadius: 12, height: 152 }}
-                />
-              </div>
+              <iframe
+                key={showTrack && nowPlaying?.isPlaying ? "track" : "playlist"}
+                src={
+                  showTrack && nowPlaying?.isPlaying && nowPlaying.songUrl
+                    ? toSpotifyEmbed(nowPlaying.songUrl)
+                    : todayStatus.listeningPlaylist.embed
+                }
+                title={
+                  showTrack && nowPlaying?.isPlaying
+                    ? nowPlaying.title ?? "Spotify"
+                    : todayStatus.listeningPlaylist.title
+                }
+                loading="lazy"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                className="w-full rounded-xl"
+                style={{ border: 0, borderRadius: 12, height: 152 }}
+              />
               <a
-                href={todayStatus.listeningPlaylist.url}
+                href={
+                  showTrack && nowPlaying?.isPlaying && nowPlaying.songUrl
+                    ? nowPlaying.songUrl
+                    : todayStatus.listeningPlaylist.url
+                }
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => setMixActive(true)}
                 className="mt-2 inline-flex items-center gap-1 text-xs text-fg-muted transition-colors hover:text-accent"
               >
                 Buka di Spotify
