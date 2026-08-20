@@ -19,7 +19,7 @@ export function Perjalanan() {
 
           <div className="space-y-14">
             {journey.map((item, i) => (
-              <Reveal key={item.year} delay={i * 0.06}>
+              <Reveal key={item.year} delay={i * 0.06} variant={i % 2 === 0 ? "left" : "up"}>
                 <div className="relative pl-10">
                   <div
                     className={`absolute left-0 top-1.5 h-2 w-2 -translate-x-[4px] rounded-full ${

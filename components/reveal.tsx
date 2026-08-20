@@ -2,9 +2,9 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, type ReactNode } from "react";
-import { fadeUp, fadeIn } from "@/lib/motion";
+import { fadeUp, fadeIn, slideLeft, slideRight, scaleIn } from "@/lib/motion";
 
-type Variant = "up" | "fade";
+type Variant = "up" | "fade" | "left" | "right" | "scale";
 
 interface RevealProps {
   variant?: Variant;
@@ -12,6 +12,14 @@ interface RevealProps {
   className?: string;
   children: ReactNode;
 }
+
+const variants = {
+  up: fadeUp,
+  fade: fadeIn,
+  left: slideLeft,
+  right: slideRight,
+  scale: scaleIn,
+};
 
 export function Reveal({
   variant = "up",
@@ -28,7 +36,7 @@ export function Reveal({
       className={className}
       initial="hidden"
       animate={inView ? "show" : "hidden"}
-      variants={variant === "up" ? fadeUp : fadeIn}
+      variants={variants[variant]}
       transition={{ delay }}
     >
       {children}

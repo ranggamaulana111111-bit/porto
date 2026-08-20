@@ -36,7 +36,7 @@ export function YangSedangDibangun() {
 
         <div className="space-y-10">
           {currentWork.map((item, i) => (
-            <Reveal key={item.title} delay={i * 0.06}>
+            <Reveal key={item.title} delay={i * 0.06} variant={i % 2 === 0 ? "up" : "left"}>
               <div className="group">
                 <div className="flex items-baseline justify-between mb-2">
                   <h3 className="font-display text-lg font-semibold">{item.title}</h3>
@@ -49,7 +49,7 @@ export function YangSedangDibangun() {
 
                 <ProgressBar percent={item.percent} tone={barColors[i % barColors.length]} />
 
-                <div className="mt-3 flex flex-wrap gap-2">
+                <div className="mt-3 flex flex-wrap items-center gap-3">
                   {item.tags.map((tag) => (
                     <span
                       key={tag}
@@ -58,6 +58,9 @@ export function YangSedangDibangun() {
                       {tag}
                     </span>
                   ))}
+                  <span className="text-[10px] text-fg-faint font-mono">
+                    {item.percent === 100 ? "selesai" : item.percent >= 75 ? "hampir selesai" : item.percent >= 50 ? "setengah jalan" : "dalam proses"}
+                  </span>
                 </div>
               </div>
             </Reveal>

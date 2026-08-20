@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { JetBrains_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import { profile } from "@/lib/content";
+import { RouteLoader } from "@/components/route-loader";
 import "./globals.css";
 
 const sans = localFont({
@@ -193,6 +194,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
         {children}
+        <RouteLoader />
       </body>
     </html>
   );

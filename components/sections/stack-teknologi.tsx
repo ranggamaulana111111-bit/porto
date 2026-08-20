@@ -1,8 +1,46 @@
 "use client";
 
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import { techStackCategories } from "@/lib/content";
 import { SectionHeading } from "@/components/section-heading";
-import { Reveal } from "@/components/reveal";
+import { fadeUp, easeOut } from "@/lib/motion";
+
+function StackRow({ category, technologies, index }: {
+  category: string;
+  technologies: string[];
+  index: number;
+}) {
+  const ref = useRef<HTMLTableRowElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.25 });
+
+  return (
+    <motion.tr
+      ref={ref}
+      initial="hidden"
+      animate={inView ? "show" : "hidden"}
+      variants={fadeUp}
+      transition={{ delay: index * 0.06, duration: 0.6, ease: easeOut }}
+      className="border-b border-border"
+    >
+      <td className="py-4 pr-6 align-top font-display text-sm font-semibold text-fg whitespace-nowrap">
+        {category}
+      </td>
+      <td className="py-4">
+        <div className="flex flex-wrap gap-2">
+          {technologies.map((tech) => (
+            <span
+              key={tech}
+              className="rounded-full border border-border px-2.5 py-1 text-xs text-fg-secondary"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+      </td>
+    </motion.tr>
+  );
+}
 
 export function StackTeknologi() {
   return (
@@ -24,25 +62,12 @@ export function StackTeknologi() {
             </thead>
             <tbody>
               {techStackCategories.map((cat, i) => (
-                <Reveal key={cat.category} delay={i * 0.06}>
-                  <tr className="border-b border-border">
-                    <td className="py-4 pr-6 align-top font-display text-sm font-semibold text-fg whitespace-nowrap">
-                      {cat.category}
-                    </td>
-                    <td className="py-4">
-                      <div className="flex flex-wrap gap-2">
-                        {cat.technologies.map((tech) => (
-                          <span
-                            key={tech}
-                            className="rounded-full border border-border px-2.5 py-1 text-xs text-fg-secondary"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </td>
-                  </tr>
-                </Reveal>
+                <StackRow
+                  key={cat.category}
+                  category={cat.category}
+                  technologies={cat.technologies}
+                  index={i}
+                />
               ))}
             </tbody>
           </table>

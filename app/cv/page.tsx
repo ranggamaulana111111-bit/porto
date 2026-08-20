@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { profile, projects, journey, todayStatus } from "@/lib/content";
+import Link from "next/link";
+import { profile, projects, journey, techStackCategories } from "@/lib/content";
 import { CvPrintButton } from "@/components/cv-print-button";
 
 export const metadata: Metadata = {
@@ -9,71 +10,95 @@ export const metadata: Metadata = {
 
 export default function CvPage() {
   return (
-    <main className="px-6 py-16">
+    <main className="min-h-screen px-6 py-16">
       <div className="mx-auto max-w-2xl">
-        <div className="no-print mb-8 flex justify-end">
+        <div className="no-print mb-8 flex items-center justify-between">
+          <Link
+            href="/"
+            className="font-mono text-sm text-fg-muted transition-colors hover:text-fg"
+          >
+            ← Kembali
+          </Link>
           <CvPrintButton />
         </div>
 
-        <header className="border-b border-border pb-6">
-          <h1 className="font-display text-3xl font-bold tracking-tight">{profile.name}</h1>
-          <p className="mt-1 text-sm text-fg-secondary">{profile.role}</p>
-          <p className="mt-2 text-xs text-fg-muted">
-            {profile.location} · {profile.email} · rangga.mrw
-          </p>
+        <header className="border-b border-border pb-8">
+          <h1 className="font-display text-4xl font-bold tracking-tight">{profile.name}</h1>
+          <p className="mt-2 text-base text-fg-secondary">{profile.role}</p>
+          <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-xs text-fg-muted">
+            <span>{profile.location}</span>
+            <span className="text-fg-faint">·</span>
+            <a href={`mailto:${profile.email}`} className="transition-colors hover:text-fg">{profile.email}</a>
+            <span className="text-fg-faint">·</span>
+            <span>{profile.shortName}</span>
+          </div>
         </header>
 
-        <section className="mt-8">
-          <h2 className="font-mono text-xs uppercase tracking-wider text-fg-muted mb-4">
+        <section className="mt-10">
+          <h2 className="mb-5 font-mono text-xs uppercase tracking-wider text-fg-muted">
             Pengalaman
           </h2>
-          <div className="space-y-5">
+          <div className="space-y-6">
             {projects.map((p) => (
-              <div key={p.slug}>
+              <div key={p.slug} className="group">
                 <div className="flex items-baseline justify-between gap-4">
-                  <span className="text-sm font-medium text-fg">{p.title}</span>
-                  <span className="shrink-0 font-mono text-xs text-fg-muted">{p.year}</span>
+                  <span className="text-sm font-semibold text-fg">{p.title}</span>
+                  <span className="shrink-0 font-mono text-xs text-fg-faint">{p.year}</span>
                 </div>
-                <p className="text-xs text-fg-muted">{p.kind} · {p.role}</p>
-                <p className="mt-1 text-sm leading-relaxed text-fg-secondary">{p.summary}</p>
-                <p className="mt-1 text-xs text-fg-muted">{p.result}</p>
+                <p className="mt-0.5 text-xs text-fg-faint">{p.kind} · {p.role}</p>
+                <p className="mt-2 text-sm leading-relaxed text-fg-secondary">{p.summary}</p>
+                {p.stack.length > 0 && (
+                  <div className="mt-2 flex flex-wrap gap-1.5">
+                    {p.stack.map((s) => (
+                      <span key={s} className="rounded border border-border px-1.5 py-0.5 text-[10px] text-fg-muted">{s}</span>
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
           </div>
         </section>
 
-        <section className="mt-8">
-          <h2 className="font-mono text-xs uppercase tracking-wider text-fg-muted mb-4">
+        <section className="mt-10">
+          <h2 className="mb-5 font-mono text-xs uppercase tracking-wider text-fg-muted">
             Perjalanan
           </h2>
-          <div className="space-y-3">
+          <div className="space-y-4">
             {journey.map((j) => (
               <div key={j.year} className="flex gap-4">
-                <span className="w-12 shrink-0 font-mono text-xs text-fg-muted">{j.year}</span>
+                <span className="w-12 shrink-0 font-mono text-xs text-fg-faint">{j.year}</span>
                 <div>
-                  <p className="text-sm text-fg">{j.title}</p>
-                  <p className="text-sm leading-relaxed text-fg-secondary">{j.body}</p>
+                  <p className="text-sm font-medium text-fg">{j.title}</p>
+                  <p className="mt-0.5 text-sm leading-relaxed text-fg-secondary">{j.body}</p>
                 </div>
               </div>
             ))}
           </div>
         </section>
 
-        <section className="mt-8">
-          <h2 className="font-mono text-xs uppercase tracking-wider text-fg-muted mb-4">
-            Tech stack
+        <section className="mt-10">
+          <h2 className="mb-5 font-mono text-xs uppercase tracking-wider text-fg-muted">
+            Tech stack & kompetensi
           </h2>
-          <div className="flex flex-wrap gap-2">
-            {todayStatus.techStack.map((t) => (
-              <span
-                key={t}
-                className="border border-border px-2.5 py-1 text-xs text-fg-secondary"
-              >
-                {t}
-              </span>
+          <div className="space-y-4">
+            {techStackCategories.map((cat) => (
+              <div key={cat.category}>
+                <p className="text-xs font-medium text-fg mb-2">{cat.category}</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {cat.technologies.map((t) => (
+                    <span key={t} className="border border-border px-2 py-0.5 text-xs text-fg-secondary">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </section>
+
+        <div className="mt-12 border-t border-border pt-6 text-xs text-fg-faint">
+          Diperbarui {new Date().getFullYear()} · rangga.dev
+        </div>
       </div>
     </main>
   );

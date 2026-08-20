@@ -15,7 +15,7 @@ export function SectionHeading({ index, title, description }: SectionHeadingProp
         <span className="font-mono text-xs text-fg-muted">{index}</span>
         <span className="h-px flex-1 bg-border" />
       </div>
-      <h2 className="mt-6 font-display text-4xl font-bold tracking-tight sm:text-5xl">
+      <h2 className="mt-6 font-display text-3xl font-bold tracking-tight sm:text-4xl">
         {title}
       </h2>
       {description && (

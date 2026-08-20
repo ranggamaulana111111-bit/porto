@@ -23,8 +23,11 @@ export function Catatan() {
 
         <div className="space-y-0">
           {posts.map((post, i) => (
-            <Reveal key={post.title} delay={i * 0.06}>
-              <div className="group border-b border-border py-6 px-4 -mx-4">
+            <Reveal key={post.title} delay={i * 0.06} variant={i % 2 === 0 ? "up" : "fade"}>
+              <a
+                href={`/catatan/${i}`}
+                className="group block border-b border-border py-6 px-4 -mx-4 transition-colors hover:bg-bg-card/30"
+              >
                 <div className="flex items-center gap-3 text-xs text-fg-muted mb-2">
                   <span className={`font-mono ${categoryColor[post.category] ?? "text-accent"}`}>{post.category}</span>
                   <span className="text-fg-faint">·</span>
@@ -32,17 +35,17 @@ export function Catatan() {
                   <span className="text-fg-faint">·</span>
                   <span>{post.date}</span>
                 </div>
-                <h3 className="font-display text-lg font-semibold transition-colors">
+                <h3 className="font-display text-lg font-semibold transition-colors group-hover:text-accent">
                   {post.title}
                 </h3>
                 <p className="mt-1 text-sm text-fg-secondary">
                   {post.excerpt}
                 </p>
-                <span className="mt-3 inline-flex items-center gap-1.5 text-xs text-fg-faint font-mono">
-                  <span className="rounded-full border border-border px-2 py-0.5">draft</span>
+                <span className="mt-3 inline-flex items-center gap-1.5 text-xs text-fg-faint font-mono transition-colors group-hover:text-accent">
+                  baca selengkapnya
                   <ArrowUpRight size={12} />
                 </span>
-              </div>
+              </a>
             </Reveal>
           ))}
         </div>
