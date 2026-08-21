@@ -80,17 +80,26 @@ export default function CvPage() {
           <h2 className="mb-5 font-mono text-xs uppercase tracking-wider text-fg-muted">
             Tech stack & kompetensi
           </h2>
-          <div className="space-y-4">
+          <div className="space-y-5">
             {techStackCategories.map((cat) => (
               <div key={cat.category}>
-                <p className="text-xs font-medium text-fg mb-2">{cat.category}</p>
-                <div className="flex flex-wrap gap-1.5">
+                <p className="mb-2 font-mono text-xs uppercase tracking-wider text-fg-muted">
+                  {cat.category}
+                </p>
+                <ul className="space-y-1.5">
                   {cat.technologies.map((t) => (
-                    <span key={t} className="border border-border px-2 py-0.5 text-xs text-fg-secondary">
-                      {t}
-                    </span>
+                    <li
+                      key={t.name}
+                      className="flex flex-wrap items-baseline gap-x-2 text-sm"
+                    >
+                      <span className="font-medium text-fg">{t.name}</span>
+                      <span className="text-xs text-fg-muted">{t.role}</span>
+                      <span className="text-xs text-fg-faint">
+                        — {t.projects.join(" · ")}
+                      </span>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
             ))}
           </div>

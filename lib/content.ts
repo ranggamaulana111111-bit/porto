@@ -129,29 +129,115 @@ export interface Plan {
   desc: string;
 }
 
-export interface TechStackCategory {
-  category: string;
-  technologies: string[];
+export interface TechEntry {
+  name: string;
+  role: string;
+  projects: string[];
 }
 
-export const techStackCategories: TechStackCategory[] = [
-  {
-    category: "Backend & Data Engine",
-    technologies: ["PHP", "Laravel", "MySQL", "PostgreSQL", "Redis", "TypeScript"],
-  },
-  {
-    category: "Frontend & Mobile",
-    technologies: ["Flutter", "Dart", "TailwindCSS", "Alpine.js", "HTML5", "CSS3"],
-  },
-  {
-    category: "Cloud, Infra & DevOps",
-    technologies: ["Proxmox", "Docker", "Ansible", "MikroTik", "Linux Mint / Ubuntu", "Bash"],
-  },
-  {
-    category: "Integrasi & API",
-    technologies: ["REST API", "MikroTik API", "Telegram Bot API", "Webhooks"],
-  },
+export interface TechStackCategory {
+  category: string;
+  technologies: TechEntry[];
+}
+
+const CATEGORY_OF: Record<string, string> = {
+  "Laravel 12": "CORE",
+  "Laravel 11": "CORE",
+  "Blade": "CORE",
+  "Next.js 16": "CORE",
+  "React 19": "CORE",
+  "TypeScript": "CORE",
+  "Tailwind CSS": "CORE",
+  "Tailwind CSS v4": "CORE",
+  "Zustand": "CORE",
+  "TanStack Query": "CORE",
+  "Dart": "CORE",
+  "MySQL": "DATABASE",
+  "SQLite": "DATABASE",
+  "MikroTik API": "NETWORKING",
+  "OLT multi-brand": "NETWORKING",
+  "Leaflet": "NETWORKING",
+  "Proxmox VE": "INFRASTRUCTURE",
+  "Docker": "INFRASTRUCTURE",
+  "Nginx": "INFRASTRUCTURE",
+  "Cloudflare Tunnel": "INFRASTRUCTURE",
+  "Linux": "INFRASTRUCTURE",
+  "Ansible": "INFRASTRUCTURE",
+  "Terraform": "INFRASTRUCTURE",
+  "Midtrans": "INTEGRATION",
+  "WhatsApp API": "INTEGRATION",
+  "Telegram Bot API": "INTEGRATION",
+  "Spatie Permission": "INTEGRATION",
+  "DomPDF": "INTEGRATION",
+  "QR Code": "INTEGRATION",
+  "Chart.js": "INTEGRATION",
+  "Recharts": "INTEGRATION",
+  "Flutter": "MOBILE",
+  "MkDocs": "TOOLS",
+  "Playwright": "TOOLS",
+  "Git": "TOOLS",
+  "GitHub": "TOOLS",
+  "VS Code": "TOOLS",
+  "Figma": "TOOLS",
+  "Postman": "TOOLS",
+};
+
+const OWN_STACK: { name: string; role: string }[] = [
+  { name: "Next.js 16", role: "App framework" },
+  { name: "React 19", role: "UI library" },
+  { name: "TypeScript", role: "Language" },
+  { name: "Tailwind CSS v4", role: "UI styling" },
 ];
+
+const TOOL_STACK: { name: string; role: string }[] = [
+  { name: "Git", role: "Version control" },
+  { name: "GitHub", role: "Remote & CI" },
+  { name: "VS Code", role: "Editor" },
+  { name: "Figma", role: "UI design" },
+  { name: "Postman", role: "API testing" },
+];
+
+function buildTechStack(): TechStackCategory[] {
+  const map = new Map<string, TechEntry>();
+
+  const add = (name: string, role: string, project: string) => {
+    const key = name.toLowerCase();
+    const existing = map.get(key);
+    if (existing) {
+      if (!existing.projects.includes(project)) existing.projects.push(project);
+    } else {
+      map.set(key, { name, role, projects: [project] });
+    }
+  };
+
+  for (const p of content.projects) {
+    for (const t of p.technologies ?? []) add(t.name, t.role, p.title);
+  }
+  for (const t of OWN_STACK) add(t.name, t.role, "Portfolio");
+  for (const t of TOOL_STACK) add(t.name, t.role, "Workflow");
+
+  const byCat = new Map<string, TechEntry[]>();
+  for (const entry of map.values()) {
+    const cat = CATEGORY_OF[entry.name] ?? "CORE";
+    if (!byCat.has(cat)) byCat.set(cat, []);
+    byCat.get(cat)!.push(entry);
+  }
+
+  const ORDER = [
+    "CORE",
+    "INFRASTRUCTURE",
+    "NETWORKING",
+    "DATABASE",
+    "INTEGRATION",
+    "MOBILE",
+    "TOOLS",
+  ];
+
+  return ORDER.filter((c) => byCat.has(c)).map((c) => ({
+    category: c,
+    technologies: byCat.get(c)!.sort((a, b) => a.name.localeCompare(b.name)),
+  }));
+}
 
 export interface SiteContent {
   profile: Profile;
@@ -166,6 +252,8 @@ export interface SiteContent {
 }
 
 const content = data as unknown as SiteContent;
+
+export const techStackCategories = buildTechStack();
 
 export const profile = content.profile;
 export const navItems = content.navItems;

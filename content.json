@@ -322,6 +322,11 @@
         "fl_chart",
         "mobile_scanner"
       ],
+      "technologies": [
+        { "name": "Flutter", "role": "Mobile app framework" },
+        { "name": "Dart", "role": "Language" },
+        { "name": "SQLite", "role": "Local data store" }
+      ],
       "challenge": "Perpustakaan butuh sistem katalog dan peminjaman yang bisa jalan tanpa backend/koneksi, sekaligus punya alur approval dan laporan yang rapi.",
       "solution": "Membangun app offline-first dengan SQLite, dua role (Admin CRUD penuh + Peminjam request pinjam), grafik statistik, scan barcode ISBN, dan export laporan CSV.",
       "result": "Aplikasi jalan penuh offline dengan 15 buku seed, dashboard statistik, dan alur peminjaman pending → disetujui → riwayat.",
@@ -374,7 +379,10 @@
         { "name": "TanStack Query", "role": "Data fetching" },
         { "name": "Recharts", "role": "Real-time charts" },
         { "name": "Playwright", "role": "E2E testing" },
-        { "name": "Docker", "role": "Deployment" }
+        { "name": "Docker", "role": "Deployment" },
+        { "name": "React 19", "role": "UI library" },
+        { "name": "Tailwind CSS v4", "role": "UI styling" },
+        { "name": "Nginx", "role": "Web server" }
       ],
       "challenge": "ISP butuh alat pengujian jaringan yang akurat dan profesional untuk mendiagnosis kualitas layanan — bukan sekadar speedtest instan.",
       "solution": "Membangun mesin pengujian dengan endpoint download/upload sendiri, pengukuran ping/jitter/packet loss, riwayat tes di localStorage, dan ekspor hasil ke PDF, PNG, CSV, atau JSON.",
@@ -467,7 +475,9 @@
         { "name": "Docker", "role": "Service containers" },
         { "name": "Ansible", "role": "Configuration management" },
         { "name": "Terraform", "role": "Infrastructure as code" },
-        { "name": "MkDocs", "role": "Documentation" }
+        { "name": "MkDocs", "role": "Documentation" },
+        { "name": "Cloudflare Tunnel", "role": "Public ingress" },
+        { "name": "Linux", "role": "Host OS" }
       ],
       "challenge": "Saya ingin membangun ekosistem pribadi (software, AI, jaringan, monitoring) tapi tidak asal memasang server — harus dirancang seperti sistem produksi.",
       "solution": "Mendokumentasikan RabegLab sebagai proyek enterprise-grade: fase analysis, design, ADR, runbook, sampai infrastructure-as-code dengan Docker Compose dan Ansible.",
