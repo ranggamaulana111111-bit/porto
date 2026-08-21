@@ -2,7 +2,7 @@
   "profile": {
     "name": "Rangga Maulana Ramadhan Wiharto",
     "shortName": "rangga.mrw",
-    "role": "Developer & Mahasiswa Sistem Informasi",
+    "role": "Mahasiswa Sistem Informasi yang membangun software, jaringan, dan infrastruktur",
     "location": "Serang, Banten",
     "timezone": "Asia/Jakarta",
     "email": "ranggamaulana111111@gmail.com",
@@ -134,6 +134,8 @@
       "title": "ALKONEK",
       "kind": "ISP Billing System",
       "year": "2025",
+      "tier": "featured",
+      "status": "production",
       "summary": "Sistem billing ISP FTTH berbasis Laravel untuk penagihan otomatis, pembayaran online, hingga monitoring jaringan fiber real-time.",
       "role": "Pembuat & Developer",
       "stack": [
@@ -143,6 +145,15 @@
         "Midtrans",
         "MikroTik API",
         "Leaflet"
+      ],
+      "technologies": [
+        { "name": "Laravel 12", "role": "Core application" },
+        { "name": "MySQL", "role": "Data layer" },
+        { "name": "MikroTik API", "role": "Network management" },
+        { "name": "OLT multi-brand", "role": "Optical network monitoring" },
+        { "name": "Midtrans", "role": "Payment processing" },
+        { "name": "Leaflet", "role": "ODP mapping" },
+        { "name": "WhatsApp API", "role": "Notification gateway" }
       ],
       "challenge": "ISP kecil kesulitan menagih manual, memantau OLT multi-brand, dan mengelola peta distribusi fiber yang tidak terstruktur.",
       "solution": "Membangun sistem multi-tenant dengan workflow billing otomatis, driver OLT multi-brand, peta ODP interaktif, voucher hotspot, dan topologi jaringan live.",
@@ -168,6 +179,20 @@
         "Integrasi dengan hardware jaringan membutuhkan pemahaman protokol yang solid",
         "Multi-tenant dari awal lebih sulit dari yang dibayangkan, tapi worth it"
       ],
+      "caseStudy": {
+        "context": "ALKONEK berawal dari ISP kecil FTTH yang proses penagihannya masih dikerjakan manual, sementara pantauan jaringan dan peta distribusi fiber tidak terpusat.",
+        "problem": "Menagih pelanggan secara manual, memantau OLT dari beberapa brand berbeda, dan mengelola peta distribusi fiber yang tidak terstruktur.",
+        "approach": "Membangun satu sistem multi-tenant berbasis Laravel yang menyatukan billing otomatis, integrasi jaringan, dan peta distribusi — bukan beberapa aplikasi kecil yang saling lepas.",
+        "implementation": "Workflow billing otomatis dengan isolir pelanggan, driver OLT multi-brand lewat MikroTik API, peta ODP interaktif berbasis Leaflet, voucher hotspot, pembayaran Midtrans, notifikasi WhatsApp, dan topologi jaringan live.",
+        "challenges": [
+          "Billing system bukan sekadar CRUD — ada banyak edge case di pembayaran berulang",
+          "Integrasi dengan hardware jaringan membutuhkan pemahaman protokol yang solid"
+        ],
+        "result": "Sudah dipakai di lingkungan produksi dengan alur isolir otomatis dan notifikasi WhatsApp.",
+        "lessons": [
+          "Multi-tenant dari awal lebih sulit dari yang dibayangkan, tapi worth it"
+        ]
+      },
       "visual": {
         "caption": "Peta ODP interaktif (Leaflet) — penanda titik jaringan & status",
         "image": "/shots/alkonek-odp.png"
@@ -176,17 +201,31 @@
     {
       "slug": "prodesa",
       "title": "Prodesa",
-      "kind": "Portal Desa Digital",
-      "year": "2025",
-      "summary": "Web desa untuk pengajuan surat online, ketatausahaan, inventaris, APBDesa, hingga laporan desa kuantitatif.",
+      "kind": "Digital Village · e-Government Platform",
+      "year": "2025–2026",
+      "tier": "selected",
+      "status": "production",
+      "summary": "Sistem pelayanan administrasi desa: pengajuan surat online dengan workflow approval berjenjang, RBAC 8 role, versioning dokumen, verifikasi QR, dan dashboard analitik per peran.",
       "role": "Pembuat & Developer",
       "stack": [
         "Laravel 11",
         "PHP 8.2",
         "MySQL",
-        "Alpine.js",
+        "Blade",
+        "Tailwind CSS",
         "Chart.js",
         "DomPDF"
+      ],
+      "technologies": [
+        { "name": "Laravel 11", "role": "Core application" },
+        { "name": "MySQL", "role": "Data layer" },
+        { "name": "Spatie Permission", "role": "Authorization / RBAC" },
+        { "name": "Blade", "role": "Web interface (158 views)" },
+        { "name": "Tailwind CSS", "role": "UI styling" },
+        { "name": "Chart.js", "role": "Analytics visualization" },
+        { "name": "DomPDF", "role": "Surat resmi PDF" },
+        { "name": "QR Code", "role": "Verifikasi dokumen & antrean" },
+        { "name": "Telegram Bot API", "role": "Notifikasi status" }
       ],
       "challenge": "Proses birokrasi desa konvensional lambat dan tidak transparan bagi warga yang mengajukan surat.",
       "solution": "Membangun layanan surat daring dengan RBAC multi-level, workflow approval, versioning dokumen, dan generator laporan berbasis data.",
@@ -197,12 +236,12 @@
           "label": "Jenis Surat"
         },
         {
-          "value": "7",
+          "value": "8",
           "label": "Role"
         },
         {
-          "value": "9",
-          "label": "Modul Laporan"
+          "value": "36",
+          "label": "Permission"
         }
       ],
       "link": "https://github.com/ranggamaulana111111-bit/desamoderen",
@@ -213,7 +252,57 @@
         "Mendengarkan feedback pengguna sungguhan mengubah cara saya memikirkan UX"
       ],
       "visual": {
-        "caption": "Dashboard analitik — distribusi surat per kategori & aktivitas per role"
+        "caption": "Alur persetujuan surat — state machine berbasis permission"
+      },
+      "caseStudy": {
+        "context": "Desa Kumpay masih mengelola surat-menyurat secara manual: warga datang ke kantor, formulir diisi di atas kertas, dan status pengajuan hanya bisa ditanyakan langsung. Saya membangun Prodesa untuk memindahkan alur ini ke web.",
+        "problem": "Alur manual membuat warga tidak tahu posisi pengajuannya, arsip mudah hilang, dan tidak ada jejak audit siapa memverifikasi apa. Setiap jenis surat punya format dan syarat berbeda sehingga petugas juga sering salah template.",
+        "approach": "Semua jenis surat saya jadikan data, bukan hardcode: template isi, field form, aturan validasi, dan syarat dokumen disimpan di tabel letter_configs sebagai JSON. Alur persetujuan menjadi state machine yang setiap transisinya digerbangi permission Spatie — bukan sekadar cek role.",
+        "implementation": "Laravel 11 monolith dengan Blade + Tailwind. Warga mengajukan surat lewat form dinamis yang digenerate dari config; Operator Pelayanan mereview, Sekretaris Desa memverifikasi, Kepala Desa menyetujui dan menandatangani. Setiap revisi menyimpan snapshot data + salinan PDF sebagai versi baru (non-destruktif), lengkap dengan diff antar versi. Surat selesai mendapat hash verifikasi publik ber-QR, notifikasi dikirim via Telegram dan webhook, dan antrean pengambilan dikelola dengan kode QR.",
+        "features": [
+          {
+            "title": "RBAC multi-role",
+            "description": "8 role (Super Admin, Operator Pelayanan, Sekretaris Desa, Kepala Desa, RT, RW, Warga, Lembaga) dengan 36 permission granular via Spatie, dipaksa di route middleware dan di dalam state machine."
+          },
+          {
+            "title": "Workflow approval berjenjang",
+            "description": "State submitted → verified → approved_operator → approved_sekdes → approved_kades → completed, plus jalur revision (hanya pemohon bisa resubmit) dan rejected."
+          },
+          {
+            "title": "Dynamic letter system",
+            "description": "14 jenis surat didefinisikan sebagai data: body_template dengan placeholder, fields JSON bertipe (text/date/select) lengkap rules validasi, syarat dokumen, dan kode klasifikasi."
+          },
+          {
+            "title": "Document versioning",
+            "description": "Setiap revisi membuat versi baru: snapshot data_tambahan + salinan PDF (_v{n}) di disk private. Restore tidak menimpa — ia membuat versi baru dan mencatat activity log."
+          },
+          {
+            "title": "Verifikasi & antrean QR",
+            "description": "Surat selesai punya hash verifikasi publik yang dirender jadi QR; petugas mengelola antrean pengambilan dengan scan QR per nomor."
+          },
+          {
+            "title": "Analytics & monitoring",
+            "description": "Dashboard analitik (4 chart Chart.js): tren bulanan, jenis surat populer, approval/rejection rate; monitoring queue internal (waiting/failed jobs) dengan retry."
+          }
+        ],
+        "workflow": [
+          { "label": "Warga", "sub": "Ajukan surat" },
+          { "label": "Operator Pelayanan", "sub": "Review" },
+          { "label": "Sekretaris Desa", "sub": "Verifikasi" },
+          { "label": "Kepala Desa", "sub": "Setujui & TTD" },
+          { "label": "Dokumen Selesai", "sub": "QR verifikasi" }
+        ],
+        "challenges": [
+          "UI untuk warga desa harus sangat sederhana — istilah teknis seperti 'status pengajuan' saja perlu disesuaikan dengan bahasa sehari-hari",
+          "Format surat resmi di DomPDF butuh penyesuaian margin, kop, dan tanda tangan agar hasil cetaknya layak pakai",
+          "Transisi status harus digerbangi permission per target state, bukan sekadar role, supaya satu role tidak bisa melompati tahapan"
+        ],
+        "result": "Prodesa live di desa.ranggamrw.my.id dan dipakai melayani warga Desa Kumpay: 14 jenis surat dinamis, alur persetujuan berjenjang yang tercatat di approval history, dan dashboard khusus untuk Kepala Desa, Sekretaris, serta warga.",
+        "lessons": [
+          "User desa butuh UI yang sangat sederhana — yang terasa jelas bagi developer belum tentu jelas bagi mereka",
+          "PDF generation lebih kompleks dari yang dikira, terutama untuk format surat resmi",
+          "Mendengarkan feedback pengguna sungguhan mengubah cara saya memikirkan UX"
+        ]
       }
     },
     {
@@ -221,6 +310,8 @@
       "title": "Perpustakaan Digital",
       "kind": "Aplikasi Mobile (Flutter)",
       "year": "2025",
+      "tier": "experiment",
+      "status": "completed",
       "summary": "Aplikasi perpustakaan digital berbasis Flutter dengan SQLite offline-first, dua role Admin & Peminjam lengkap dengan katalog, peminjaman, dan laporan.",
       "role": "Pembuat & Developer",
       "stack": [
@@ -260,6 +351,8 @@
       "title": "AlkonekPlus",
       "kind": "Network Speed Test",
       "year": "2026",
+      "tier": "selected",
+      "status": "building",
       "summary": "Aplikasi pengujian kecepatan internet profesional berbasis Next.js 16. Ukur unduh, unggah, ping, jitter, dan packet loss dengan visualisasi real-time.",
       "role": "Pembuat & Developer",
       "stack": [
@@ -273,6 +366,15 @@
         "Vitest",
         "Playwright",
         "Docker"
+      ],
+      "technologies": [
+        { "name": "Next.js 16", "role": "App framework" },
+        { "name": "TypeScript", "role": "Language" },
+        { "name": "Zustand", "role": "State management" },
+        { "name": "TanStack Query", "role": "Data fetching" },
+        { "name": "Recharts", "role": "Real-time charts" },
+        { "name": "Playwright", "role": "E2E testing" },
+        { "name": "Docker", "role": "Deployment" }
       ],
       "challenge": "ISP butuh alat pengujian jaringan yang akurat dan profesional untuk mendiagnosis kualitas layanan — bukan sekadar speedtest instan.",
       "solution": "Membangun mesin pengujian dengan endpoint download/upload sendiri, pengukuran ping/jitter/packet loss, riwayat tes di localStorage, dan ekspor hasil ke PDF, PNG, CSV, atau JSON.",
@@ -306,6 +408,8 @@
       "title": "CV. Chilva Computer",
       "kind": "Company Profile Website",
       "year": "2026",
+      "tier": "experiment",
+      "status": "production",
       "summary": "Website company profile untuk CV. Chilva Computer — mitra terpercaya pengadaan hardware, instalasi CCTV, dan optimasi jaringan. Dibangun dengan Astro untuk performa cepat.",
       "role": "Pembuat & Developer",
       "stack": [
@@ -346,6 +450,8 @@
       "title": "RabegLab",
       "kind": "Personal HomeLab",
       "year": "2026",
+      "tier": "selected",
+      "status": "building",
       "summary": "HomeLab pribadi berarsitektur enterprise — Proxmox VE, Docker, dan dokumentasi lengkap dari fase analisis sampai deployment.",
       "role": "Arsitek & Operator",
       "stack": [
@@ -355,6 +461,13 @@
         "Ansible",
         "Terraform",
         "MkDocs"
+      ],
+      "technologies": [
+        { "name": "Proxmox VE", "role": "Virtualization host" },
+        { "name": "Docker", "role": "Service containers" },
+        { "name": "Ansible", "role": "Configuration management" },
+        { "name": "Terraform", "role": "Infrastructure as code" },
+        { "name": "MkDocs", "role": "Documentation" }
       ],
       "challenge": "Saya ingin membangun ekosistem pribadi (software, AI, jaringan, monitoring) tapi tidak asal memasang server — harus dirancang seperti sistem produksi.",
       "solution": "Mendokumentasikan RabegLab sebagai proyek enterprise-grade: fase analysis, design, ADR, runbook, sampai infrastructure-as-code dengan Docker Compose dan Ansible.",
@@ -388,6 +501,8 @@
       "title": "Prime Care Hospital",
       "kind": "Aplikasi Mobile (Flutter)",
       "year": "2026",
+      "tier": "experiment",
+      "status": "completed",
       "summary": "Aplikasi antrean online rumah sakit berbasis Flutter dan SQLite — daftar poli, pilih dokter, dan ambil nomor antrean tanpa harus datang duluan.",
       "role": "Pembuat & Developer",
       "stack": [
@@ -425,6 +540,8 @@
       "title": "FoodMate AI",
       "kind": "Aplikasi Mobile (Flutter)",
       "year": "2026",
+      "tier": "experiment",
+      "status": "academic",
       "summary": "Sistem rekomendasi makanan berbasis preferensi pengguna dengan Flutter + SQLite. Dibangun untuk tugas mata kuliah Flutter Mobile Programming.",
       "role": "Pembuat & Developer",
       "stack": [

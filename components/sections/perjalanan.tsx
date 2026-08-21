@@ -21,17 +21,11 @@ export function Perjalanan() {
             {journey.map((item, i) => (
               <Reveal key={item.year} delay={i * 0.06} variant={i % 2 === 0 ? "left" : "up"}>
                 <div className="relative pl-10">
-                  <div
-                    className={`absolute left-0 top-1.5 h-2 w-2 -translate-x-[4px] rounded-full ${
-                      ["bg-green", "bg-teal", "bg-amber", "bg-coral", "bg-sky", "bg-accent"][i % 6]
-                    }`}
-                  />
+                  <div className="absolute left-0 top-1.5 h-2 w-2 -translate-x-[4px] rounded-full bg-accent" />
 
                   <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4">
                     <span
-                      className={`font-mono text-xs ${
-                        ["text-green", "text-teal", "text-amber", "text-coral", "text-sky", "text-accent"][i % 6]
-                      }`}
+                    className="font-mono text-xs text-accent"
                     >
                       {item.year}
                     </span>

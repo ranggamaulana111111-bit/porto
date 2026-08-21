@@ -1,109 +1,43 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 
-const MIN_DURATION = 2000;
+let sessionShown = false;
 
-const statusLines = [
-  "menyiapkan ruang kerja…",
-  "memuat proyek…",
-  "menghidupkan server…",
-  "hampir selesai…",
-];
+export function RouteLoader() {
+  const reduced = useReducedMotion();
+  const [show, setShow] = useState(() => {
+    if (reduced) return false;
+    if (sessionShown) return false;
+    sessionShown = true;
+    return true;
+  });
 
-function LoaderOverlay() {
-  const [opacity, setOpacity] = useState(1);
-  const [progress, setProgress] = useState(0);
-  const [line, setLine] = useState(0);
-
-  useEffect(() => {
-    const start = Date.now();
-    let raf = 0;
-
-    const tick = () => {
-      const elapsed = Date.now() - start;
-      const pct = Math.min(100, (elapsed / MIN_DURATION) * 100);
-      setProgress(pct);
-      setLine(Math.min(statusLines.length - 1, Math.floor((pct / 100) * statusLines.length)));
-      if (elapsed < MIN_DURATION) {
-        raf = requestAnimationFrame(tick);
-      } else {
-        setOpacity(0);
-      }
-    };
-
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, []);
+  if (!show) return null;
 
   return (
     <motion.div
       initial={{ opacity: 1 }}
-      animate={{ opacity }}
-      transition={{ duration: 0.4, ease: "easeInOut" }}
-      style={{ pointerEvents: opacity === 0 ? "none" : "auto" }}
-      className="fixed inset-0 z-[100] grid place-items-center bg-bg"
+      animate={{ opacity: 0 }}
+      transition={{ duration: 0.35, ease: "easeOut", delay: 0.05 }}
+      onAnimationComplete={() => setShow(false)}
       aria-hidden="true"
+      className="fixed inset-0 z-[100] grid place-items-center bg-bg"
     >
-      <div className="flex flex-col items-center gap-8 px-6">
-        {/* monogram pulse */}
-        <motion.div
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="relative"
-        >
-          <span className="font-display text-5xl font-bold tracking-tight text-fg">
-            rangga<span className="text-accent">.</span>mrw
-          </span>
-          <motion.span
-            className="absolute -bottom-2 left-0 h-0.5 w-full bg-gradient-to-r from-transparent via-accent to-transparent"
-            initial={{ scaleX: 0, opacity: 0 }}
-            animate={{ scaleX: [0, 1, 1, 0], opacity: [0, 1, 1, 0] }}
-            transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
-            style={{ transformOrigin: "center" }}
+      <div className="flex flex-col items-center gap-5 px-6">
+        <span className="font-display text-2xl font-bold tracking-tight text-fg">
+          rangga<span className="text-accent">.</span>mrw
+        </span>
+        <div className="h-px w-40 overflow-hidden bg-border">
+          <motion.div
+            className="h-full bg-accent"
+            initial={{ width: "0%" }}
+            animate={{ width: "100%" }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
           />
-        </motion.div>
-
-        {/* progress bar */}
-        <div className="w-56">
-          <div className="h-px w-full bg-border">
-            <motion.div
-              className="h-full bg-accent"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
-          <div className="mt-3 flex items-center justify-between font-mono text-[10px] text-fg-faint">
-            <span>{statusLines[line]}</span>
-            <span className="tabular-nums">{Math.round(progress)}%</span>
-          </div>
-        </div>
-
-        {/* dots */}
-        <div className="flex gap-1.5">
-          {[0, 1, 2].map((i) => (
-            <motion.span
-              key={i}
-              className="h-1.5 w-1.5 rounded-full bg-fg-faint"
-              animate={{ opacity: [0.2, 1, 0.2], y: [0, -3, 0] }}
-              transition={{
-                duration: 0.9,
-                repeat: Infinity,
-                delay: i * 0.15,
-                ease: "easeInOut",
-              }}
-            />
-          ))}
         </div>
       </div>
     </motion.div>
   );
-}
-
-export function RouteLoader() {
-  const pathname = usePathname();
-
-  return <LoaderOverlay key={pathname} />;
 }

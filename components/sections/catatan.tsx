@@ -6,9 +6,9 @@ import { Reveal } from "@/components/reveal";
 import { ArrowUpRight } from "@/components/icons";
 
 const categoryColor: Record<string, string> = {
-  Belajar: "text-green",
-  Project: "text-amber",
-  Catatan: "text-sky",
+  Belajar: "text-accent",
+  Project: "text-accent",
+  Catatan: "text-accent",
 };
 
 export function Catatan() {
@@ -16,7 +16,7 @@ export function Catatan() {
     <section id="catatan" className="px-6 py-24">
       <div className="mx-auto max-w-3xl">
         <SectionHeading
-          index="05"
+          index="06"
           title="Catatan belajar."
           description="Tulisan ringan dari proses belajar. Bukan artikel — ini catatan untuk diri sendiri yang saya bagikan."
         />

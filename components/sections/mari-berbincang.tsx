@@ -49,7 +49,7 @@ export function MariBerbincang() {
     <section id="berbincang" className="px-6 py-24">
       <div className="mx-auto max-w-3xl">
         <SectionHeading
-          index="07"
+          index="08"
           title="Mari berbincang."
           description="Punya ide, mau kolaborasi, atau sekadar menyapa? Saya senang diajak ngobrol."
         />

@@ -6,9 +6,7 @@ import { currentWork } from "@/lib/content";
 import { SectionHeading } from "@/components/section-heading";
 import { Reveal } from "@/components/reveal";
 
-const barColors = ["bg-green", "bg-teal", "bg-amber", "bg-sky", "bg-coral", "bg-accent"];
-
-function ProgressBar({ percent, tone = "bg-fg" }: { percent: number; tone?: string }) {
+function ProgressBar({ percent, tone = "bg-accent" }: { percent: number; tone?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.5 });
 
@@ -47,7 +45,7 @@ export function YangSedangDibangun() {
                   {item.desc}
                 </p>
 
-                <ProgressBar percent={item.percent} tone={barColors[i % barColors.length]} />
+                <ProgressBar percent={item.percent} />
 
                 <div className="mt-3 flex flex-wrap items-center gap-3">
                   {item.tags.map((tag) => (

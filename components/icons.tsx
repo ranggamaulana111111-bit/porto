@@ -22,12 +22,6 @@ export const ArrowUpRight = (p: IconProps) => (
   </svg>
 );
 
-export const ArrowDown = (p: IconProps) => (
-  <svg {...base(p)}>
-    <path d="M12 5v14M6 13l6 6 6-6" />
-  </svg>
-);
-
 export const Mail = (p: IconProps) => (
   <svg {...base(p)}>
     <rect x="3" y="5" width="18" height="14" rx="2" />

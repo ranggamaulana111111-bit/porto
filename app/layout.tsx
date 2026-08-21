@@ -34,7 +34,7 @@ const personJsonLd = {
   url: siteUrl,
   jobTitle: profile.role,
   description:
-    "Developer & mahasiswa Sistem Informasi; pembuat ALKONEK, RabegLab, AlkonekPlus, dan Prodesa.",
+    "Mahasiswa Sistem Informasi yang membangun software, jaringan, dan infrastruktur; pembuat ALKONEK, RabegLab, AlkonekPlus, dan Prodesa.",
   address: {
     "@type": "PostalAddress",
     addressLocality: profile.location,
@@ -125,68 +125,18 @@ export default function RootLayout({
           >
             <path
               d="M0,760 C240,700 480,820 720,760 C960,700 1200,820 1440,760 V900 H0 Z"
-              fill="rgba(16,64,80,0.25)"
+              fill="rgba(141,184,207,0.04)"
             />
-            <path
-              d="M0,120 C180,90 360,150 540,120 C720,90 900,150 1080,120 C1260,90 1350,130 1440,120"
-              fill="none"
-              stroke="rgba(160,196,208,0.16)"
-              strokeWidth="1.5"
-            />
-            <path
-              d="M0,260 C200,230 400,290 600,260 C800,230 1000,290 1200,260 C1320,240 1380,270 1440,260"
-              fill="none"
-              stroke="rgba(180,214,224,0.12)"
-              strokeWidth="1.25"
-            />
-            <path
-              d="M0,400 C220,370 440,430 660,400 C880,370 1100,430 1320,400"
-              fill="none"
-              stroke="rgba(160,196,208,0.10)"
-              strokeWidth="1"
-            />
-            <path
-              d="M0,540 C240,510 480,570 720,540 C960,510 1200,570 1440,540"
-              fill="none"
-              stroke="rgba(190,220,230,0.10)"
-              strokeWidth="1.25"
-            />
-            <path
-              d="M0,680 C260,650 520,710 780,680 C1040,650 1300,710 1440,680"
-              fill="none"
-              stroke="rgba(160,196,208,0.12)"
-              strokeWidth="1.5"
-            />
-            <path
-              d="M0,60 C150,220 300,140 450,300 C600,460 750,380 900,540 C1050,700 1200,620 1440,820"
-              fill="none"
-              stroke="rgba(180,214,224,0.09)"
-              strokeWidth="1.25"
-            />
-            <path
-              d="M0,840 C180,700 360,780 540,640 C720,500 900,580 1080,440 C1260,300 1350,360 1440,220"
-              fill="none"
-              stroke="rgba(180,214,224,0.09)"
-              strokeWidth="1.25"
-            />
-            <path
-              d="M220,0 C250,150 180,300 260,450 C340,600 280,750 340,900"
-              fill="none"
-              stroke="rgba(190,220,230,0.07)"
-              strokeWidth="1"
-            />
-            <path
-              d="M680,0 C720,150 660,300 740,450 C820,600 760,750 820,900"
-              fill="none"
-              stroke="rgba(190,220,230,0.06)"
-              strokeWidth="1"
-            />
-            <path
-              d="M1180,0 C1220,150 1160,300 1240,450 C1320,600 1260,750 1320,900"
-              fill="none"
-              stroke="rgba(190,220,230,0.07)"
-              strokeWidth="1"
-            />
+            <path d="M0,120 C180,90 360,150 540,120 C720,90 900,150 1080,120 C1260,90 1350,130 1440,120" fill="none" stroke="rgba(141,184,207,0.05)" strokeWidth="1.5" />
+            <path d="M0,260 C200,230 400,290 600,260 C800,230 1000,290 1200,260 C1320,240 1380,270 1440,260" fill="none" stroke="rgba(141,184,207,0.04)" strokeWidth="1.25" />
+            <path d="M0,400 C220,370 440,430 660,400 C880,370 1100,430 1320,400" fill="none" stroke="rgba(141,184,207,0.035)" strokeWidth="1" />
+            <path d="M0,540 C240,510 480,570 720,540 C960,510 1200,570 1440,540" fill="none" stroke="rgba(141,184,207,0.04)" strokeWidth="1.25" />
+            <path d="M0,680 C260,650 520,710 780,680 C1040,650 1300,710 1440,680" fill="none" stroke="rgba(141,184,207,0.045)" strokeWidth="1.5" />
+            <path d="M0,60 C150,220 300,140 450,300 C600,460 750,380 900,540 C1050,700 1200,620 1440,820" fill="none" stroke="rgba(141,184,207,0.03)" strokeWidth="1.25" />
+            <path d="M0,840 C180,700 360,780 540,640 C720,500 900,580 1080,440 C1260,300 1350,360 1440,220" fill="none" stroke="rgba(141,184,207,0.03)" strokeWidth="1.25" />
+            <path d="M220,0 C250,150 180,300 260,450 C340,600 280,750 340,900" fill="none" stroke="rgba(141,184,207,0.025)" strokeWidth="1" />
+            <path d="M680,0 C720,150 660,300 740,450 C820,600 760,750 820,900" fill="none" stroke="rgba(141,184,207,0.025)" strokeWidth="1" />
+            <path d="M1180,0 C1220,150 1160,300 1240,450 C1320,600 1260,750 1320,900" fill="none" stroke="rgba(141,184,207,0.025)" strokeWidth="1" />
           </svg>
         </div>
         <script

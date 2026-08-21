@@ -14,11 +14,6 @@
   --color-online: #6fb89a;
 
   --color-accent: #8db8cf;
-  --color-green: #7cc49a;
-  --color-teal: #5fb6ad;
-  --color-amber: #d4b48a;
-  --color-coral: #d08a86;
-  --color-sky: #6fa3b8;
 
   --color-border: #233040;
   --color-border-subtle: #1a2430;
@@ -45,8 +40,8 @@ html {
 
 body {
   background:
-    radial-gradient(ellipse 90% 55% at 50% 0%, rgba(112, 160, 176, 0.16), transparent 55%),
-    linear-gradient(to bottom, #1e4352 0%, #14303f 42%, #0b1c28 100%);
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(141, 184, 207, 0.06), transparent 60%),
+    #0f1620;
   color: var(--color-fg);
   font-family: var(--font-sans);
   overflow-x: hidden;

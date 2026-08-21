@@ -7,6 +7,7 @@ export function FramedSnippet({
   alt,
   caption,
   chrome,
+  tag,
   children,
   className = "",
 }: {
@@ -14,6 +15,7 @@ export function FramedSnippet({
   alt: string;
   caption: string;
   chrome?: string;
+  tag?: string;
   children: ReactNode;
   className?: string;
 }) {
@@ -25,12 +27,17 @@ export function FramedSnippet({
       className={`overflow-hidden rounded-xl border border-border bg-bg-elevated ${className}`}
     >
       <div className="flex items-center gap-1.5 border-b border-border px-3 py-2">
-        <span className="h-2.5 w-2.5 rounded-full bg-coral" />
-        <span className="h-2.5 w-2.5 rounded-full bg-amber" />
-        <span className="h-2.5 w-2.5 rounded-full bg-green" />
+        <span className="h-2.5 w-2.5 rounded-full bg-fg-faint" />
+        <span className="h-2.5 w-2.5 rounded-full bg-fg-faint" />
+        <span className="h-2.5 w-2.5 rounded-full bg-fg-faint" />
         {chrome && (
           <span className="ml-2 truncate font-mono text-[10px] text-fg-muted">
             {chrome}
+          </span>
+        )}
+        {tag && (
+          <span className="ml-auto shrink-0 rounded-sm border border-border px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-wider text-fg-muted">
+            {tag}
           </span>
         )}
       </div>

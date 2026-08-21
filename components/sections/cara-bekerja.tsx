@@ -19,11 +19,7 @@ export function CaraBekerja() {
             <Reveal key={item.label} delay={i * 0.06}>
               <div className="group">
                 <div className="flex items-baseline gap-4 mb-3">
-                  <span
-                    className={`font-mono text-xs ${
-                      ["text-green", "text-teal", "text-amber", "text-coral", "text-sky"][i % 5]
-                    }`}
-                  >
+                  <span className="font-mono text-xs text-accent">
                     {item.label}
                   </span>
                   <h3 className="font-display text-xl font-semibold">{item.title}</h3>

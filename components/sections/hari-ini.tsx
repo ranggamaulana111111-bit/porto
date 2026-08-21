@@ -241,11 +241,7 @@ export function HariIni() {
             <div className="space-y-2">
               {todayStatus.focusItems.map((item, i) => (
                 <div key={i} className="flex items-start gap-3">
-                  <span
-                    className={`mt-2 h-1 w-1 shrink-0 rounded-full ${
-                      ["bg-accent", "bg-green", "bg-teal", "bg-amber", "bg-coral", "bg-sky"][i % 6]
-                    }`}
-                  />
+                  <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" />
                   <span className="text-sm text-fg-secondary">{item}</span>
                 </div>
               ))}

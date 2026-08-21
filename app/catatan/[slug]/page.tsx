@@ -30,9 +30,9 @@ export default async function CatatanDetailPage({ params }: Props) {
   if (!post) notFound();
 
   const categoryColor: Record<string, string> = {
-    Belajar: "text-green",
-    Project: "text-amber",
-    Catatan: "text-sky",
+    Belajar: "text-accent",
+    Project: "text-accent",
+    Catatan: "text-accent",
   };
 
   return (

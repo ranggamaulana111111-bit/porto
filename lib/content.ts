@@ -10,14 +10,44 @@ export interface Metric {
   label: string;
 }
 
+export type ProjectTier = "featured" | "selected" | "experiment";
+
+export type ProjectStatus =
+  | "production"
+  | "building"
+  | "planned"
+  | "completed"
+  | "academic";
+
+export interface TechItem {
+  name: string;
+  role: string;
+}
+
+export interface CaseStudy {
+  context: string;
+  problem: string;
+  approach: string;
+  implementation: string;
+  features?: { title: string; description: string }[];
+  workflow?: { label: string; sub?: string }[];
+  challenges: string[];
+  result: string;
+  lessons: string[];
+}
+
 export interface Project {
   slug: string;
   title: string;
   kind: string;
   year: string;
+  tier?: ProjectTier;
+  status?: ProjectStatus;
   summary: string;
   role: string;
   stack: string[];
+  technologies?: TechItem[];
+  caseStudy?: CaseStudy;
   challenge: string;
   solution: string;
   result: string;
@@ -143,6 +173,24 @@ export const todayStatus = content.todayStatus;
 export const journey = content.journey;
 export const howIWork = content.howIWork;
 export const projects = content.projects;
+
+export function projectTier(p: Project): ProjectTier {
+  return p.tier ?? "selected";
+}
+
+export function projectStatus(p: Project): ProjectStatus {
+  return p.status ?? "completed";
+}
+
+export const featuredProjects = projects.filter(
+  (p) => projectTier(p) === "featured"
+);
+export const selectedProjects = projects.filter(
+  (p) => projectTier(p) === "selected"
+);
+export const experimentProjects = projects.filter(
+  (p) => projectTier(p) === "experiment"
+);
 export const currentWork = content.currentWork;
 export const posts = content.posts;
 export const plans = content.plans;
