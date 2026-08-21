@@ -143,7 +143,6 @@ export interface TechStackCategory {
 
 const CATEGORY_OF: Record<string, string> = {
   "Laravel": "CORE",
-  "Tailwind CSS": "CORE",
   "Blade": "CORE",
   "Next.js 16": "CORE",
   "React 19": "CORE",
