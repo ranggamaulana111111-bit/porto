@@ -133,6 +133,7 @@ export interface TechEntry {
   name: string;
   role: string;
   projects: string[];
+  versions: (string | null)[];
 }
 
 export interface TechStackCategory {
@@ -141,14 +142,13 @@ export interface TechStackCategory {
 }
 
 const CATEGORY_OF: Record<string, string> = {
-  "Laravel 12": "CORE",
-  "Laravel 11": "CORE",
+  "Laravel": "CORE",
+  "Tailwind CSS": "CORE",
   "Blade": "CORE",
   "Next.js 16": "CORE",
   "React 19": "CORE",
   "TypeScript": "CORE",
   "Tailwind CSS": "CORE",
-  "Tailwind CSS v4": "CORE",
   "Zustand": "CORE",
   "TanStack Query": "CORE",
   "Dart": "CORE",
@@ -200,13 +200,19 @@ const TOOL_STACK: { name: string; role: string }[] = [
 function buildTechStack(): TechStackCategory[] {
   const map = new Map<string, TechEntry>();
 
-  const add = (name: string, role: string, project: string) => {
-    const key = name.toLowerCase();
+  const add = (rawName: string, role: string, project: string) => {
+    const match = rawName.match(/^(.*?)(?:\s+(v?\d[\w.]*))?$/);
+    const base = (match?.[1] ?? rawName).trim();
+    const version = match?.[2] ? match[2].replace(/^v/, "") : null;
+    const key = base.toLowerCase();
     const existing = map.get(key);
     if (existing) {
-      if (!existing.projects.includes(project)) existing.projects.push(project);
+      if (!existing.projects.includes(project)) {
+        existing.projects.push(project);
+        existing.versions.push(version);
+      }
     } else {
-      map.set(key, { name, role, projects: [project] });
+      map.set(key, { name: base, role, projects: [project], versions: [version] });
     }
   };
 

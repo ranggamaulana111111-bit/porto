@@ -4,6 +4,13 @@ import { howIWork } from "@/lib/content";
 import { SectionHeading } from "@/components/section-heading";
 import { Reveal } from "@/components/reveal";
 
+const EVIDENCE: Record<string, string> = {
+  "01": "// ALKONEK dimulai dari billing & network monitoring yang tersebar, bukan dari keinginan membuat dashboard.",
+  "02": "// RabegLab diiterasi dari dokumentasi dulu, baru beli hardware Proxmox.",
+  "03": "// Prodesa punya activity log per transisi approval supaya versi dokumen bisa dilacak.",
+  "04": "// AlkonekPlus pakai Recharts bukan chart library berat demi performa tes real-time.",
+};
+
 export function CaraBekerja() {
   return (
     <section id="cara-kerja" className="px-6 py-24">
@@ -27,6 +34,11 @@ export function CaraBekerja() {
                 <p className="text-sm leading-relaxed text-fg-secondary max-w-lg ml-8">
                   {item.body}
                 </p>
+                {EVIDENCE[item.label] && (
+                  <p className="mt-2 ml-8 font-mono text-xs text-fg-faint">
+                    {EVIDENCE[item.label]}
+                  </p>
+                )}
               </div>
             </Reveal>
           ))}

@@ -10,11 +10,13 @@ function TechRow({
   name,
   role,
   projects,
+  versions,
   index,
 }: {
   name: string;
   role: string;
   projects: string[];
+  versions: (string | null)[];
   index: number;
 }) {
   const ref = useRef<HTMLLIElement>(null);
@@ -48,6 +50,9 @@ function TechRow({
               className="font-mono text-xs text-accent transition-colors hover:text-fg"
             >
               {p}
+              {versions[i] && (
+                <span className="text-fg-faint"> · v{versions[i]}</span>
+              )}
             </a>
           </span>
         ))}
@@ -83,6 +88,7 @@ export function StackTeknologi() {
                     name={t.name}
                     role={t.role}
                     projects={t.projects}
+                    versions={t.versions}
                     index={i}
                   />
                 ))}
