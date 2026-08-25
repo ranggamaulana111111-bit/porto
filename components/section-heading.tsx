@@ -10,7 +10,7 @@ interface SectionHeadingProps {
 
 export function SectionHeading({ index, title, description }: SectionHeadingProps) {
   return (
-    <Reveal className="mb-20 max-w-2xl">
+    <Reveal className="mb-16 max-w-2xl">
       <div className="flex items-baseline gap-4">
         <span className="font-mono text-xs text-fg-muted">{index}</span>
         <span className="h-px flex-1 bg-border" />

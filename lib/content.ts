@@ -244,6 +244,43 @@ function buildTechStack(): TechStackCategory[] {
   }));
 }
 
+function buildTechStackByProject(): TechProjectGroup[] {
+  const groups = new Map<string, TechEntry[]>();
+
+  for (const p of content.projects) {
+    if (!p.technologies) continue;
+    const key = p.title;
+    if (!groups.has(key)) groups.set(key, []);
+    for (const t of p.technologies) {
+      const match = t.name.match(/^(.*?)(?:\s+(v?\d[\w.]*))?$/);
+      const base = (match?.[1] ?? t.name).trim();
+      const version = match?.[2] ? match[2].replace(/^v/, "") : null;
+      groups.get(key)!.push({ name: base, role: t.role, projects: [p.title], versions: [version] });
+    }
+  }
+
+  const result: TechProjectGroup[] = [];
+  for (const p of content.projects) {
+    const techs = groups.get(p.title);
+    if (techs && techs.length > 0) {
+      result.push({ project: p.title, slug: p.slug, technologies: techs });
+    }
+  }
+
+  const portfolioTechs: TechEntry[] = [];
+  for (const t of OWN_STACK) {
+    const match = t.name.match(/^(.*?)(?:\s+(v?\d[\w.]*))?$/);
+    const base = (match?.[1] ?? t.name).trim();
+    const version = match?.[2] ? match[2].replace(/^v/, "") : null;
+    portfolioTechs.push({ name: base, role: t.role, projects: ["Portfolio"], versions: [version] });
+  }
+  if (portfolioTechs.length > 0) {
+    result.push({ project: "Portfolio", technologies: portfolioTechs });
+  }
+
+  return result;
+}
+
 export interface SiteContent {
   profile: Profile;
   navItems: NavItem[];
@@ -258,7 +295,14 @@ export interface SiteContent {
 
 const content = data as unknown as SiteContent;
 
+export interface TechProjectGroup {
+  project: string;
+  slug?: string;
+  technologies: TechEntry[];
+}
+
 export const techStackCategories = buildTechStack();
+export const techStackByProject = buildTechStackByProject();
 
 export const profile = content.profile;
 export const navItems = content.navItems;

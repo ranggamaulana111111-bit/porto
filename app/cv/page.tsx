@@ -105,6 +105,31 @@ export default function CvPage() {
           </div>
         </section>
 
+        <section className="mt-10">
+          <h2 className="mb-5 font-mono text-xs uppercase tracking-wider text-fg-muted">
+            Kontak
+          </h2>
+          <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+            <a
+              href={`mailto:${profile.email}`}
+              className="text-fg-secondary transition-colors hover:text-fg"
+            >
+              {profile.email}
+            </a>
+            {Object.entries(profile.socials).map(([key, url]) => (
+              <a
+                key={key}
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="capitalize text-fg-secondary transition-colors hover:text-fg"
+              >
+                {key}
+              </a>
+            ))}
+          </div>
+        </section>
+
         <div className="mt-12 border-t border-border pt-6 text-xs text-fg-faint">
           Diperbarui {new Date().getFullYear()} · rangga.dev
         </div>

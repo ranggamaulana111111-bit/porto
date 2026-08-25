@@ -67,6 +67,13 @@ export function FeaturedProject({ project }: { project: Project }) {
             </a>
           )}
           <a
+            href={`/project/${project.slug}`}
+            className="inline-flex items-center gap-1.5 text-sm text-fg-secondary transition-colors hover:text-fg"
+          >
+            Lihat studi kasus
+            <ArrowUpRight size={14} />
+          </a>
+          <a
             href={project.link}
             target="_blank"
             rel="noopener noreferrer"

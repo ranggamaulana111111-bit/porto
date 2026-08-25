@@ -34,7 +34,7 @@ export function YangSedangDibangun() {
           description="Bukan rencana, bukan mimpi. Ini yang sedang ada di meja kerja saya saat ini."
         />
 
-        <div className="mt-12 space-y-12">
+        <div className="space-y-12">
           {currentWork.map((item, i) => {
             const slug = SLUG_BY_TITLE[item.title];
             const project = slug

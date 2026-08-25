@@ -10,8 +10,8 @@ export function Rencana() {
       <div className="mx-auto max-w-3xl">
         <SectionHeading
           index="07"
-          title="Rencana berikutnya."
-          description="Yang ingin saya pelajari dan bangun selanjutnya. Bukan target — ini niat."
+          title="Yang ingin saya coba berikutnya."
+          description="Bukan roadmap perusahaan — cuma daftar hal yang mengganggu kepala saya dan ingin saya wujudkan saat waktunya pas."
         />
 
         <div className="space-y-8">

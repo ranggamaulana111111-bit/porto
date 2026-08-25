@@ -134,7 +134,7 @@
       "title": "ALKONEK",
       "kind": "ISP Billing System",
       "year": "2025",
-      "tier": "featured",
+      "tier": "selected",
       "status": "production",
       "summary": "Sistem billing ISP FTTH berbasis Laravel untuk penagihan otomatis, pembayaran online, hingga monitoring jaringan fiber real-time.",
       "role": "Pembuat & Developer",

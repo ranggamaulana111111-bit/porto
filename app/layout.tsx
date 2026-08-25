@@ -3,6 +3,7 @@ import { JetBrains_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import { profile } from "@/lib/content";
 import { RouteLoader } from "@/components/route-loader";
+import { CommandPalette } from "@/components/command-palette";
 import "./globals.css";
 
 const sans = localFont({
@@ -53,14 +54,15 @@ export const metadata: Metadata = {
     template: `%s · ${name}`,
   },
   description:
-    "Ruang kerja digital rangga.mrw — tempat saya belajar, membangun, dan menulis tentang proses jadi developer.",
+    "Ruang kerja digital rangga.mrw — membangun software, mengurus jaringan, dan bereksperimen dengan infrastruktur. Lengkap dengan project dan catatan prosesnya.",
   keywords: [
     "rangga.mrw",
     "rangga dev",
     "rangga.mrw portfolio",
-    "Developer",
-    "Software Engineer",
-    "Systems Engineer",
+    "sistem informasi",
+    "pengembang software",
+    "jaringan komputer",
+    "infrastruktur IT",
     "Laravel",
     "Next.js",
     "Digital Workspace",
@@ -77,7 +79,7 @@ export const metadata: Metadata = {
     url: siteUrl,
     title: `${name} — Digital Workspace`,
     description:
-      "Ruang kerja digital rangga.mrw — tempat saya belajar, membangun, dan menulis tentang proses jadi developer.",
+      "Ruang kerja digital rangga.mrw — membangun software, mengurus jaringan, dan bereksperimen dengan infrastruktur. Lengkap dengan project dan catatan prosesnya.",
     siteName: name,
     locale: "id_ID",
     images: [{ url: `${siteUrl}/og.png`, width: 1200, height: 630, alt: "rangga.mrw — ruang kerja digital" }],
@@ -86,8 +88,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${name} — Digital Workspace`,
     description:
-      "Ruang kerja digital rangga.mrw — tempat saya belajar, membangun, dan menulis tentang proses jadi developer.",
-    creator: "@rangga",
+      "Ruang kerja digital rangga.mrw — membangun software, mengurus jaringan, dan bereksperimen dengan infrastruktur. Lengkap dengan project dan catatan prosesnya.",
     images: [`${siteUrl}/og.png`],
   },
   robots: {
@@ -144,6 +145,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
         {children}
+        <CommandPalette />
         <RouteLoader />
       </body>
     </html>

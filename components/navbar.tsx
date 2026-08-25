@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { navItems, profile } from "@/lib/content";
+import { openCommandPalette } from "@/components/command-palette";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -65,7 +66,7 @@ export function Navbar() {
             {profile.shortName}
           </a>
 
-          <ul className="hidden items-center gap-1 md:flex">
+          <ul className="hidden items-center gap-1 lg:flex">
             {navItems.map((item) => (
               <li key={item.id}>
                 <a
@@ -88,33 +89,44 @@ export function Navbar() {
             ))}
           </ul>
 
-          <a
-            href="#berbincang"
-            className="hidden text-sm text-fg-secondary transition-colors hover:text-fg md:inline-block"
-          >
-            Hubungi
-          </a>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={openCommandPalette}
+              aria-label="Buka command palette (Ctrl K)"
+              className="border border-border px-2 py-1 font-mono text-[11px] text-fg-muted transition-colors hover:border-accent/40 hover:text-accent"
+            >
+              ⌘K
+            </button>
 
-          <button
-            aria-label="Buka menu"
-            aria-expanded={open}
-            aria-controls="mobile-menu"
-            onClick={() => setOpen((o) => !o)}
-            className="flex flex-col gap-1.5 md:hidden"
-          >
-            <motion.span
-              animate={open ? { rotate: 45, y: 5.5 } : { rotate: 0, y: 0 }}
-              className="block h-px w-5 bg-fg"
-            />
-            <motion.span
-              animate={open ? { opacity: 0 } : { opacity: 1 }}
-              className="block h-px w-5 bg-fg"
-            />
-            <motion.span
-              animate={open ? { rotate: -45, y: -5.5 } : { rotate: 0, y: 0 }}
-              className="block h-px w-5 bg-fg"
-            />
-          </button>
+            <a
+              href="#berbincang"
+              className="hidden text-sm text-fg-secondary transition-colors hover:text-fg lg:inline-block"
+            >
+              Hubungi
+            </a>
+
+            <button
+              aria-label="Buka menu"
+              aria-expanded={open}
+              aria-controls="mobile-menu"
+              onClick={() => setOpen((o) => !o)}
+              className="flex flex-col gap-1.5 lg:hidden"
+            >
+              <motion.span
+                animate={open ? { rotate: 45, y: 5.5 } : { rotate: 0, y: 0 }}
+                className="block h-px w-5 bg-fg"
+              />
+              <motion.span
+                animate={open ? { opacity: 0 } : { opacity: 1 }}
+                className="block h-px w-5 bg-fg"
+              />
+              <motion.span
+                animate={open ? { rotate: -45, y: -5.5 } : { rotate: 0, y: 0 }}
+                className="block h-px w-5 bg-fg"
+              />
+            </button>
+          </div>
         </nav>
       </motion.header>
 

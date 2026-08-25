@@ -94,8 +94,11 @@ function TypingTagline({ words, className = "" }: { words: string[]; className?:
 
   return (
     <span className={className}>
-      {text}
-      <span className="ml-0.5 inline-block h-4 w-[2px] -translate-y-0.5 bg-accent align-middle animate-pulse" />
+      <span className="sr-only">{words.join(", ")}</span>
+      <span aria-hidden="true">
+        {text}
+        <span className="ml-0.5 inline-block h-4 w-[2px] -translate-y-0.5 bg-accent align-middle animate-pulse" />
+      </span>
     </span>
   );
 }
@@ -126,7 +129,7 @@ export function HariIni() {
   }, []);
 
   return (
-    <section id="hari-ini" className="px-6 pt-32 pb-24">
+    <section id="hari-ini" className="px-6 pt-32">
       <div className="mx-auto max-w-3xl">
         <motion.div
           initial="hidden"
@@ -166,7 +169,7 @@ export function HariIni() {
               hidden: { opacity: 0, y: 16 },
               show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
             }}
-            className="mt-10 font-display text-3xl font-bold tracking-tight sm:text-4xl"
+            className="mt-10 font-display text-4xl font-bold tracking-tight sm:text-5xl"
           >
             {todayStatus.greeting}
           </motion.h1>
@@ -344,7 +347,7 @@ export function HariIni() {
                 className="mt-2 inline-flex items-center gap-1 text-xs text-fg-muted transition-colors hover:text-accent"
               >
                 Buka di Spotify
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                <svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M7 17 17 7M8 7h9v9" />
                 </svg>
               </a>
