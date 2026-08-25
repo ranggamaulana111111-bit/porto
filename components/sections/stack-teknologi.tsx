@@ -63,6 +63,39 @@ function ProjectStack({ project, slug, technologies, index }: {
   );
 }
 
+function StackDiagram() {
+  return (
+    <div className="mt-10 border border-border bg-bg-card p-4 sm:p-6">
+      <p className="mb-4 font-mono text-[11px] uppercase tracking-wider text-fg-muted">
+        Architecture Overview
+      </p>
+      <pre className="overflow-x-auto font-mono text-[10px] leading-relaxed text-fg-secondary sm:text-xs">
+{`                    SOFTWARE
+                        │
+         ┌──────────────┴──────────────┐
+         │                             │
+      Backend                    Infrastructure
+         │                             │
+     Laravel                    Linux / Docker
+         │                             │
+   Business Logic                Proxmox
+         │                             │
+         └──────────────┬──────────────┘
+                        │
+                    Networking
+                        │
+              MikroTik / OLT / ISP
+                        │
+                        ▼
+                     Security`}
+      </pre>
+      <p className="mt-4 border-t border-border pt-3 font-mono text-[10px] text-fg-faint sm:text-[11px]">
+        Memahami bagaimana sistem bekerja dari ujung ke ujung.
+      </p>
+    </div>
+  );
+}
+
 export function StackTeknologi() {
   return (
     <section id="stack" className="px-6 py-24">
@@ -72,6 +105,8 @@ export function StackTeknologi() {
           title="Apa yang saya bangun, dan dengan apa."
           description="Stack teknologi yang saya pakai di setiap project."
         />
+
+        <StackDiagram />
 
         <div className="mt-12">
           {techStackByProject.map((group, i) => (
