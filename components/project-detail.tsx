@@ -39,7 +39,7 @@ function FeatureCard({
   description: string;
 }) {
   return (
-    <div className="border border-border bg-bg-card p-4 sm:p-5">
+    <div className="rounded-[var(--radius-clay)] border border-border bg-bg-card p-4 sm:p-5 shadow-[var(--shadow-card)]">
       <h4 className="font-display text-sm font-bold text-fg sm:text-base">{title}</h4>
       <p className="mt-1.5 text-xs leading-relaxed text-fg-secondary sm:mt-2 sm:text-sm">
         {description}

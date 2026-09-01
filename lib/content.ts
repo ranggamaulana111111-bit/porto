@@ -77,6 +77,7 @@ export interface Profile {
 export interface NavItem {
   id: string;
   label: string;
+  href?: string;
 }
 
 export interface ListeningPlaylist {
@@ -94,6 +95,11 @@ export interface TodayStatus {
   listeningTo: string;
   mood: string;
   listeningPlaylist: ListeningPlaylist;
+}
+
+export interface About {
+  title: string;
+  body: string[];
 }
 
 export interface Journey {
@@ -285,6 +291,7 @@ export interface SiteContent {
   profile: Profile;
   navItems: NavItem[];
   todayStatus: TodayStatus;
+  about: About;
   journey: Journey[];
   howIWork: HowIWork[];
   projects: Project[];
@@ -304,9 +311,56 @@ export interface TechProjectGroup {
 export const techStackCategories = buildTechStack();
 export const techStackByProject = buildTechStackByProject();
 
-export const profile = content.profile;
-export const navItems = content.navItems;
-export const todayStatus = content.todayStatus;
+export const profile: Profile = {
+  ...content.profile,
+  role:
+    content.profile.role ??
+    "Mahasiswa Universitas Pamulang Kampus Serang, Program Studi Sistem Informasi",
+};
+
+const ABOUT_FALLBACK: About = {
+  title: "Tentang Saya",
+  body: [
+    "Mahasiswa Sistem Informasi di Universitas Pamulang, Kampus Serang. Ketertarikan utama saya di pengembangan software, dengan minat yang terus tumbuh di networking dan infrastructure.",
+    "Saya lebih banyak memahami teknologi dengan membangun langsung — dari aplikasi web, pengelolaan database dan API, konfigurasi jaringan, sampai menjalankan aplikasi di server dan homelab.",
+    "Tidak semua hal sudah saya kuasai, beberapa masih dalam eksplorasi. Yang saya kejar bukan hafal semua tools, tapi paham bagaimana sebuah sistem berjalan menyeluruh — dan setiap project jadi tempat untuk menguji pemahaman itu.",
+  ],
+};
+
+const FALLBACK_NAV: NavItem[] = [
+  { id: "home", label: "Home" },
+  { id: "about", label: "About" },
+  { id: "projects", label: "Projects" },
+  { id: "experience", label: "Experience" },
+  { id: "skills", label: "Skills" },
+  { id: "workspace", label: "Workspace", href: "/workspace" },
+  { id: "contact", label: "Contact" },
+];
+
+const _rawNav = (content.navItems as unknown as NavItem[]) ?? [];
+const _hasNewIds = _rawNav.some((n) => ["home", "about", "projects", "experience", "skills", "contact", "workspace"].includes(n.id));
+const RAW_NAV_ITEMS: NavItem[] = _hasNewIds ? _rawNav : FALLBACK_NAV;
+
+const NAV_ROUTE_FALLBACK: Record<string, string> = {
+  stack: "/stack",
+  workspace: "/workspace",
+};
+
+export const navItems: NavItem[] = RAW_NAV_ITEMS.map((n) => ({
+  ...n,
+  href: n.href ?? NAV_ROUTE_FALLBACK[n.id],
+}));
+
+export const about: About = {
+  title: content.about?.title ?? ABOUT_FALLBACK.title,
+  body: content.about?.body?.length ? content.about.body : ABOUT_FALLBACK.body,
+};
+export const todayStatus: TodayStatus = {
+  ...content.todayStatus,
+  intro:
+    content.todayStatus.intro ??
+    "Halo, saya Rangga. Mahasiswa Sistem Informasi yang sedang belajar membangun software dan mengurus jaringan. Silakan lihat-lihat.",
+};
 export const journey = content.journey;
 export const howIWork = content.howIWork;
 export const projects = content.projects;

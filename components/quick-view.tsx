@@ -56,7 +56,7 @@ export function ProjectQuickView({ project, onClose }: QuickViewProps) {
   return (
     <AnimatePresence>
       <motion.div
-        className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm"
+        className="fixed inset-0 z-[60] bg-fg/20 backdrop-blur-sm"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -75,7 +75,7 @@ export function ProjectQuickView({ project, onClose }: QuickViewProps) {
           exit={{ opacity: 0, y: 8 }}
           transition={{ duration: 0.3, ease: easeOut }}
           onClick={(e) => e.stopPropagation()}
-          className="mx-auto mt-[8vh] flex max-h-[84vh] w-[calc(100%-2rem)] max-w-lg flex-col overflow-hidden border border-border bg-bg shadow-2xl outline-none"
+          className="mx-auto mt-[8vh] flex max-h-[84vh] w-[calc(100%-2rem)] max-w-lg flex-col overflow-hidden rounded-[var(--radius-clay-lg)] border border-border bg-bg-card shadow-[var(--shadow-card-hover)] outline-none"
         >
           <div className="flex items-start justify-between gap-4 border-b border-border px-6 py-5">
             <div>

@@ -1,30 +1,41 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-bg: #0f1620;
-  --color-bg-warm: #131c27;
-  --color-bg-card: #182230;
-  --color-bg-elevated: #1f2b3a;
+  --color-bg: #fdfbf7;
+  --color-bg-warm: #f6f0e8;
+  --color-bg-card: #ffffff;
+  --color-bg-inset: #f6f0e8;
 
-  --color-fg: #dfe6ee;
-  --color-fg-secondary: #a7b3c2;
-  --color-fg-muted: #7e8a9c;
-  --color-fg-faint: #75818f;
+  --color-fg: #1a1a1a;
+  --color-fg-secondary: #4a4642;
+  --color-fg-muted: #5e5a56;
+  --color-fg-faint: #6b6560;
 
-  --color-online: #6fb89a;
+  --color-accent: #b55220;
+  --color-accent-strong: #8e3e1a;
+  --color-accent-soft: #fdf0e8;
 
-  --color-accent: #8db8cf;
+  --color-border: #e2d9cf;
+  --color-border-subtle: #ede5da;
 
-  --color-border: #233040;
-  --color-border-subtle: #1a2430;
+  --color-online: #2e9d7a;
 
   --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-display), var(--font-sans), sans-serif;
   --font-mono: var(--font-mono), ui-monospace, monospace;
+
+  --radius-clay-sm: 12px;
+  --radius-clay: 16px;
+  --radius-clay-lg: 20px;
+  --radius-pill: 9999px;
+
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 10px rgba(0, 0, 0, 0.04);
+  --shadow-card-hover: 0 2px 6px rgba(0, 0, 0, 0.07), 0 8px 20px rgba(0, 0, 0, 0.05);
+  --shadow-button: 0 1px 2px rgba(0, 0, 0, 0.06);
 }
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 * {
@@ -32,43 +43,45 @@
 }
 
 html {
-  font-size: 115%;
+  font-size: 100%;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
 body {
-  background:
-    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(141, 184, 207, 0.06), transparent 60%),
-    #0f1620;
+  background: var(--color-bg);
   color: var(--color-fg);
   font-family: var(--font-sans);
   overflow-x: hidden;
 }
 
 ::selection {
-  background: rgba(141, 184, 207, 0.28);
-  color: #fff;
+  background: var(--color-accent-soft);
+  color: var(--color-accent-strong);
 }
 
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 textarea:focus-visible {
-  outline: 1px solid var(--color-accent);
+  outline: 2px solid var(--color-accent-strong);
   outline-offset: 3px;
 }
 
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-fg-faint);
+  background: var(--color-border);
   border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-fg-muted);
 }
 
 @media (prefers-reduced-motion: reduce) {

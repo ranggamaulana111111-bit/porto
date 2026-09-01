@@ -1,9 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { techStackByProject } from "@/lib/content";
-import { SectionHeading } from "@/components/section-heading";
+import { techStackByProject, todayStatus } from "@/lib/content";
 import { fadeUp, easeOut } from "@/lib/motion";
 
 function TechTag({ name, role, version }: { name: string; role: string; version?: string | null }) {
@@ -37,12 +37,12 @@ function ProjectStack({ project, slug, technologies, index }: {
     >
       <div className="flex items-center gap-3">
         {slug ? (
-          <a
+          <Link
             href={`/project/${slug}`}
             className="font-display text-base font-semibold text-fg transition-colors hover:text-accent"
           >
             {project}
-          </a>
+          </Link>
         ) : (
           <span className="font-display text-base font-semibold text-fg">
             {project}
@@ -65,7 +65,7 @@ function ProjectStack({ project, slug, technologies, index }: {
 
 function StackDiagram() {
   return (
-    <div className="mt-10 border border-border bg-bg-card p-4 sm:p-6">
+    <div className="border border-border bg-bg-card p-4 sm:p-6">
       <p className="mb-4 font-mono text-[11px] uppercase tracking-wider text-fg-muted">
         Architecture Overview
       </p>
@@ -96,17 +96,59 @@ function StackDiagram() {
   );
 }
 
-export function StackTeknologi() {
+export default function StackPage() {
   return (
-    <section id="stack" className="px-6 py-24">
-      <div className="mx-auto max-w-3xl">
-        <SectionHeading
-          index="04"
-          title="Apa yang saya bangun, dan dengan apa."
-          description="Stack teknologi yang saya pakai di setiap project."
-        />
+    <main className="min-h-screen px-6 py-16">
+      <div className="mx-auto max-w-2xl">
+        <div className="mb-8">
+          <Link
+            href="/"
+            className="font-mono text-sm text-fg-muted transition-colors hover:text-fg"
+          >
+            ← Kembali
+          </Link>
+        </div>
+
+        <header className="mb-12">
+          <h1 className="font-display text-4xl font-bold tracking-tight">
+            Stack Teknologi
+          </h1>
+          <p className="mt-4 text-lg leading-relaxed text-fg-secondary">
+            Stack yang saya pakai di setiap project — dari backend sampai infrastruktur.
+          </p>
+        </header>
 
         <StackDiagram />
+
+        <div className="mt-12">
+          <p className="mb-3 font-mono text-xs text-fg-muted uppercase tracking-wider">
+            {todayStatus.focus}
+          </p>
+          <ul className="space-y-2">
+            {todayStatus.focusItems.map((item, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" />
+                <span className="text-sm text-fg-secondary">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="mt-12">
+          <p className="mb-3 font-mono text-xs text-fg-muted uppercase tracking-wider">
+            Tech stack hari-hari
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {todayStatus.techStack.map((tech) => (
+              <span
+                key={tech}
+                className="rounded-full border border-border px-2.5 py-1 text-xs text-fg-secondary"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
 
         <div className="mt-12">
           {techStackByProject.map((group, i) => (
@@ -119,7 +161,11 @@ export function StackTeknologi() {
             />
           ))}
         </div>
+
+        <div className="mt-12 border-t border-border pt-6 text-xs text-fg-faint">
+          Diperbarui {new Date().getFullYear()} · rangga.dev
+        </div>
       </div>
-    </section>
+    </main>
   );
 }

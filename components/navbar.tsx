@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { navItems, profile } from "@/lib/content";
 import { openCommandPalette } from "@/components/command-palette";
@@ -8,7 +9,7 @@ import { openCommandPalette } from "@/components/command-palette";
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState("hari-ini");
+  const [active, setActive] = useState("home");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -19,8 +20,10 @@ export function Navbar() {
 
   useEffect(() => {
     const sections = navItems
+      .filter((i) => !i.href)
       .map((i) => document.getElementById(i.id))
       .filter(Boolean) as HTMLElement[];
+    if (sections.length === 0) return;
     const obs = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
@@ -52,56 +55,59 @@ export function Navbar() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3, duration: 0.8 }}
-        className="fixed inset-x-0 top-0 z-50 flex justify-center px-6 pt-6"
+        className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 sm:px-6 sm:pt-6"
       >
         <nav
-          className={`flex w-full max-w-3xl items-center justify-between px-5 py-3 transition-all duration-300 ${
-            scrolled ? "bg-bg/80 backdrop-blur-md border-b border-border" : "bg-transparent"
+          className={`flex w-full max-w-3xl items-center justify-between gap-2 rounded-[var(--radius-pill)] border bg-bg-card px-2 py-2 transition-all duration-300 ${
+            scrolled ? "shadow-[var(--shadow-card)]" : "shadow-[var(--shadow-card)]"
           }`}
         >
-          <a
-            href="#hari-ini"
-            className="font-display text-base font-semibold tracking-tight text-fg"
-          >
+          <a href="#home" className="ml-2 font-display text-sm font-semibold tracking-tight text-fg sm:text-base">
             {profile.shortName}
           </a>
 
           <ul className="hidden items-center gap-1 lg:flex">
             {navItems.map((item) => (
               <li key={item.id}>
-                <a
-                  href={`#${item.id}`}
-                  aria-current={active === item.id ? "true" : undefined}
-                  className={`relative px-3 py-1.5 text-sm transition-colors ${
-                    active === item.id ? "text-fg" : "text-fg-muted hover:text-fg-secondary"
-                  }`}
-                >
-                  {active === item.id && (
-                    <motion.span
-                      layoutId="nav-active"
-                      className="absolute inset-0 -z-10 bg-fg/[0.05]"
-                      transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                    />
-                  )}
-                  {item.label}
-                </a>
+                {item.href ? (
+                  <Link
+                    href={item.href}
+                    className={`relative rounded-[var(--radius-pill)] px-3 py-1.5 text-sm transition-colors ${
+                      item.id === "workspace"
+                        ? "bg-accent-soft text-accent-strong border border-accent-muted/40 hover:bg-accent-muted/30"
+                        : "text-fg-muted hover:text-fg hover:bg-bg-inset"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                ) : (
+                  <a
+                    href={`#${item.id}`}
+                    aria-current={active === item.id ? "true" : undefined}
+                    className={`relative rounded-[var(--radius-pill)] px-3 py-1.5 text-sm transition-colors ${
+                      active === item.id ? "bg-fg text-bg" : "text-fg-muted hover:text-fg hover:bg-bg-inset"
+                    }`}
+                  >
+                    {item.label}
+                  </a>
+                )}
               </li>
             ))}
           </ul>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5">
             <button
               type="button"
               onClick={openCommandPalette}
               aria-label="Buka command palette (Ctrl K)"
-              className="border border-border px-2 py-1 font-mono text-[11px] text-fg-muted transition-colors hover:border-accent/40 hover:text-accent"
+              className="rounded-[var(--radius-pill)] border border-border bg-bg-inset px-2.5 py-1.5 font-mono text-[11px] text-fg-muted transition-colors hover:border-accent/30 hover:text-accent-strong"
             >
               ⌘K
             </button>
 
             <a
-              href="#berbincang"
-              className="hidden text-sm text-fg-secondary transition-colors hover:text-fg lg:inline-block"
+              href="#contact"
+              className="hidden rounded-[var(--radius-pill)] bg-accent px-4 py-1.5 text-sm font-medium text-white shadow-[var(--shadow-button)] hover:bg-accent-strong transition-colors lg:inline-flex"
             >
               Hubungi
             </a>
@@ -111,20 +117,13 @@ export function Navbar() {
               aria-expanded={open}
               aria-controls="mobile-menu"
               onClick={() => setOpen((o) => !o)}
-              className="flex flex-col gap-1.5 lg:hidden"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-bg-card lg:hidden"
             >
-              <motion.span
-                animate={open ? { rotate: 45, y: 5.5 } : { rotate: 0, y: 0 }}
-                className="block h-px w-5 bg-fg"
-              />
-              <motion.span
-                animate={open ? { opacity: 0 } : { opacity: 1 }}
-                className="block h-px w-5 bg-fg"
-              />
-              <motion.span
-                animate={open ? { rotate: -45, y: -5.5 } : { rotate: 0, y: 0 }}
-                className="block h-px w-5 bg-fg"
-              />
+              <span className="flex flex-col gap-1">
+                <motion.span animate={open ? { rotate: 45, y: 4 } : { rotate: 0, y: 0 }} className="block h-px w-4 bg-fg" />
+                <motion.span animate={open ? { opacity: 0 } : { opacity: 1 }} className="block h-px w-4 bg-fg" />
+                <motion.span animate={open ? { rotate: -45, y: -4 } : { rotate: 0, y: 0 }} className="block h-px w-4 bg-fg" />
+              </span>
             </button>
           </div>
         </nav>
@@ -137,38 +136,40 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-x-4 top-20 z-40 border border-border bg-bg/95 p-4 backdrop-blur-md md:hidden"
+            className="fixed inset-x-4 top-[72px] z-40 rounded-[var(--radius-clay-lg)] border border-border bg-bg-card p-3 shadow-[var(--shadow-card-hover)] lg:hidden"
             id="mobile-menu"
           >
             <motion.ul
-              className="flex flex-col"
+              className="flex flex-col gap-1"
               initial="hidden"
               animate="show"
-              variants={{
-                hidden: {},
-                show: { transition: { staggerChildren: 0.04 } },
-              }}
+              variants={{ hidden: {}, show: { transition: { staggerChildren: 0.04 } } }}
             >
               {navItems.map((item) => (
                 <motion.li
                   key={item.id}
-                  variants={{
-                    hidden: { opacity: 0, x: -8 },
-                    show: { opacity: 1, x: 0 },
-                  }}
+                  variants={{ hidden: { opacity: 0, x: -8 }, show: { opacity: 1, x: 0 } }}
                 >
-                  <a
-                    href={`#${item.id}`}
-                    onClick={() => setOpen(false)}
-                    aria-current={active === item.id ? "true" : undefined}
-                    className={`block px-4 py-3 text-sm transition-colors ${
-                      active === item.id
-                        ? "text-fg bg-fg/[0.05]"
-                        : "text-fg-secondary hover:text-fg"
-                    }`}
-                  >
-                    {item.label}
-                  </a>
+                  {item.href ? (
+                    <Link
+                      href={item.href}
+                      onClick={() => setOpen(false)}
+                      className="block rounded-[var(--radius-pill)] bg-accent-soft px-4 py-2.5 text-sm font-medium text-accent-strong border border-accent-muted/30"
+                    >
+                      {item.label} →
+                    </Link>
+                  ) : (
+                    <a
+                      href={`#${item.id}`}
+                      onClick={() => setOpen(false)}
+                      aria-current={active === item.id ? "true" : undefined}
+                      className={`block rounded-[var(--radius-pill)] px-4 py-2.5 text-sm transition-colors ${
+                        active === item.id ? "bg-fg text-bg" : "text-fg-secondary hover:bg-bg-inset hover:text-fg"
+                      }`}
+                    >
+                      {item.label}
+                    </a>
+                  )}
                 </motion.li>
               ))}
             </motion.ul>

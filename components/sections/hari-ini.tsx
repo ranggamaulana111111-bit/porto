@@ -230,52 +230,14 @@ export function HariIni() {
             </a>
           </motion.div>
 
-          {/* focus section */}
-          <motion.div
-            variants={{
-              hidden: { opacity: 0, y: 12 },
-              show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
-            }}
-            className="mt-14"
-          >
-            <p className="font-mono text-xs text-fg-muted uppercase tracking-wider mb-4">
-              {todayStatus.focus}
-            </p>
-            <div className="space-y-2">
-              {todayStatus.focusItems.map((item, i) => (
-                <div key={i} className="flex items-start gap-3">
-                  <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" />
-                  <span className="text-sm text-fg-secondary">{item}</span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* bottom row: tech stack + music + mood */}
+          {/* bottom row: music + mood */}
           <motion.div
             variants={{
               hidden: { opacity: 0 },
               show: { opacity: 1, transition: { duration: 0.8 } },
             }}
-            className="mt-14 grid gap-8 sm:grid-cols-3"
+            className="mt-14 grid gap-8 sm:grid-cols-2"
           >
-            {/* tech stack */}
-            <div>
-              <p className="font-mono text-xs text-fg-muted uppercase tracking-wider mb-3">
-                Tech stack
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {todayStatus.techStack.map((tech) => (
-                  <span
-                    key={tech}
-                    className="rounded-full border border-border px-2.5 py-1 text-xs text-fg-secondary"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-
             {/* music */}
             <div>
               <p className="font-mono text-xs text-fg-muted uppercase tracking-wider mb-3">

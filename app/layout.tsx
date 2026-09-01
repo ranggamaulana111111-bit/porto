@@ -35,7 +35,7 @@ const personJsonLd = {
   url: siteUrl,
   jobTitle: profile.role,
   description:
-    "Mahasiswa Sistem Informasi yang membangun software, jaringan, dan infrastruktur; pembuat ALKONEK, RabegLab, AlkonekPlus, dan Prodesa.",
+    `${profile.role}; membangun software, jaringan, dan infrastruktur; pembuat ALKONEK, RabegLab, AlkonekPlus, dan Prodesa.`,
   address: {
     "@type": "PostalAddress",
     addressLocality: profile.location,
@@ -50,22 +50,23 @@ const personJsonLd = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${name} — Digital Workspace`,
+    default: name,
     template: `%s · ${name}`,
   },
   description:
-    "Ruang kerja digital rangga.mrw — membangun software, mengurus jaringan, dan bereksperimen dengan infrastruktur. Lengkap dengan project dan catatan prosesnya.",
+    "Mahasiswa Sistem Informasi yang membangun software, mengurus jaringan, dan bereksperimen dengan infrastruktur. Berisi project dan catatan proses belajarnya.",
   keywords: [
     "rangga.mrw",
     "rangga dev",
     "rangga.mrw portfolio",
+    "universitas pamulang",
+    "unpam",
     "sistem informasi",
     "pengembang software",
     "jaringan komputer",
     "infrastruktur IT",
     "Laravel",
     "Next.js",
-    "Digital Workspace",
     "ALKONEK",
     "RabegLab",
     "AlkonekPlus",
@@ -77,18 +78,18 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: siteUrl,
-    title: `${name} — Digital Workspace`,
+    title: name,
     description:
-      "Ruang kerja digital rangga.mrw — membangun software, mengurus jaringan, dan bereksperimen dengan infrastruktur. Lengkap dengan project dan catatan prosesnya.",
+      "Mahasiswa Sistem Informasi yang membangun software, mengurus jaringan, dan bereksperimen dengan infrastruktur. Berisi project dan catatan proses belajarnya.",
     siteName: name,
     locale: "id_ID",
-    images: [{ url: `${siteUrl}/og.png`, width: 1200, height: 630, alt: "rangga.mrw — ruang kerja digital" }],
+    images: [{ url: `${siteUrl}/og.png`, width: 1200, height: 630, alt: name }],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${name} — Digital Workspace`,
+    title: name,
     description:
-      "Ruang kerja digital rangga.mrw — membangun software, mengurus jaringan, dan bereksperimen dengan infrastruktur. Lengkap dengan project dan catatan prosesnya.",
+      "Mahasiswa Sistem Informasi yang membangun software, mengurus jaringan, dan bereksperimen dengan infrastruktur. Berisi project dan catatan proses belajarnya.",
     images: [`${siteUrl}/og.png`],
   },
   robots: {
@@ -100,7 +101,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0f1620",
+  themeColor: "#fdfbf7",
   width: "device-width",
   initialScale: 1,
 };

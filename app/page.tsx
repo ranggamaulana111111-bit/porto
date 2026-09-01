@@ -1,29 +1,33 @@
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
-import { HariIni } from "@/components/sections/hari-ini";
-import { YangSedangDibangun } from "@/components/sections/yang-sedang-dibangun";
-import { Perjalanan } from "@/components/sections/perjalanan";
-import { CaraBekerja } from "@/components/sections/cara-bekerja";
-import { StackTeknologi } from "@/components/sections/stack-teknologi";
-import ProjectFavorit from "@/components/sections/project-favorit";
-import { Catatan } from "@/components/sections/catatan";
-import { Rencana } from "@/components/sections/rencana";
-import { MariBerbincang } from "@/components/sections/mari-berbincang";
+import { Hero } from "@/components/sections/hero";
+import { ProfileSnapshot } from "@/components/sections/profile-snapshot";
+import { TentangSaya } from "@/components/sections/tentang-saya";
+import { WhatImLearning } from "@/components/sections/what-im-learning";
+import { SelectedProjects } from "@/components/sections/selected-projects";
+import { Experience } from "@/components/sections/experience";
+import { Education } from "@/components/sections/education";
+import { TechnicalStack } from "@/components/sections/technical-stack";
+import { CurrentlyLearning } from "@/components/sections/currently-learning";
+import { WorkspaceTeaser } from "@/components/sections/workspace-teaser";
+import { Contact } from "@/components/sections/contact";
 
 export default function Home() {
   return (
     <>
       <Navbar />
       <main className="relative">
-        <HariIni />
-        <YangSedangDibangun />
-        <Perjalanan />
-        <CaraBekerja />
-        <StackTeknologi />
-        <ProjectFavorit />
-        <Catatan />
-        <Rencana />
-        <MariBerbincang />
+        <Hero />
+        <ProfileSnapshot />
+        <TentangSaya />
+        <WhatImLearning />
+        <SelectedProjects />
+        <Experience />
+        <Education />
+        <TechnicalStack />
+        <CurrentlyLearning />
+        <WorkspaceTeaser />
+        <Contact />
       </main>
       <Footer />
     </>

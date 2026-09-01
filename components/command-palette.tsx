@@ -10,6 +10,7 @@ type CommandItem = {
   id: string;
   label: string;
   hint: string;
+  href?: string;
 };
 
 const OPEN_EVENT = "porto:open-command-palette";
@@ -34,6 +35,7 @@ export function CommandPalette() {
       id: n.id,
       label: `Buka ${n.label}`,
       hint: "section",
+      href: n.href,
     }));
     const cv: CommandItem = { key: "cv", type: "cv", id: "/cv", label: "Open CV", hint: "halaman" };
     const projectItems: CommandItem[] = projects.map((p) => ({
@@ -75,7 +77,11 @@ export function CommandPalette() {
       if (item.type === "cv") {
         router.push(item.id);
       } else if (item.type === "section") {
-        scrollToId(item.id);
+        if (item.href) {
+          router.push(item.href);
+        } else {
+          scrollToId(item.id);
+        }
       } else {
         scrollToId("project");
       }
@@ -158,14 +164,14 @@ export function CommandPalette() {
 
   return (
     <div
-      className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm"
+      className="fixed inset-0 z-[60] bg-fg/20 backdrop-blur-sm"
       onClick={close}
     >
       <div
         role="dialog"
         aria-modal="true"
         aria-label="Command palette"
-        className="mx-auto mt-24 w-[calc(100%-2rem)] max-w-md border border-border bg-bg shadow-2xl sm:mt-32"
+        className="mx-auto mt-24 w-[calc(100%-2rem)] max-w-md rounded-[var(--radius-clay-lg)] border border-border bg-bg-card shadow-[var(--shadow-card-hover)] sm:mt-32 overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center gap-3 border-b border-border px-4 py-3">
