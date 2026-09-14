@@ -322,8 +322,8 @@ const ABOUT_FALLBACK: About = {
   title: "Tentang Saya",
   body: [
     "Mahasiswa Sistem Informasi di Universitas Pamulang, Kampus Serang. Ketertarikan utama saya di pengembangan software, dengan minat yang terus tumbuh di networking dan infrastructure.",
-    "Saya lebih banyak memahami teknologi dengan membangun langsung — dari aplikasi web, pengelolaan database dan API, konfigurasi jaringan, sampai menjalankan aplikasi di server dan homelab.",
-    "Tidak semua hal sudah saya kuasai, beberapa masih dalam eksplorasi. Yang saya kejar bukan hafal semua tools, tapi paham bagaimana sebuah sistem berjalan menyeluruh — dan setiap project jadi tempat untuk menguji pemahaman itu.",
+    "Saya lebih banyak memahami teknologi dengan membangun langsung, dari aplikasi web, pengelolaan database dan API, konfigurasi jaringan, sampai menjalankan aplikasi di server dan homelab.",
+    "Tidak semua hal sudah saya kuasai, beberapa masih dalam eksplorasi. Yang saya kejar bukan hafal semua tools, tapi paham bagaimana sebuah sistem berjalan menyeluruh, dan setiap project jadi tempat untuk menguji pemahaman itu.",
   ],
 };
 

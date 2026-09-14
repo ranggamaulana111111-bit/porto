@@ -71,6 +71,17 @@ export function CommandPalette() {
     el.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
   }, []);
 
+  const goTo = useCallback(
+    (id: string) => {
+      if (document.getElementById(id)) {
+        scrollToId(id);
+      } else {
+        router.push(`/#${id}`);
+      }
+    },
+    [router, scrollToId]
+  );
+
   const runItem = useCallback(
     (item: CommandItem) => {
       setOpen(false);
@@ -80,13 +91,13 @@ export function CommandPalette() {
         if (item.href) {
           router.push(item.href);
         } else {
-          scrollToId(item.id);
+          goTo(item.id);
         }
       } else {
-        scrollToId("project");
+        goTo("projects");
       }
     },
-    [router, scrollToId]
+    [router, goTo]
   );
 
   const close = useCallback(() => {

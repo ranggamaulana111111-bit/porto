@@ -22,7 +22,7 @@ export function TechnicalStack() {
             Teknologi yang saya pakai.
           </h2>
           <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-fg-secondary">
-            Hanya yang memang sudah saya pakai di project — bukan daftar populer.
+            Hanya yang memang sudah saya pakai di project, bukan daftar populer.
           </p>
         </Reveal>
 

@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = posts[index];
   if (!post) return {};
   return {
-    title: `${post.title} — ${profile.shortName}`,
+    title: `${post.title} · ${profile.shortName}`,
     description: post.excerpt,
   };
 }
@@ -39,7 +39,7 @@ export default async function CatatanDetailPage({ params }: Props) {
     <main className="min-h-screen px-6 py-16">
       <div className="mx-auto max-w-2xl">
         <Link
-          href="/#catatan"
+          href="/workspace#catatan"
           className="mb-8 inline-flex font-mono text-sm text-fg-muted transition-colors hover:text-fg"
         >
           ← Kembali ke catatan
@@ -73,7 +73,7 @@ export default async function CatatanDetailPage({ params }: Props) {
 
         <div className="mt-16 border-t border-border pt-8">
           <Link
-            href="/#catatan"
+            href="/workspace#catatan"
             className="font-mono text-sm text-fg-muted transition-colors hover:text-fg"
           >
             ← Semua catatan

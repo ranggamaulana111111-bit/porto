@@ -158,7 +158,7 @@ export function MariBerbincang() {
                         Pesan terkirim!
                       </p>
                       <p className="mt-1 text-sm text-fg-muted">
-                        Terima kasih — saya akan segera membalas.
+                        Terima kasih, saya akan segera membalas.
                       </p>
                     </div>
                   </motion.div>

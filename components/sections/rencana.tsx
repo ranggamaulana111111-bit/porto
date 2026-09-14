@@ -11,7 +11,7 @@ export function Rencana() {
         <SectionHeading
           index="07"
           title="Yang ingin saya coba berikutnya."
-          description="Bukan roadmap perusahaan — cuma daftar hal yang mengganggu kepala saya dan ingin saya wujudkan saat waktunya pas."
+          description="Bukan roadmap perusahaan, cuma daftar hal yang mengganggu kepala saya dan ingin saya wujudkan saat waktunya pas."
         />
 
         <div className="space-y-8">

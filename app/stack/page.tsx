@@ -114,7 +114,7 @@ export default function StackPage() {
             Stack Teknologi
           </h1>
           <p className="mt-4 text-lg leading-relaxed text-fg-secondary">
-            Stack yang saya pakai di setiap project — dari backend sampai infrastruktur.
+            Stack yang saya pakai di setiap project, dari backend sampai infrastruktur.
           </p>
         </header>
 

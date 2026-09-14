@@ -81,7 +81,7 @@ export function Hero() {
               variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
               className="mt-3 text-sm leading-relaxed text-fg-muted max-w-xl"
             >
-              Sedang mempelajari dan mengembangkan kemampuan di bidang software development, networking, dan infrastructure — lewat project nyata, bukan teori saja.
+              Sedang mempelajari dan mengembangkan kemampuan di bidang software development, networking, dan infrastructure, lewat project nyata, bukan teori saja.
             </motion.p>
 
             <motion.div

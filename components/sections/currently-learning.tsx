@@ -14,7 +14,7 @@ export function CurrentlyLearning() {
             <div>
               <p className="font-mono text-xs uppercase tracking-wider text-fg-muted">Currently Learning</p>
               <p className="mt-2 text-sm leading-relaxed text-fg-secondary max-w-md">
-                Masih berkembang — ini yang sedang saya dalami sekarang.
+                Masih berkembang. Ini yang sedang saya dalami sekarang.
               </p>
             </div>
             <div className="flex flex-wrap gap-2 sm:justify-end max-w-[320px]">

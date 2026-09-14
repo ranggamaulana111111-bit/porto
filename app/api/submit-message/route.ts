@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
       name: body.name,
       email: body.email,
       message: body.message,
-      subject: `Pesan dari ${body.name} — rangga.dev`,
+      subject: `Pesan dari ${body.name} · rangga.dev`,
       from_name: "rangga.dev",
     }),
   });

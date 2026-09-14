@@ -15,13 +15,13 @@ const SLUG_BY_TITLE: Record<string, string> = {
 
 const NOTE_BY_TITLE: Record<string, string> = {
   "Portfolio (porto)":
-    "Live — deployed ke server sendiri lewat Cloudflare Tunnel.",
+    "Live, deployed ke server sendiri lewat Cloudflare Tunnel.",
   AlkonekPlus:
-    "Sedang dibangun — tinggal penyempurnaan riwayat tes dan ekspor hasil.",
+    "Sedang dibangun, tinggal penyempurnaan riwayat tes dan ekspor hasil.",
   RabegLab:
-    "Menunggu hardware — arsitektur dan dokumentasi sudah siap, berikutnya implementasi Proxmox.",
+    "Menunggu hardware. Arsitektur dan dokumentasi sudah siap, berikutnya implementasi Proxmox.",
   "Flutter Mobile":
-    "Eksperimen — kumpulan app Flutter dari tugas kuliah.",
+    "Eksperimen, kumpulan app Flutter dari tugas kuliah.",
 };
 
 export function YangSedangDibangun() {

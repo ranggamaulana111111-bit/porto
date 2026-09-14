@@ -108,7 +108,7 @@ export function Catatan() {
         <SectionHeading
           index="06"
           title="Lab notes."
-          description="Catatan yang saya tulis langsung setelah membangun sesuatu — apa yang gagal, apa yang berhasil, apa yang dipelajari. Bukan artikel yang dirapikan; ini jurnal kerja."
+          description="Catatan yang saya tulis langsung setelah membangun sesuatu: apa yang gagal, apa yang berhasil, apa yang dipelajari. Bukan artikel yang dirapikan; ini jurnal kerja."
         />
 
         <CategoryFilter

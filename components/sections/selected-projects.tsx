@@ -21,7 +21,7 @@ export function SelectedProjects() {
             Project sebagai bukti belajar.
           </h2>
           <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-fg-secondary">
-            Bukan daftar stack — setiap project adalah sistem yang saya bangun dan pelajari dari awal sampai bisa dipakai.
+            Bukan daftar stack. Setiap project adalah sistem yang saya bangun dan pelajari dari awal sampai bisa dipakai.
           </p>
         </Reveal>
 

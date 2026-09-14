@@ -16,13 +16,13 @@ export function Education() {
             <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
               <div>
                 <h3 className="font-display text-lg font-semibold">Universitas Pamulang</h3>
-                <p className="mt-1 text-sm text-fg-secondary">Program Studi Sistem Informasi — Kampus Serang</p>
+                <p className="mt-1 text-sm text-fg-secondary">Program Studi Sistem Informasi, Kampus Serang</p>
                 <p className="mt-3 max-w-xl text-sm leading-relaxed text-fg-muted">
                   Masuk 2024. Fokus belajar software development, database, dan bagaimana sistem bekerja secara menyeluruh.
                 </p>
               </div>
               <span className="shrink-0 rounded-[var(--radius-pill)] bg-bg-inset border border-border-subtle px-3 py-1.5 font-mono text-xs text-fg-muted">
-                2024 — Sekarang
+                2024–Sekarang
               </span>
             </div>
           </ClayCard>
@@ -38,7 +38,7 @@ export function Education() {
                 </p>
               </div>
               <span className="shrink-0 rounded-[var(--radius-pill)] bg-bg-inset border border-border-subtle px-3 py-1.5 font-mono text-xs text-fg-muted">
-                2021 — 2024
+                2021–2024
               </span>
             </div>
           </ClayCard>

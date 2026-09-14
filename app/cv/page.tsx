@@ -4,7 +4,7 @@ import { profile, projects, journey, techStackCategories } from "@/lib/content";
 import { CvPrintButton } from "@/components/cv-print-button";
 
 export const metadata: Metadata = {
-  title: "CV — rangga.mrw",
+  title: "CV · rangga.mrw",
   description: "Ringkasan eksekutif profil, pengalaman, dan kapabilitas Rangga.",
 };
 
@@ -95,7 +95,7 @@ export default function CvPage() {
                       <span className="font-medium text-fg">{t.name}</span>
                       <span className="text-xs text-fg-muted">{t.role}</span>
                       <span className="text-xs text-fg-faint">
-                        — {t.projects.join(" · ")}
+                        {t.projects.join(" · ")}
                       </span>
                     </li>
                   ))}

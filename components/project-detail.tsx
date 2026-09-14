@@ -56,7 +56,7 @@ export function ProjectDetail({ project }: { project: Project }) {
       <div className="mx-auto max-w-3xl">
         <Reveal>
           <Link
-            href="/#project"
+            href="/#projects"
             className="inline-flex items-center gap-1.5 font-mono text-xs text-fg-muted transition-colors hover:text-fg"
           >
             ← Kembali ke project
@@ -132,7 +132,7 @@ export function ProjectDetail({ project }: { project: Project }) {
                 ))}
               </div>
               <p className="mt-4 border-t border-border pt-3 font-mono text-[10px] text-fg-faint sm:mt-5 sm:pt-4 sm:text-[11px]">
-                Alur persetujuan surat — state machine berbasis permission
+                Alur persetujuan surat, state machine berbasis permission
               </p>
             </div>
           </Reveal>

@@ -13,7 +13,7 @@ export function Experience() {
             Perjalanan belajar.
           </h2>
           <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-fg-secondary">
-            Belum dalam format corporate — ini project sebagai pengalaman teknis, dari pertama kenal kode sampai sistem yang dipakai orang lain.
+            Belum dalam format corporate. Ini project sebagai pengalaman teknis, dari pertama kenal kode sampai sistem yang dipakai orang lain.
           </p>
         </Reveal>
 
