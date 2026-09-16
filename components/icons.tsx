@@ -48,3 +48,9 @@ export const WhatsApp = (p: IconProps) => (
     <path d="M9 9c0 3 2 5 5 5 .8 0 1.4-.2 2-.5" />
   </svg>
 );
+
+export const MessageCircle = (p: IconProps) => (
+  <svg {...base(p)}>
+    <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+  </svg>
+);

@@ -68,3 +68,10 @@ Last audited Aug 2026. Fixed items are removed — the list below is what's left
 
 ### Content (needs owner input)
 - `lib/content.ts` `todayStatus`, `posts`, `plans`, and project years reference 2025 — now stale (site is live in 2026). Refresh copy/dates when the owner updates their status.
+
+<!-- antislop:start -->
+## antislop
+For UI, copy, people, mobile layout, or code comments work, load the antislop skill for the task:
+- Core filter, always on: `antislop`
+Before starting, ask the user when antislop applies: during the work, or after it is done.
+<!-- antislop:end -->

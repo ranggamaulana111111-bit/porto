@@ -10,6 +10,7 @@ import { Education } from "@/components/sections/education";
 import { TechnicalStack } from "@/components/sections/technical-stack";
 import { CurrentlyLearning } from "@/components/sections/currently-learning";
 import { WorkspaceTeaser } from "@/components/sections/workspace-teaser";
+import { AnonymousMessages } from "@/components/sections/anonymous-messages";
 import { Contact } from "@/components/sections/contact";
 
 export default function Home() {
@@ -27,6 +28,7 @@ export default function Home() {
         <TechnicalStack />
         <CurrentlyLearning />
         <WorkspaceTeaser />
+        <AnonymousMessages />
         <Contact />
       </main>
       <Footer />

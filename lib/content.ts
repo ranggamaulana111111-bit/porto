@@ -334,16 +334,18 @@ const FALLBACK_NAV: NavItem[] = [
   { id: "experience", label: "Experience" },
   { id: "skills", label: "Skills" },
   { id: "workspace", label: "Workspace", href: "/workspace" },
+  { id: "messages", label: "Pesan", href: "/messages" },
   { id: "contact", label: "Contact" },
 ];
 
 const _rawNav = (content.navItems as unknown as NavItem[]) ?? [];
-const _hasNewIds = _rawNav.some((n) => ["home", "about", "projects", "experience", "skills", "contact", "workspace"].includes(n.id));
+const _hasNewIds = _rawNav.some((n) => ["home", "about", "projects", "experience", "skills", "contact", "workspace", "messages"].includes(n.id));
 const RAW_NAV_ITEMS: NavItem[] = _hasNewIds ? _rawNav : FALLBACK_NAV;
 
 const NAV_ROUTE_FALLBACK: Record<string, string> = {
   stack: "/stack",
   workspace: "/workspace",
+  messages: "/messages",
 };
 
 export const navItems: NavItem[] = RAW_NAV_ITEMS.map((n) => ({

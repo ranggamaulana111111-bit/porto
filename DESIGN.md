@@ -102,3 +102,7 @@ When designing or adding UI, check against these before shipping:
 - [ ] Does every number/claim on screen trace to real work or real data?
 - [ ] Is it verified on a phone-width viewport (R-03) and with `prefers-reduced-motion` (R-19)?
 - [ ] If it needed new tokens/fonts/components, is the reason written here?
+
+## Documented Exception (R-10 glassmorphism)
+
+Minimal `backdrop-blur-sm` (`bg-fg/20 backdrop-blur-sm`) is allowed **only** on modal/dialog overlays (command palette at `components/command-palette.tsx`, quick-view at `components/quick-view.tsx`) to give the dialog depth against the page behind it. Not used on cards, CTAs, nav, or any decorative surface. Chosen and documented 2026-09-14 in the antislop audit (audit finding #10).
