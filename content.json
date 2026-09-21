@@ -7,6 +7,28 @@
     "timezone": "Asia/Jakarta",
     "email": "ranggamaulana111111@gmail.com",
     "status": "Online dari server sendiri via Cloudflare Tunnel",
+    "snapshot": [
+      {
+        "label": "Lokasi",
+        "value": "Serang, Banten"
+      },
+      {
+        "label": "Pendidikan",
+        "value": "Sistem Informasi"
+      },
+      {
+        "label": "Fokus",
+        "value": "Software · Jaringan · Infrastruktur"
+      },
+      {
+        "label": "Saat ini",
+        "value": "Mahasiswa"
+      },
+      {
+        "label": "Terbuka untuk",
+        "value": "Magang · Part-time · Freelance"
+      }
+    ],
     "socials": {
       "github": "https://github.com/ranggamaulana111111-bit",
       "linkedin": "https://www.linkedin.com/in/rangga-maulana-ramadhan-wiharto-022077337/",
@@ -16,41 +38,41 @@
   },
   "navItems": [
     {
-      "id": "hari-ini",
-      "label": "Hari ini"
+      "id": "home",
+      "label": "Beranda"
     },
     {
-      "id": "perjalanan",
-      "label": "Perjalanan"
+      "id": "about",
+      "label": "Tentang"
     },
     {
-      "id": "cara-kerja",
-      "label": "Cara kerja"
-    },
-    {
-      "id": "stack",
-      "label": "Stack"
-    },
-    {
-      "id": "project",
+      "id": "projects",
       "label": "Project"
     },
     {
-      "id": "catatan",
-      "label": "Catatan"
+      "id": "experience",
+      "label": "Perjalanan"
     },
     {
-      "id": "rencana",
-      "label": "Rencana"
+      "id": "skills",
+      "label": "Stack"
     },
     {
-      "id": "berbincang",
-      "label": "Berbincang"
+      "id": "workspace",
+      "label": "Workspace",
+      "href": "/workspace"
+    },
+    {
+      "id": "messages",
+      "label": "Pesan",
+      "href": "/messages"
+    },
+    {
+      "id": "contact",
+      "label": "Kontak"
     }
   ],
   "todayStatus": {
-    "greeting": "Selamat datang di meja kerja saya.",
-    "intro": "Ini bukan portfolio. Ini ruang kerja saya, tempat saya belajar, membangun, dan sesekali gagal. Silakan lihat-lihat.",
     "focus": "Yang sedang saya fokuskan hari ini:",
     "focusItems": [
       "Deploy portfolio ke server sendiri via Cloudflare Tunnel",

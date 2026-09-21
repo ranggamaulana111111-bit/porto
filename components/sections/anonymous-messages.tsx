@@ -42,7 +42,6 @@ export function AnonymousMessages() {
     <section id="messages" className="px-6 py-16 sm:py-20">
       <div className="mx-auto max-w-3xl">
         <SectionHeading
-          index="12"
           title="Pesan Anonim"
           description="Kirim pesan dan langsung tampil tanpa menunggu. Cerita, curhat, motivasi, atau sekadar halo. Kalau ada lagu yang cocok, langsung cari."
         />
@@ -60,7 +59,7 @@ export function AnonymousMessages() {
               </p>
               <Link
                 href="/messages"
-                className="mt-4 inline-flex items-center gap-2 rounded-[var(--radius-pill)] bg-accent px-6 py-2.5 text-sm font-medium text-white shadow-[var(--shadow-button)] hover:bg-accent-strong transition-colors"
+                className="mt-4 inline-flex items-center gap-2 rounded-[var(--radius-pill)] bg-accent px-6 min-h-11 py-2.5 text-sm font-medium text-white shadow-[var(--shadow-button)] hover:bg-accent-strong transition-colors"
               >
                 Kirim Pesan <ArrowUpRight size={14} />
               </Link>

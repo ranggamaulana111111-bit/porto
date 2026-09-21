@@ -66,6 +66,7 @@ export interface Profile {
   timezone: string;
   email: string;
   status: string;
+  snapshot: { label: string; value: string }[];
   socials: {
     github: string;
     linkedin: string;
@@ -87,8 +88,6 @@ export interface ListeningPlaylist {
 }
 
 export interface TodayStatus {
-  greeting: string;
-  intro: string;
   focus: string;
   focusItems: string[];
   techStack: string[];
@@ -328,14 +327,14 @@ const ABOUT_FALLBACK: About = {
 };
 
 const FALLBACK_NAV: NavItem[] = [
-  { id: "home", label: "Home" },
-  { id: "about", label: "About" },
-  { id: "projects", label: "Projects" },
-  { id: "experience", label: "Experience" },
-  { id: "skills", label: "Skills" },
+  { id: "home", label: "Beranda" },
+  { id: "about", label: "Tentang" },
+  { id: "projects", label: "Project" },
+  { id: "experience", label: "Perjalanan" },
+  { id: "skills", label: "Stack" },
   { id: "workspace", label: "Workspace", href: "/workspace" },
   { id: "messages", label: "Pesan", href: "/messages" },
-  { id: "contact", label: "Contact" },
+  { id: "contact", label: "Kontak" },
 ];
 
 const _rawNav = (content.navItems as unknown as NavItem[]) ?? [];
@@ -359,9 +358,6 @@ export const about: About = {
 };
 export const todayStatus: TodayStatus = {
   ...content.todayStatus,
-  intro:
-    content.todayStatus.intro ??
-    "Halo, saya Rangga. Mahasiswa Sistem Informasi yang sedang belajar membangun software dan mengurus jaringan. Silakan lihat-lihat.",
 };
 export const journey = content.journey;
 export const howIWork = content.howIWork;

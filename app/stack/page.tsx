@@ -10,9 +10,9 @@ function TechTag({ name, role, version }: { name: string; role: string; version?
   return (
     <div className="flex items-center gap-1.5 border border-border bg-bg-card px-2 py-1 sm:gap-2 sm:px-3">
       <span className="font-mono text-[11px] sm:text-xs text-fg">{name}</span>
-      {version && <span className="text-[9px] sm:text-[10px] text-fg-faint">v{version}</span>}
-      <span className="text-[9px] sm:text-[10px] text-fg-muted">·</span>
-      <span className="text-[9px] sm:text-[10px] text-fg-muted hidden sm:inline">{role}</span>
+      {version && <span className="text-[10px] sm:text-[11px] text-fg-faint">v{version}</span>}
+      <span className="text-[10px] sm:text-[11px] text-fg-muted">·</span>
+      <span className="text-[10px] sm:text-[11px] text-fg-muted hidden sm:inline">{role}</span>
     </div>
   );
 }
@@ -67,7 +67,7 @@ function StackDiagram() {
   return (
     <div className="border border-border bg-bg-card p-4 sm:p-6">
       <p className="mb-4 font-mono text-[11px] uppercase tracking-wider text-fg-muted">
-        Architecture Overview
+        Gambaran Arsitektur
       </p>
       <pre className="overflow-x-auto font-mono text-[10px] leading-relaxed text-fg-secondary sm:text-xs">
 {`                    SOFTWARE
@@ -163,7 +163,7 @@ export default function StackPage() {
         </div>
 
         <div className="mt-12 border-t border-border pt-6 text-xs text-fg-faint">
-          Diperbarui {new Date().getFullYear()} · rangga.dev
+          Diperbarui {new Date().getFullYear()} · ranggamrw.my.id
         </div>
       </div>
     </main>

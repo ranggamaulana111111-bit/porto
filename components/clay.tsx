@@ -26,7 +26,7 @@ export function ClayButton({
 }: ClayButtonProps) {
   const base =
     "inline-flex items-center justify-center gap-2 font-medium transition-colors duration-200 rounded-[var(--radius-pill)] focus-visible:outline-2 focus-visible:outline-accent-strong focus-visible:outline-offset-2 disabled:opacity-50 disabled:cursor-not-allowed";
-  const sizes = { sm: "px-4 py-2 text-sm", md: "px-6 py-2.5 text-sm", lg: "px-8 py-3.5 text-base" } as const;
+  const sizes = { sm: "px-4 min-h-11 py-2 text-sm", md: "px-6 min-h-11 py-2.5 text-sm", lg: "px-8 min-h-12 py-3.5 text-base" } as const;
   const variants = {
     primary: "bg-accent text-white border border-accent-strong/10 shadow-[var(--shadow-button)] hover:bg-accent-strong",
     secondary: "bg-bg-card text-fg border border-border shadow-[var(--shadow-button)] hover:bg-bg-warm",
@@ -97,7 +97,7 @@ export function ClayPillLink({
     ghost: "bg-transparent text-fg-secondary hover:text-fg",
   } as const;
   return (
-    <a href={href} className={`${base} ${variants[variant]} ${className}`} {...props}>
+    <a href={href} className={`${base} min-h-11 ${variants[variant]} ${className}`} {...props}>
       {children}
     </a>
   );

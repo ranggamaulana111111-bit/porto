@@ -16,7 +16,7 @@ export function CaraBekerja() {
     <section id="cara-kerja" className="px-6 py-24">
       <div className="mx-auto max-w-3xl">
         <SectionHeading
-          index="03"
+          index="02"
           title="Cara saya bekerja."
           description="Bukan framework, bukan metodologi. Ini cara saya berpikir saat membangun sesuatu."
         />

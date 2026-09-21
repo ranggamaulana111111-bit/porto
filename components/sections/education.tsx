@@ -8,7 +8,7 @@ export function Education() {
     <section id="education" className="px-6 py-16 sm:py-20">
       <div className="mx-auto max-w-3xl">
         <Reveal>
-          <p className="font-mono text-xs uppercase tracking-wider text-fg-muted">Education</p>
+          <p className="font-mono text-xs uppercase tracking-wider text-fg-muted">Pendidikan</p>
           <h2 className="mt-3 font-display text-3xl font-bold tracking-tight sm:text-4xl">Pendidikan.</h2>
         </Reveal>
         <Reveal delay={0.06}>

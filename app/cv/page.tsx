@@ -5,7 +5,7 @@ import { CvPrintButton } from "@/components/cv-print-button";
 
 export const metadata: Metadata = {
   title: "CV · rangga.mrw",
-  description: "Ringkasan eksekutif profil, pengalaman, dan kapabilitas Rangga.",
+  description: "Ringkasan profil, pengalaman, dan kapabilitas Rangga.",
 };
 
 export default function CvPage() {
@@ -131,7 +131,7 @@ export default function CvPage() {
         </section>
 
         <div className="mt-12 border-t border-border pt-6 text-xs text-fg-faint">
-          Diperbarui {new Date().getFullYear()} · rangga.dev
+          Diperbarui {new Date().getFullYear()} · ranggamrw.my.id
         </div>
       </div>
     </main>

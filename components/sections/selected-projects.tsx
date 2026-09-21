@@ -16,7 +16,7 @@ export function SelectedProjects() {
     <section id="projects" className="px-6 py-16 sm:py-20">
       <div className="mx-auto max-w-3xl">
         <Reveal>
-          <p className="font-mono text-xs uppercase tracking-wider text-fg-muted">Selected Projects</p>
+          <p className="font-mono text-xs uppercase tracking-wider text-fg-muted">Project Pilihan</p>
           <h2 className="mt-3 font-display text-3xl font-bold tracking-tight sm:text-4xl">
             Project sebagai bukti belajar.
           </h2>
@@ -85,18 +85,6 @@ export function SelectedProjects() {
 
         <Reveal delay={0.1}>
           <div className="mt-8 text-center">
-            <a
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
-                const el = document.querySelector('[aria-label="Cari project"]') as HTMLElement | null;
-                el?.focus();
-              }}
-              className="font-mono text-xs text-fg-muted hover:text-fg transition-colors hidden"
-            >
-              Lihat semua project
-            </a>
             <Link
               href="/#projects"
               className="inline-flex items-center gap-2 text-sm text-fg-muted hover:text-fg transition-colors"

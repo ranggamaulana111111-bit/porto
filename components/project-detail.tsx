@@ -85,7 +85,7 @@ export function ProjectDetail({ project }: { project: Project }) {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 text-sm text-accent transition-colors hover:text-fg"
               >
-                Live Project
+                Kunjungi Live
                 <ArrowUpRight size={14} />
               </a>
             )}

@@ -7,16 +7,8 @@ import { navItems, profile } from "@/lib/content";
 import { openCommandPalette } from "@/components/command-palette";
 
 export function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("home");
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     const sections = navItems
@@ -58,9 +50,7 @@ export function Navbar() {
         className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 sm:px-6 sm:pt-6"
       >
         <nav
-          className={`flex w-full max-w-3xl items-center justify-between gap-2 rounded-[var(--radius-pill)] border bg-bg-card px-2 py-2 transition-all duration-300 ${
-            scrolled ? "shadow-[var(--shadow-card)]" : "shadow-[var(--shadow-card)]"
-          }`}
+          className="flex w-full max-w-4xl items-center justify-between gap-2 rounded-[var(--radius-pill)] border bg-bg-card px-2 py-2 shadow-[var(--shadow-card)] transition-all duration-300"
         >
           <a href="#home" className="ml-2 font-display text-sm font-semibold tracking-tight text-fg sm:text-base">
             {profile.shortName}
@@ -72,9 +62,9 @@ export function Navbar() {
                 {item.href ? (
                   <Link
                     href={item.href}
-                    className={`relative rounded-[var(--radius-pill)] px-3 py-1.5 text-sm transition-colors ${
+                    className={`relative rounded-[var(--radius-pill)] px-2.5 py-1.5 text-sm transition-colors ${
                       item.id === "workspace"
-                        ? "bg-accent-soft text-accent-strong border border-accent-muted/40 hover:bg-accent-muted/30"
+                        ? "bg-accent-soft text-accent-strong border border-accent/20 hover:bg-accent/10"
                         : "text-fg-muted hover:text-fg hover:bg-bg-inset"
                     }`}
                   >
@@ -84,7 +74,7 @@ export function Navbar() {
                   <a
                     href={`#${item.id}`}
                     aria-current={active === item.id ? "true" : undefined}
-                    className={`relative rounded-[var(--radius-pill)] px-3 py-1.5 text-sm transition-colors ${
+                    className={`relative rounded-[var(--radius-pill)] px-2.5 py-1.5 text-sm transition-colors ${
                       active === item.id ? "bg-fg text-bg" : "text-fg-muted hover:text-fg hover:bg-bg-inset"
                     }`}
                   >
@@ -100,14 +90,14 @@ export function Navbar() {
               type="button"
               onClick={openCommandPalette}
               aria-label="Buka command palette (Ctrl K)"
-              className="rounded-[var(--radius-pill)] border border-border bg-bg-inset px-2.5 py-1.5 font-mono text-[11px] text-fg-muted transition-colors hover:border-accent/30 hover:text-accent-strong"
+              className="inline-flex min-h-11 items-center rounded-[var(--radius-pill)] border border-border bg-bg-inset px-3 font-mono text-[11px] text-fg-muted transition-colors hover:border-accent/30 hover:text-accent-strong"
             >
               ⌘K
             </button>
 
             <a
               href="#contact"
-              className="hidden rounded-[var(--radius-pill)] bg-accent px-4 py-1.5 text-sm font-medium text-white shadow-[var(--shadow-button)] hover:bg-accent-strong transition-colors lg:inline-flex"
+              className="hidden rounded-[var(--radius-pill)] bg-accent px-3.5 py-1.5 text-sm font-medium text-white shadow-[var(--shadow-button)] hover:bg-accent-strong transition-colors lg:inline-flex"
             >
               Hubungi
             </a>
@@ -117,7 +107,7 @@ export function Navbar() {
               aria-expanded={open}
               aria-controls="mobile-menu"
               onClick={() => setOpen((o) => !o)}
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-bg-card lg:hidden"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-border bg-bg-card lg:hidden"
             >
               <span className="flex flex-col gap-1">
                 <motion.span animate={open ? { rotate: 45, y: 4 } : { rotate: 0, y: 0 }} className="block h-px w-4 bg-fg" />
@@ -154,7 +144,7 @@ export function Navbar() {
                     <Link
                       href={item.href}
                       onClick={() => setOpen(false)}
-                      className="block rounded-[var(--radius-pill)] bg-accent-soft px-4 py-2.5 text-sm font-medium text-accent-strong border border-accent-muted/30"
+                      className="block rounded-[var(--radius-pill)] bg-accent-soft px-4 py-2.5 text-sm font-medium text-accent-strong border border-accent/20"
                     >
                       {item.label} →
                     </Link>

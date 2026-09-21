@@ -11,8 +11,8 @@ export function Contact() {
     <section id="contact" className="px-6 py-16 sm:py-20">
       <div className="mx-auto max-w-3xl">
         <Reveal>
-          <p className="font-mono text-xs uppercase tracking-wider text-fg-muted">Contact</p>
-          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight sm:text-4xl">Let&apos;s connect.</h2>
+          <p className="font-mono text-xs uppercase tracking-wider text-fg-muted">Kontak</p>
+          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight sm:text-4xl">Mari terhubung.</h2>
           <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-fg-secondary">
             Terbuka untuk kesempatan belajar, internship, part-time, freelance project, dan kolaborasi teknis.
           </p>

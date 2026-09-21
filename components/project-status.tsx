@@ -1,9 +1,9 @@
 const labels: Record<string, string> = {
-  production: "Production",
-  building: "Building",
-  planned: "Planned",
-  completed: "Completed",
-  academic: "Academic",
+  production: "Produksi",
+  building: "Dibangun",
+  planned: "Rencana",
+  completed: "Selesai",
+  academic: "Tugas Kuliah",
 };
 
 export function ProjectStatus({ status }: { status?: string }) {

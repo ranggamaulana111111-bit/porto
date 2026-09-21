@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { JetBrains_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import { profile } from "@/lib/content";
-import { RouteLoader } from "@/components/route-loader";
 import { CommandPalette } from "@/components/command-palette";
 import "./globals.css";
 
@@ -147,7 +146,6 @@ export default function RootLayout({
         />
         {children}
         <CommandPalette />
-        <RouteLoader />
       </body>
     </html>
   );

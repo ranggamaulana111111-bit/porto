@@ -74,7 +74,7 @@ export function YangSedangDibangun() {
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1.5 text-xs text-accent transition-colors hover:text-fg"
                       >
-                        {project?.live ? "Live Project" : "Lihat di GitHub"}
+                        {project?.live ? "Kunjungi Live" : "Lihat di GitHub"}
                         <ArrowUpRight size={12} />
                       </a>
                     )}

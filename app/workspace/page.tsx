@@ -24,7 +24,7 @@ export default function WorkspacePage() {
         </div>
 
         <header className="mb-10">
-          <p className="font-mono text-xs uppercase tracking-wider text-fg-muted">Digital Workspace</p>
+          <p className="font-mono text-xs uppercase tracking-wider text-fg-muted">Workspace Digital</p>
           <h1 className="mt-3 font-display text-4xl font-bold tracking-tight">Ruang kerja & lab.</h1>
           <p className="mt-4 text-lg leading-relaxed text-fg-secondary">
             Ini bukan portfolio. Ini ruang kerja saya, tempat saya belajar, membangun, dan sesekali gagal.
@@ -68,7 +68,7 @@ export default function WorkspacePage() {
       <Rencana />
 
       <div className="mx-auto max-w-3xl px-6">
-        <div className="mt-8 border-t border-border pt-6 text-xs text-fg-faint">Diperbarui {new Date().getFullYear()} · rangga.dev</div>
+        <div className="mt-8 border-t border-border pt-6 text-xs text-fg-faint">Diperbarui {new Date().getFullYear()} · ranggamrw.my.id</div>
       </div>
     </main>
   );

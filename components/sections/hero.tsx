@@ -90,24 +90,24 @@ export function Hero() {
             >
               <Link
                 href="/cv"
-                className="inline-flex items-center justify-center gap-2 rounded-[var(--radius-pill)] bg-accent px-6 py-2.5 text-sm font-medium text-white shadow-[var(--shadow-button)] border border-accent-strong/10 hover:bg-accent-strong transition-colors"
+                className="inline-flex items-center justify-center gap-2 rounded-[var(--radius-pill)] bg-accent px-6 py-3 text-sm font-medium text-white shadow-[var(--shadow-button)] border border-accent-strong/10 hover:bg-accent-strong transition-colors"
               >
-                View CV
+                Lihat CV
               </Link>
               <a
                 href="#projects"
-                className="inline-flex items-center justify-center gap-2 rounded-[var(--radius-pill)] bg-bg-card px-6 py-2.5 text-sm font-medium text-fg border border-border shadow-[var(--shadow-button)] hover:shadow-[var(--shadow-card)] transition-all"
+                className="inline-flex items-center justify-center gap-2 rounded-[var(--radius-pill)] bg-bg-card px-6 py-3 text-sm font-medium text-fg border border-border shadow-[var(--shadow-button)] hover:shadow-[var(--shadow-card)] transition-all"
               >
-                View Projects
+                Lihat Project
               </a>
               <Link
                 href="/workspace"
-                className="inline-flex items-center justify-center gap-2 rounded-[var(--radius-pill)] bg-bg-card px-6 py-2.5 text-sm font-medium text-fg border border-border shadow-[var(--shadow-button)] hover:shadow-[var(--shadow-card)] transition-all"
+                className="inline-flex items-center justify-center gap-2 rounded-[var(--radius-pill)] bg-bg-card px-6 py-3 text-sm font-medium text-fg border border-border shadow-[var(--shadow-button)] hover:shadow-[var(--shadow-card)] transition-all"
               >
-                Explore Workspace →
+                Jelajahi Workspace →
               </Link>
               <div className="w-[280px] rounded-[var(--radius-clay)] border border-border bg-bg-card shadow-[var(--shadow-card)] p-4">
-                <p className="font-mono text-[10px] uppercase tracking-wider text-fg-muted">Mendengarkan</p>
+                <p className="font-mono text-xs uppercase tracking-wider text-fg-muted">Mendengarkan</p>
                 {nowPlaying?.isPlaying && (
                   <button
                     type="button"
@@ -121,12 +121,12 @@ export function Hero() {
                       <span className="block truncate text-xs font-medium text-fg group-hover:text-accent-strong">{nowPlaying.title}</span>
                       <span className="block truncate text-[11px] text-fg-muted">{nowPlaying.artist}</span>
                     </div>
-                    <span className="shrink-0 font-mono text-[9px] uppercase tracking-wider text-fg-faint group-hover:text-accent-strong">
+                    <span className="shrink-0 font-mono text-[11px] uppercase tracking-wider text-fg-faint group-hover:text-accent-strong">
                       {showTrack ? "playlist" : "putar"}
                     </span>
                   </button>
                 )}
-                <p className="mt-3 font-mono text-[10px] uppercase tracking-wider text-fg-muted">
+                <p className="mt-3 font-mono text-xs uppercase tracking-wider text-fg-muted">
                   {showTrack && nowPlaying?.isPlaying ? "Sedang diputar" : "Mix dari playlist"}
                 </p>
                 <iframe

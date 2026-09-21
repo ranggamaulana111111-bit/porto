@@ -10,8 +10,8 @@ type Category = "Belajar" | "Project" | "Catatan";
 
 const categoryColor: Record<string, string> = {
   Belajar: "text-accent",
-  Project: "text-accent",
-  Catatan: "text-accent",
+  Project: "text-accent-strong",
+  Catatan: "text-fg-muted",
 };
 
 function CategoryFilter({ activeCategory, setActiveCategory }: {
@@ -21,21 +21,21 @@ function CategoryFilter({ activeCategory, setActiveCategory }: {
   return (
     <div className="flex flex-wrap gap-2 mb-6">
       <button
-        onClick={() => setActiveCategory(null)}
-        className={`px-3 py-1.5 rounded text-xs font-mono font-medium transition-colors ${
+onClick={() => setActiveCategory(null)}
+        className={`rounded-[var(--radius-pill)] px-3 py-1.5 text-xs font-medium transition-colors ${
           !activeCategory
-            ? "bg-accent/10 text-accent"
+            ? "bg-accent/10 text-accent-strong"
             : "text-fg-muted hover:bg-bg-card/30"
         }`}
         aria-label="Tampilkan semua catatan"
       >
-        All
+        Semua
       </button>
       <button
         onClick={() => setActiveCategory("Belajar")}
         className={`px-3 py-1.5 rounded text-xs font-mono font-medium transition-colors ${
           activeCategory === "Belajar"
-            ? "bg-accent/10 text-accent"
+            ? "bg-accent/10 text-accent-strong"
             : "text-fg-muted hover:bg-bg-card/30"
         }`}
         aria-label="Filter Belajar"
@@ -46,7 +46,7 @@ function CategoryFilter({ activeCategory, setActiveCategory }: {
         onClick={() => setActiveCategory("Project")}
         className={`px-3 py-1.5 rounded text-xs font-mono font-medium transition-colors ${
           activeCategory === "Project"
-            ? "bg-accent/10 text-accent"
+            ? "bg-accent/10 text-accent-strong"
             : "text-fg-muted hover:bg-bg-card/30"
         }`}
         aria-label="Filter Project"
@@ -57,7 +57,7 @@ function CategoryFilter({ activeCategory, setActiveCategory }: {
         onClick={() => setActiveCategory("Catatan")}
         className={`px-3 py-1.5 rounded text-xs font-mono font-medium transition-colors ${
           activeCategory === "Catatan"
-            ? "bg-accent/10 text-accent"
+            ? "bg-accent/10 text-accent-strong"
             : "text-fg-muted hover:bg-bg-card/30"
         }`}
         aria-label="Filter Catatan"
@@ -106,7 +106,7 @@ export function Catatan() {
     <section id="catatan" className="px-6 py-24">
       <div className="mx-auto max-w-3xl">
         <SectionHeading
-          index="06"
+          index="03"
           title="Lab notes."
           description="Catatan yang saya tulis langsung setelah membangun sesuatu: apa yang gagal, apa yang berhasil, apa yang dipelajari. Bukan artikel yang dirapikan; ini jurnal kerja."
         />

@@ -12,7 +12,7 @@ export function CurrentlyLearning() {
         <Reveal>
           <div className="rounded-[var(--radius-clay-lg)] border border-border bg-bg-card shadow-[var(--shadow-card)] p-6 sm:p-7 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <p className="font-mono text-xs uppercase tracking-wider text-fg-muted">Currently Learning</p>
+              <p className="font-mono text-xs uppercase tracking-wider text-fg-muted">Sekarang</p>
               <p className="mt-2 text-sm leading-relaxed text-fg-secondary max-w-md">
                 Masih berkembang. Ini yang sedang saya dalami sekarang.
               </p>

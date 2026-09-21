@@ -4,12 +4,12 @@ import { Reveal } from "@/components/reveal";
 import { ClayCard, ClayTag } from "@/components/clay";
 
 const STACK = [
-  { group: "Languages", items: ["PHP", "TypeScript", "JavaScript", "Dart"] },
-  { group: "Frameworks", items: ["Laravel", "Next.js", "React", "Flutter", "Blade"] },
-  { group: "Database", items: ["MySQL", "SQLite"] },
-  { group: "Infrastructure", items: ["Linux", "Docker", "Nginx", "Proxmox", "Cloudflare"] },
-  { group: "Networking", items: ["MikroTik", "OLT", "FTTH"] },
-  { group: "Tools", items: ["Git", "GitHub", "Postman", "Playwright", "Figma"] },
+  { group: "Bahasa", items: ["PHP", "TypeScript", "JavaScript", "Dart"] },
+  { group: "Framework", items: ["Laravel", "Next.js", "React", "Flutter", "Blade"] },
+  { group: "Basis Data", items: ["MySQL", "SQLite"] },
+  { group: "Infrastruktur", items: ["Linux", "Docker", "Nginx", "Proxmox", "Cloudflare"] },
+  { group: "Jaringan", items: ["MikroTik", "OLT", "FTTH"] },
+  { group: "Alat", items: ["Git", "GitHub", "Postman", "Playwright", "Figma"] },
 ];
 
 export function TechnicalStack() {
@@ -17,7 +17,7 @@ export function TechnicalStack() {
     <section id="skills" className="px-6 py-16 sm:py-20">
       <div className="mx-auto max-w-3xl">
         <Reveal>
-          <p className="font-mono text-xs uppercase tracking-wider text-fg-muted">Technical Stack</p>
+          <p className="font-mono text-xs uppercase tracking-wider text-fg-muted">Teknologi</p>
           <h2 className="mt-3 font-display text-3xl font-bold tracking-tight sm:text-4xl">
             Teknologi yang saya pakai.
           </h2>

@@ -31,8 +31,8 @@ export default async function CatatanDetailPage({ params }: Props) {
 
   const categoryColor: Record<string, string> = {
     Belajar: "text-accent",
-    Project: "text-accent",
-    Catatan: "text-accent",
+    Project: "text-accent-strong",
+    Catatan: "text-fg-muted",
   };
 
   return (

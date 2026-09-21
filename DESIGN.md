@@ -1,4 +1,4 @@
-# Design Direction (rangga.dev)
+# Design Direction (rangga.mrw)
 
 Identity, dials, and the reasons behind every design decision on this site. The site is a "living workspace", not a classic portfolio. This document makes the design direction explicit so future changes stay consistent (R-31: every decision must have a reason, written down).
 
@@ -49,7 +49,7 @@ All values live in `app/globals.css` inside `@theme inline`. Tokens are the only
 | `--color-accent-soft` | `#fdf0e8` | Selection, soft accent fills |
 | `--color-border` | `#e2d9cf` | Card/divider borders |
 | `--color-border-subtle` | `#ede5da` | Fainter borders |
-| `--color-online` | `#2e9d7a` | Online/live status |
+| `--color-online` | `#1d7a5a` | Online/live status (digenapkan dari `#2e9d7a` agar lolos WCAG AA untuk teks normal 4.5:1 di atas `#ffffff`) |
 
 Rules:
 - Dark mode is not shipped. `color-scheme: light` is fixed (R-21: one theme, whole because it's the entire identity).
@@ -74,7 +74,7 @@ Patterns in use: uppercase `font-mono` micro-labels (`text-xs uppercase tracking
 
 - Single column, centered measure: sections cap at `max-w-3xl` (see `ClaySection`). This is a journal, not a dashboard.
 - Page breathing room: `px-6 py-20 sm:py-28` on sections; generous vertical rhythm over grids.
-- The homepage is one page of sections ordered as a day's flow: greeting, what I'm learning, projects, path, stack, current work, contact.
+- The homepage is one page of sections ordered as a day's flow: hero (nama &mu; status), snapshot profil, tentang saya, project pilihan, perjalanan, pendidikan, stack teknis, yang sedang dipelajari, CTA workspace, kontak. Ruang kerja (workspace, stack, catatan, pesan) adalah halaman terpisah.
 - `max-w-3xl` measure exists so text lines stay readable on any width.
 
 ## Motion
@@ -105,4 +105,4 @@ When designing or adding UI, check against these before shipping:
 
 ## Documented Exception (R-10 glassmorphism)
 
-Minimal `backdrop-blur-sm` (`bg-fg/20 backdrop-blur-sm`) is allowed **only** on modal/dialog overlays (command palette at `components/command-palette.tsx`, quick-view at `components/quick-view.tsx`) to give the dialog depth against the page behind it. Not used on cards, CTAs, nav, or any decorative surface. Chosen and documented 2026-09-14 in the antislop audit (audit finding #10).
+Minimal `backdrop-blur-sm` (`bg-fg/20 backdrop-blur-sm`) is allowed **only** on modal/dialog overlays (command palette at `components/command-palette.tsx`) to give the dialog depth against the page behind it. Not used on cards, CTAs, nav, or any decorative surface. Chosen and documented 2026-09-14 in the antislop audit (audit finding #10).

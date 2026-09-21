@@ -1,6 +1,6 @@
 # porto-rangga
 
-Portfolio / ruang kerja digital Rangga (**rangga.mrw**) — bukan portfolio klasik, tapi "living workspace": tempat belajar, membangun, dan menulis tentang proses jadi developer. Satu halaman, bahasa Indonesia, tema gelap. Live di **https://ranggamrw.my.id**.
+Portfolio / ruang kerja digital Rangga (**rangga.mrw**) — bukan portfolio klasik, tapi "living workspace": tempat belajar, membangun, dan menulis tentang proses jadi developer. Bahasa Indonesia, tema terang (warm clay). Live di **https://ranggamrw.my.id**.
 
 ## Tech stack
 
@@ -44,77 +44,90 @@ ID Discord di atas harus: akun **Online**, Spotify terhubung ke Discord, dan ber
 ## Struktur project
 
 ```
+content.json            # SEMUA konten site (profil, navItems, project, catatan, rencana, ...) — sumber kebenaran konten
 app/
-  layout.tsx          # font (Original Salmon + JetBrains Mono), SEO/metadata, lang="id"
-  page.tsx            # komposisi semua section
-  globals.css         # semua design token (warna, font) + @media print — satu-satunya tempat definisi
+  layout.tsx            # font (Original Salmon + JetBrains Mono), SEO/metadata, lang="id", CommandPalette
+  page.tsx              # komposisi semua section homepage
+  globals.css           # semua design token (warna, font) + @media print — satu-satunya tempat definisi
   fonts/
-    original-salmon.otf  # font display + body
-  cv/page.tsx         # halaman CV yang bisa dicetak ke PDF (print styles di globals.css)
-  api/now-playing/route.ts  # proxy Lanyard -> JSON untuk widget Spotify
+    original-salmon.otf # font display + body
+  cv/page.tsx           # halaman CV yang bisa dicetak ke PDF (print styles di globals.css)
+  workspace/page.tsx    # workspace: fokus hari ini + yang sedang dibangun + cara bekerja + catatan + rencana
+  stack/page.tsx        # daftar stack per project + diagram arsitektur
+  messages/page.tsx     # papan pesan anonim
+  project/[slug]/page.tsx  # detail project + case study
+  catatan/[slug]/page.tsx  # halaman detail catatan/blog
+  api/
+    now-playing/route.ts   # proxy Lanyard -> JSON untuk widget Spotify
+    messages/route.ts      # API kirim pesan anonim
+    youtube-search/route.ts# pencarian lagu untuk pesan anonim
+    admin/login|totp|messages/route.ts # admin pesan (OTP)
   robots.ts / sitemap.ts
 components/
-  navbar.tsx          # nav sticky + highlight section aktif + menu mobile
-  footer.tsx          # link sosial + tombol "Lihat CV"
-  reveal.tsx          # wrapper scroll-reveal (fadeUp / fadeIn)
-  section-heading.tsx # header section bernomor (index + judul + deskripsi)
-  copy-email.tsx      # tombol salin email (hindari obfuscation Cloudflare)
-  now-playing.tsx     # widget "Mendengarkan" (fetch /api/now-playing, polling 30s)
-  flow-diagram.tsx    # diagram alur/arsitektur (box + arrow)
-  framed-snippet.tsx  # frame app-window (rounded border) + img fallback ke mockup SVG
-  project-visuals.tsx # mockup SVG on-brand: peta ODP (ALKONEK), grafik Recharts (AlkonekPlus)
-  cv-print-button.tsx # tombol window.print()
-  sections/           # satu file per section, semua "use client"
-    hari-ini.tsx            # hero / status hari ini (tech stack + Mendengarkan + Suasana + CV)
+  navbar.tsx            # nav sticky + highlight section aktif + menu mobile (hamburger)
+  footer.tsx            # profil ringkas + kanal + informasi situs
+  command-palette.tsx   # cari section/catatan (⌘K) + navigasi
+  section-heading.tsx   # header section (index opsional + judul + deskripsi)
+  reveal.tsx            # wrapper scroll-reveal (fadeUp / fadeIn)
+  clay.tsx              # primitif UI: ClayCard, ClayButton, ClayBadge, ClayTag, ClaySection, ClayPillLink
+  project-detail.tsx    # komponen detail project (meta, case study, metrik, pelajaran)
+  project-status.tsx    # label status project (Produksi / Dibangun / Rencana / Selesai)
+  project-tech-map.tsx  # peta teknologi per project
+  copy-email.tsx        # tombol salin email (hindari obfuscation Cloudflare)
+  now-playing.tsx       # widget "Mendengarkan" (fetch /api/now-playing, polling 30s)
+  cv-print-button.tsx   # tombol window.print()
+  sections/             # satu file per section, semua "use client"
+    hero.tsx            # hero: nama, deskripsi, CTA, widget Mendengarkan
+    profile-snapshot.tsx# fakta profil (lokasi, pendidikan, fokus, dll)
+    tentang-saya.tsx
+    selected-projects.tsx
+    experience.tsx      # perjalanan (journey)
+    education.tsx
+    technical-stack.tsx
+    what-im-learning.tsx
+    currently-learning.tsx
+    workspace-teaser.tsx# CTA menuju /workspace
     yang-sedang-dibangun.tsx
-    perjalanan.tsx
     cara-bekerja.tsx
-    project-favorit.tsx     # tab case study + framed snippet visual proof
     catatan.tsx
     rencana.tsx
-    mari-berbincang.tsx     # kontak (CopyEmail + GitHub rapi) + form mailto
-  icons.tsx           # kumpulan SVG icon
+    anonymous-messages.tsx
+    contact.tsx
+  icons.tsx             # kumpulan SVG icon
 lib/
-  content.ts          # SEMUA konten/data site — sumber tunggal kebenaran
-  motion.ts           # variants framer-motion bersama (fadeUp, fadeIn, stagger)
+  content.ts            # tipe + fallback + export data dari content.json (sumber kebenaran kode)
+  motion.ts             # variants framer-motion bersama (fadeUp, fadeIn, stagger)
 public/
-  shots/              # screenshot project (drop-in): alkonek-odp.png, alkonekplus-chart.png, rabeglab-topology.png
-  og.png              # OpenGraph image (1200x630)
+  shots/                # screenshot project
+  og.png                # OpenGraph image (1200x630)
 ```
 
 ## Kustomisasi
 
-- **Konten** — ubah `lib/content.ts` (profil, project, catatan, rencana, status hari ini, dll). Jangan hardcode string di JSX.
-- **Visual project (framed snippet)** — tiap project punya field `visual: { caption, image? }` di `lib/content.ts`.
-  - Bila `image` diisi (path di `public/`, misal `/shots/alkonek-odp.png`), foto tersebut yang tampil di frame.
-  - Bila `image` kosong/tidak ada file, otomatis fallback ke **mockup SVG** (`components/project-visuals.tsx` / `FlowDiagram`).
-  - Cara pakai screenshot asli: taruh file di `public/shots/` dengan nama persis `alkonek-odp.png`, `alkonekplus-chart.png`, atau `rabeglab-topology.png`, lalu isi kembali field `image`-nya.
+- **Konten** — ubah `content.json` (profil, project, catatan, rencana, status hari ini, dll). Tipe/fallback ada di `lib/content.ts`. Jangan hardcode string di JSX.
 - **Warna & font** — ubah token di `app/globals.css` (kelas `bg-*`, `fg-*`, `border-*`, `accent`) dan font di `app/layout.tsx`.
-- **Section** — buat komponen di `components/sections/`, daftarkan di `app/page.tsx`, lalu tambahkan ke `navItems` di `lib/content.ts`.
+- **Section** — buat komponen di `components/sections/`, daftarkan di `app/page.tsx` atau `app/workspace/page.tsx`, lalu tambahkan ke `navItems` di `content.json`.
 
-Semua UI berbahasa Indonesia. Tema hanya gelap.
+Semua UI berbahasa Indonesia. Tema terang (warm clay), lihat `DESIGN.md`.
 
 ## Status & backlog
 
-Yang sudah dikerjakan (audit + batch A/B/C + visual proof):
+Yang sudah dikerjakan (audit + batch A/B/C + visual proof + audit kedua):
 
-- SEO: canonical & metadata mengarah ke `https://ranggamrw.my.id`; OG/Twitter card lengkap (`og:image` `og.png` 1200x630).
+- SEO: canonical & metadata mengarah ke `https://ranggamrw.my.id`; OG/Twitter card lengkap (`og:image` `og.png` 1200x630); sitemap mencakup semua halaman (`/workspace`, `/stack`, `/project/*`, `/catatan/*`).
 - Email: `CopyEmail` (salin ke clipboard) menggantikan anchor `mailto:` polos agar tidak ter-obfuscate Cloudflare.
 - Font **Original Salmon** untuk display + body (ukuran basis `115%`); JetBrains Mono tetap untuk mono.
 - Live data disederhanakan: tech stack statis + widget **Mendengarkan** (Lanyard/Spotify) + Suasana; kolom "commit terakhir" dihapus.
-- Diagram arsitektur/alur (`FlowDiagram`) untuk ALKONEK, RabegLab, Prodesa.
-- **Framed snippet visual proof**: ALKONEK menampilkan screenshot asli (`public/shots/alkonek-odp.png`, dikompres), AlkonekPlus & RabegLab memakai mockup frame (grafik Recharts & topologi homelab).
-- Halaman **CV** (`/cv`) yang bisa dicetak ke PDF + tombol di hero & footer.
-- Display GitHub rapi (`github.com/ranggamaulana`) dengan link asli tetap utuh.
+- Halaman **Workspace** (`/workspace`), **Stack** (`/stack`), **Catatan detail** (`/catatan/[slug]`) dengan feed dari `content.json`.
+- Papan **Pesan Anonim** (`/messages`) dengan API + pencarian lagu + panel admin (OTP).
+- A11y: `:focus-visible`, target sentuh minimal 44px, kontras token `online`/`accent` lolos WCAG AA.
 
 Yang masih terbuka:
 
-- Halaman detail untuk catatan (blog) — baris masih non-link.
-- `loading.tsx` (tidak krusial — halaman statis tanpa fetch async).
-- Foto/avatar asli di hero (`hari-ini`).
+- Foto/avatar asli di hero — butuh foto nyata dari pemilik.
 - Backend asli untuk form kontak (saat ini `mailto:` + salin email).
 - Penyegaran konten bertahun 2025 (beberapa `year`/`posts`/`plans` masih 2025).
-- Rename akun GitHub ke `ranggamaulana` agar URL cocok dengan display (opsional, berisiko mengubah URL repo lama).
+- Ikhtisar diedit oleh pemilik (proyek `todayStatus`/`currentWork` brand content overlap).
 
 ## Deploy
 

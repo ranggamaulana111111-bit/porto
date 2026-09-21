@@ -37,7 +37,7 @@ export function CommandPalette() {
       hint: "section",
       href: n.href,
     }));
-    const cv: CommandItem = { key: "cv", type: "cv", id: "/cv", label: "Open CV", hint: "halaman" };
+    const cv: CommandItem = { key: "cv", type: "cv", id: "/cv", label: "Buka CV", hint: "halaman" };
     const projectItems: CommandItem[] = projects.map((p) => ({
       key: `project-${p.slug}`,
       type: "project",
@@ -93,8 +93,8 @@ export function CommandPalette() {
         } else {
           goTo(item.id);
         }
-      } else {
-        goTo("projects");
+      } else if (item.type === "project") {
+        router.push(`/project/${item.id}`);
       }
     },
     [router, goTo]
@@ -232,7 +232,7 @@ export function CommandPalette() {
                 onClick={() => runItem(item)}
                 className={`flex w-full items-baseline justify-between gap-3 px-4 py-2.5 text-left transition-colors ${
                   i === activeIndex
-                    ? "bg-accent/10 text-accent"
+                    ? "bg-accent/10 text-accent-strong"
                     : "text-fg-secondary"
                 }`}
               >

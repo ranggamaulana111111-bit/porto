@@ -369,7 +369,7 @@ export default function MessagesPage() {
             Pesan Anonim
           </p>
           <h1 className="mt-3 font-display text-3xl font-bold tracking-tight sm:text-4xl">
-            Wall of Notes
+            Dinding Pesan
           </h1>
           <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-fg-secondary">
             Kirim pesan, cerita, curhat, atau motivasi. Langsung tampil di

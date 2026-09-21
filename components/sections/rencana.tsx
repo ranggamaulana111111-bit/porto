@@ -9,7 +9,7 @@ export function Rencana() {
     <section id="rencana" className="px-6 py-24">
       <div className="mx-auto max-w-3xl">
         <SectionHeading
-          index="07"
+          index="04"
           title="Yang ingin saya coba berikutnya."
           description="Bukan roadmap perusahaan, cuma daftar hal yang mengganggu kepala saya dan ingin saya wujudkan saat waktunya pas."
         />
