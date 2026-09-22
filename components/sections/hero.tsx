@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { profile, todayStatus } from "@/lib/content";
+import { SpotifyPlayer } from "@/components/spotify-player";
 
 export function Hero() {
   const reduce = useReducedMotion();
@@ -67,20 +68,23 @@ export function Hero() {
 
           <motion.div
             variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
-            className="mt-8 flex flex-wrap items-center gap-3"
+            className="mt-8 flex flex-col gap-4 md:flex-row md:items-start md:gap-5"
           >
-            <a
-              href="#projects"
-              className="inline-flex items-center justify-center gap-2 rounded-[var(--radius-pill)] bg-accent px-6 py-3 text-sm font-medium text-white shadow-[var(--shadow-button)] border border-accent-strong/10 hover:bg-accent-strong transition-colors"
-            >
-              Lihat Project
-            </a>
-            <Link
-              href="/cv"
-              className="inline-flex items-center justify-center gap-2 rounded-[var(--radius-pill)] bg-bg-card px-6 py-3 text-sm font-medium text-fg border border-border shadow-[var(--shadow-button)] hover:shadow-[var(--shadow-card)] transition-all"
-            >
-              Lihat CV
-            </Link>
+            <div className="flex flex-wrap items-center gap-3">
+              <a
+                href="#projects"
+                className="inline-flex items-center justify-center gap-2 rounded-[var(--radius-pill)] bg-accent px-6 py-3 text-sm font-medium text-white shadow-[var(--shadow-button)] border border-accent-strong/10 hover:bg-accent-strong transition-colors"
+              >
+                Lihat Project
+              </a>
+              <Link
+                href="/cv"
+                className="inline-flex items-center justify-center gap-2 rounded-[var(--radius-pill)] bg-bg-card px-6 py-3 text-sm font-medium text-fg border border-border shadow-[var(--shadow-button)] hover:shadow-[var(--shadow-card)] transition-all"
+              >
+                Lihat CV
+              </Link>
+            </div>
+            <SpotifyPlayer className="w-full md:w-80" />
           </motion.div>
         </motion.div>
       </div>
