@@ -85,6 +85,7 @@ Shared variants in `lib/motion.ts` only; components never re-declare animation c
 - `stagger`: 0.08s between children, small enough to feel like a group, big enough to notice.
 - Scroll reveals run once and never repeat; `prefers-reduced-motion: reduce` zeroes all animation globally.
 - Nothing moves continuously unless it carries live data (e.g. the "online" indicator). No looping decorations.
+- The one allowed exception: the hero status line crossfades between `todayStatus.heroLines` every ~4s. It is a content-led ticker (energi 2), not decoration; it stops swapping under `prefers-reduced-motion: reduce`.
 
 ## Content
 

@@ -1,10 +1,22 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { profile } from "@/lib/content";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { profile, todayStatus } from "@/lib/content";
 
 export function Hero() {
+  const reduce = useReducedMotion();
+  const [line, setLine] = useState(0);
+
+  useEffect(() => {
+    if (reduce) return;
+    const id = setInterval(
+      () => setLine((v) => (v + 1) % todayStatus.heroLines.length),
+      3800
+    );
+    return () => clearInterval(id);
+  }, [reduce]);
   return (
     <section id="home" className="px-6 pt-28 sm:pt-32 pb-12 sm:pb-16">
       <div className="mx-auto max-w-3xl">
@@ -38,6 +50,21 @@ export function Hero() {
           >
             {profile.roleShort}. Berada di {profile.location}.
           </motion.p>
+
+          <div className="mt-3">
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.p
+                key={line}
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                className="font-mono text-sm text-fg-muted max-w-xl"
+              >
+                {todayStatus.heroLines[line]}
+              </motion.p>
+            </AnimatePresence>
+          </div>
 
           <motion.div
             variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}

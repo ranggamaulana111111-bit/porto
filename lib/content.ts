@@ -96,6 +96,7 @@ export interface NowFragment {
 
 export interface TodayStatus {
   intro: string;
+  heroLines: string[];
   fragments: NowFragment[];
   focus: string;
   focusItems: string[];
