@@ -10,10 +10,9 @@ export function Hero() {
   const [line, setLine] = useState(0);
 
   useEffect(() => {
-    if (reduce) return;
     const id = setInterval(
       () => setLine((v) => (v + 1) % todayStatus.heroLines.length),
-      3800
+      reduce ? 5000 : 3800
     );
     return () => clearInterval(id);
   }, [reduce]);
@@ -55,10 +54,10 @@ export function Hero() {
             <AnimatePresence mode="wait" initial={false}>
               <motion.p
                 key={line}
-                initial={{ opacity: 0, y: 6 }}
+                initial={{ opacity: 0, y: reduce ? 0 : 6 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -6 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
+                exit={{ opacity: 0, y: reduce ? 0 : -6 }}
+                transition={reduce ? { duration: 1.2, ease: "easeInOut" } : { duration: 0.4, ease: "easeOut" }}
                 className="font-mono text-sm text-fg-muted max-w-xl"
               >
                 {todayStatus.heroLines[line]}
