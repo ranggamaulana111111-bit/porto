@@ -640,7 +640,12 @@
       ]
     }
   ],
-  "outside": [],
+  "outside": [
+    {
+      "date": "Sep 2026",
+      "caption": "Jauh dari layar, sebagian besar hidup saya berisi hal-hal yang tidak dibagikan ke internet. Kalau ada yang layak diceritakan, saya tulis di sini."
+    }
+  ],
   "posts": [
     {
       "title": "Cara Saya Belajar Coding Tanpa Burnout",
