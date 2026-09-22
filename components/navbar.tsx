@@ -76,13 +76,13 @@ export function Navbar() {
                     href={`#${item.id}`}
                     aria-current={active === item.id ? "true" : undefined}
                     className={`relative z-0 rounded-[var(--radius-pill)] px-2.5 py-1.5 text-sm transition-colors ${
-                      active === item.id ? "text-bg" : "text-fg-muted hover:text-fg hover:bg-bg-inset"
+                      active === item.id ? "text-accent-strong" : "text-fg-muted hover:text-fg hover:bg-bg-inset"
                     }`}
                   >
                     {active === item.id && (
                       <motion.span
                         layoutId="nav-active"
-                        className="absolute inset-0 rounded-[var(--radius-pill)] bg-fg"
+                        className="absolute inset-0 rounded-[var(--radius-pill)] bg-accent-soft"
                         transition={{ type: "spring", stiffness: 340, damping: 32 }}
                       />
                     )}
@@ -162,7 +162,7 @@ export function Navbar() {
                       onClick={() => setOpen(false)}
                       aria-current={active === item.id ? "true" : undefined}
                       className={`block rounded-[var(--radius-pill)] px-4 py-2.5 text-sm transition-colors ${
-                        active === item.id ? "bg-fg text-bg" : "text-fg-secondary hover:bg-bg-inset hover:text-fg"
+                        active === item.id ? "bg-accent-soft text-accent-strong" : "text-fg-secondary hover:bg-bg-inset hover:text-fg"
                       }`}
                     >
                       {item.label}
