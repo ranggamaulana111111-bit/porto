@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, MotionConfig } from "framer-motion";
 import { navItems, profile } from "@/lib/content";
 import { openCommandPalette } from "@/components/command-palette";
 
@@ -43,6 +43,7 @@ export function Navbar() {
 
   return (
     <>
+      <MotionConfig reducedMotion="user">
       <motion.header
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -74,10 +75,17 @@ export function Navbar() {
                   <a
                     href={`#${item.id}`}
                     aria-current={active === item.id ? "true" : undefined}
-                    className={`relative rounded-[var(--radius-pill)] px-2.5 py-1.5 text-sm transition-colors ${
-                      active === item.id ? "bg-fg text-bg" : "text-fg-muted hover:text-fg hover:bg-bg-inset"
+                    className={`relative z-0 rounded-[var(--radius-pill)] px-2.5 py-1.5 text-sm transition-colors ${
+                      active === item.id ? "text-bg" : "text-fg-muted hover:text-fg hover:bg-bg-inset"
                     }`}
                   >
+                    {active === item.id && (
+                      <motion.span
+                        layoutId="nav-active"
+                        className="absolute inset-0 rounded-[var(--radius-pill)] bg-fg"
+                        transition={{ type: "spring", stiffness: 340, damping: 32 }}
+                      />
+                    )}
                     {item.label}
                   </a>
                 )}
@@ -166,6 +174,7 @@ export function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
+      </MotionConfig>
     </>
   );
 }

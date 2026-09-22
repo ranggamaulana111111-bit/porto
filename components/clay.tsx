@@ -7,7 +7,7 @@ type ClayCardProps = HTMLAttributes<HTMLDivElement> & {
 export function ClayCard({ className = "", hover = false, ...props }: ClayCardProps) {
   const base = "rounded-[var(--radius-clay-lg)] border bg-bg-card";
   const shadow = hover
-    ? "shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow duration-200"
+    ? "shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] hover:-translate-y-0.5 transition-all duration-200"
     : "shadow-[var(--shadow-card)]";
   return <div className={`${base} ${shadow} ${className}`} {...props} />;
 }

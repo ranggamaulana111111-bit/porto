@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { MotionConfig, motion } from "framer-motion";
 import { outside } from "@/lib/content";
 import { Reveal } from "@/components/reveal";
 
@@ -8,7 +9,8 @@ export function OutsideWork() {
   if (outside.length === 0) return null;
 
   return (
-    <section id="outside" className="px-6 py-16 sm:py-20">
+    <MotionConfig reducedMotion="user">
+      <section id="outside" className="px-6 py-16 sm:py-20">
       <div className="mx-auto max-w-3xl">
         <Reveal>
           <p className="font-mono text-xs uppercase tracking-wider text-fg-muted">Di Luar Layar</p>
@@ -24,13 +26,24 @@ export function OutsideWork() {
           {outside.map((entry, i) => (
             <Reveal key={i} className="max-w-xl">
               {entry.image && (
-                <Image
-                  src={entry.image}
-                  alt={entry.caption}
-                  width={1024}
-                  height={640}
-                  className="aspect-[16/10] w-full rounded-[var(--radius-clay)] border border-border object-cover shadow-[var(--shadow-card)]"
-                />
+                <motion.a
+                  href={entry.image}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ clipPath: "inset(100% 0 0 0)" }}
+                  whileInView={{ clipPath: "inset(0% 0 0 0)" }}
+                  viewport={{ once: true, margin: "-10%" }}
+                  transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                  className="block"
+                >
+                  <Image
+                    src={entry.image}
+                    alt={entry.caption}
+                    width={1024}
+                    height={640}
+                    className="aspect-[16/10] w-full rounded-[var(--radius-clay)] border border-border object-cover shadow-[var(--shadow-card)] transition-transform duration-700 hover:scale-[1.02]"
+                  />
+                </motion.a>
               )}
               {entry.date && (
                 <p className="mt-3 font-mono text-xs text-fg-faint">{entry.date}</p>
@@ -40,6 +53,7 @@ export function OutsideWork() {
           ))}
         </div>
       </div>
-    </section>
+      </section>
+    </MotionConfig>
   );
 }
