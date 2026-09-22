@@ -1,6 +1,6 @@
 # porto-rangga
 
-Portfolio / ruang kerja digital Rangga (**rangga.mrw**) — bukan portfolio klasik, tapi "living workspace": tempat belajar, membangun, dan menulis tentang proses jadi developer. Bahasa Indonesia, tema terang (warm clay). Live di **https://ranggamrw.my.id**.
+Portfolio / situs personal Rangga (**rangga.mrw**) — bukan portfolio klasik, tapi jurnal digital yang di dalamnya ada jejak rekam pengembangan yang kuat: tempat belajar, membangun, dan menulis tentang proses jadi developer. Bahasa Indonesia, tema terang (warm clay). Live di **https://ranggamrw.my.id**.
 
 ## Tech stack
 
@@ -52,13 +52,13 @@ app/
   fonts/
     original-salmon.otf # font display + body
   cv/page.tsx           # halaman CV yang bisa dicetak ke PDF (print styles di globals.css)
-  workspace/page.tsx    # workspace: fokus hari ini + yang sedang dibangun + cara bekerja + catatan + rencana
+  workspace/page.tsx    # "Di Balik Layar": fokus hari ini + yang sedang dibangun + cara bekerja + catatan + rencana
   stack/page.tsx        # daftar stack per project + diagram arsitektur
   messages/page.tsx     # papan pesan anonim
   project/[slug]/page.tsx  # detail project + case study
   catatan/[slug]/page.tsx  # halaman detail catatan/blog
   api/
-    now-playing/route.ts   # proxy Lanyard -> JSON untuk widget Spotify
+    now-playing/route.ts   # proxy Lanyard -> JSON untuk fragmen "Dengar" (section Currently)
     messages/route.ts      # API kirim pesan anonim
     youtube-search/route.ts# pencarian lagu untuk pesan anonim
     admin/login|totp|messages/route.ts # admin pesan (OTP)
@@ -74,19 +74,19 @@ components/
   project-status.tsx    # label status project (Produksi / Dibangun / Rencana / Selesai)
   project-tech-map.tsx  # peta teknologi per project
   copy-email.tsx        # tombol salin email (hindari obfuscation Cloudflare)
-  now-playing.tsx       # widget "Mendengarkan" (fetch /api/now-playing, polling 30s)
   cv-print-button.tsx   # tombol window.print()
   sections/             # satu file per section, semua "use client"
-    hero.tsx            # hero: nama, deskripsi, CTA, widget Mendengarkan
-    profile-snapshot.tsx# fakta profil (lokasi, pendidikan, fokus, dll)
+    hero.tsx            # hero: nama, peran, lokasi, CTA
+    currently.tsx       # status "Yang sedang terjadi" (fragmen Kuliah/Bangun/Jelajah/Dengar/Hidup)
     tentang-saya.tsx
     selected-projects.tsx
     experience.tsx      # perjalanan (journey)
     education.tsx
     technical-stack.tsx
     what-im-learning.tsx
-    currently-learning.tsx
-    workspace-teaser.tsx# CTA menuju /workspace
+    outside-work.tsx    # "Di Luar Layar", auto-hide bila kosong
+    journal-teaser.tsx  # 3 catatan terbaru + CTA
+    workspace-teaser.tsx# CTA menuju /workspace ("Di Balik Layar")
     yang-sedang-dibangun.tsx
     cara-bekerja.tsx
     catatan.tsx

@@ -3,6 +3,7 @@
     "name": "Rangga Maulana Ramadhan Wiharto",
     "shortName": "rangga.mrw",
     "role": "Mahasiswa Sistem Informasi yang membangun software, jaringan, dan infrastruktur",
+    "roleShort": "Mahasiswa Sistem Informasi",
     "location": "Serang, Banten",
     "timezone": "Asia/Jakarta",
     "email": "ranggamaulana111111@gmail.com",
@@ -73,6 +74,30 @@
     }
   ],
   "todayStatus": {
+    "intro": "Sekarang saya sedang berada di fase kuliah sambil mencoba memahami apa yang sebenarnya ingin saya bangun ke depannya.",
+    "fragments": [
+      {
+        "label": "Kuliah",
+        "text": "Semester 5, Sistem Informasi di Universitas Pamulang. Kuliah berjalan sambil terus membangun dan belajar dari project."
+      },
+      {
+        "label": "Bangun",
+        "text": "AlkonekPlus (speed test untuk ISP), RabegLab (homelab), dan site ini sendiri (porto)."
+      },
+      {
+        "label": "Jelajah",
+        "text": "Next.js, Laravel, infrastruktur, networking. Hal-hal yang saya dalami lewat project nyata, bukan teori saja."
+      },
+      {
+        "label": "Dengar",
+        "type": "listen",
+        "text": "Mix Harian, playlist lo-fi yang sedang menemani beberapa waktu ini."
+      },
+      {
+        "label": "Hidup",
+        "text": "Berada di Serang, Banten. Terbuka untuk magang, part-time, dan freelance."
+      }
+    ],
     "focus": "Yang sedang saya fokuskan hari ini:",
     "focusItems": [
       "Deploy portfolio ke server sendiri via Cloudflare Tunnel",
@@ -615,6 +640,7 @@
       ]
     }
   ],
+  "outside": [],
   "posts": [
     {
       "title": "Cara Saya Belajar Coding Tanpa Burnout",

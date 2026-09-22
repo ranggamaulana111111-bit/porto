@@ -62,6 +62,7 @@ export interface Profile {
   name: string;
   shortName: string;
   role: string;
+  roleShort: string;
   location: string;
   timezone: string;
   email: string;
@@ -87,13 +88,27 @@ export interface ListeningPlaylist {
   embed: string;
 }
 
+export interface NowFragment {
+  label: string;
+  text: string;
+  type?: "listen";
+}
+
 export interface TodayStatus {
+  intro: string;
+  fragments: NowFragment[];
   focus: string;
   focusItems: string[];
   techStack: string[];
   listeningTo: string;
   mood: string;
   listeningPlaylist: ListeningPlaylist;
+}
+
+export interface OutsideEntry {
+  caption: string;
+  image?: string;
+  date?: string;
 }
 
 export interface About {
@@ -297,6 +312,7 @@ export interface SiteContent {
   currentWork: CurrentWork[];
   posts: Post[];
   plans: Plan[];
+  outside: OutsideEntry[];
 }
 
 const content = data as unknown as SiteContent;
@@ -315,6 +331,7 @@ export const profile: Profile = {
   role:
     content.profile.role ??
     "Mahasiswa Universitas Pamulang Kampus Serang, Program Studi Sistem Informasi",
+  roleShort: content.profile.roleShort ?? "Mahasiswa Sistem Informasi",
 };
 
 const ABOUT_FALLBACK: About = {
@@ -382,4 +399,5 @@ export const experimentProjects = projects.filter(
 );
 export const currentWork = content.currentWork;
 export const posts = content.posts;
+export const outside: OutsideEntry[] = content.outside ?? [];
 export const plans = content.plans;

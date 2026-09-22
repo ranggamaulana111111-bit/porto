@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     template: `%s · ${name}`,
   },
   description:
-    "Mahasiswa Sistem Informasi yang membangun software, mengurus jaringan, dan bereksperimen dengan infrastruktur. Berisi project dan catatan proses belajarnya.",
+    "Situs personal Rangga Maulana Ramadhan Wiharto, mahasiswa Sistem Informasi di Serang, Banten. Yang sedang terjadi, project yang sedang dibangun, catatan proses, dan hal-hal di balik layar.",
   keywords: [
     "rangga.mrw",
     "rangga dev",
@@ -79,7 +79,7 @@ export const metadata: Metadata = {
     url: siteUrl,
     title: name,
     description:
-      "Mahasiswa Sistem Informasi yang membangun software, mengurus jaringan, dan bereksperimen dengan infrastruktur. Berisi project dan catatan proses belajarnya.",
+      "Situs personal Rangga Maulana Ramadhan Wiharto, mahasiswa Sistem Informasi di Serang, Banten. Yang sedang terjadi, project yang sedang dibangun, catatan proses, dan hal-hal di balik layar.",
     siteName: name,
     locale: "id_ID",
     images: [{ url: `${siteUrl}/og.png`, width: 1200, height: 630, alt: name }],
@@ -88,7 +88,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: name,
     description:
-      "Mahasiswa Sistem Informasi yang membangun software, mengurus jaringan, dan bereksperimen dengan infrastruktur. Berisi project dan catatan proses belajarnya.",
+      "Situs personal Rangga Maulana Ramadhan Wiharto, mahasiswa Sistem Informasi di Serang, Banten. Yang sedang terjadi, project yang sedang dibangun, catatan proses, dan hal-hal di balik layar.",
     images: [`${siteUrl}/og.png`],
   },
   robots: {

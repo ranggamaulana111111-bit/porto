@@ -6,7 +6,7 @@ Identity, dials, and the reasons behind every design decision on this site. The 
 
 **Warm working desk, not a product landing page.**
 
-The site is the personal workspace of Rangga: a place to learn, build, and fail in the open. The look is warm clay on light paper, with quiet structure and honest, unpolished-feeling details. It should feel like a personal journal that happens to be a website, not a polished agency portfolio.
+The site is the personal website of Rangga: a place to learn, build, and fail in the open. It reads as a personal journal that happens to carry a strong engineering track record, not as a technical portfolio wearing a friendly face. The look is warm clay on light paper, with quiet structure and honest, unpolished-feeling details. Space is allowed to stay empty; rarely-updated sections are a deliberate choice, not a gap.
 
 Written in one sentence: warm clay desk, loose grid, calm motion.
 
@@ -74,7 +74,7 @@ Patterns in use: uppercase `font-mono` micro-labels (`text-xs uppercase tracking
 
 - Single column, centered measure: sections cap at `max-w-3xl` (see `ClaySection`). This is a journal, not a dashboard.
 - Page breathing room: `px-6 py-20 sm:py-28` on sections; generous vertical rhythm over grids.
-- The homepage is one page of sections ordered as a day's flow: hero (nama &mu; status), snapshot profil, tentang saya, project pilihan, perjalanan, pendidikan, stack teknis, yang sedang dipelajari, CTA workspace, kontak. Ruang kerja (workspace, stack, catatan, pesan) adalah halaman terpisah.
+- The homepage is one page of sections ordered as a day's flow: hero (nama, peran, lokasi), current status, tentang saya, project pilihan, perjalanan, pendidikan, stack teknis, yang sedang dipelajari, di luar layar (kosong bila tak ada konten), jurnal, CTA ke halaman belakang layar, pesan anonim, kontak. Workspace dijalankan sebagai halaman terpisah berjudul "Di Balik Layar", dengan tautan nav "Workspace".
 - `max-w-3xl` measure exists so text lines stay readable on any width.
 
 ## Motion

@@ -8,9 +8,9 @@ import { todayStatus } from "@/lib/content";
 import { ClayCard } from "@/components/clay";
 
 export const metadata: Metadata = {
-  title: "Workspace · rangga.mrw",
+  title: "Di Balik Layar · rangga.mrw",
   description:
-    "Digital workspace: dokumentasi proses belajar, eksperimen, technical notes, lab, dan hal-hal yang sedang saya bangun.",
+    "Di balik layar: dokumentasi proses belajar, eksperimen, technical notes, lab, dan hal-hal yang sedang saya bangun.",
 };
 
 export default function WorkspacePage() {
@@ -24,10 +24,10 @@ export default function WorkspacePage() {
         </div>
 
         <header className="mb-10">
-          <p className="font-mono text-xs uppercase tracking-wider text-fg-muted">Workspace Digital</p>
-          <h1 className="mt-3 font-display text-4xl font-bold tracking-tight">Ruang kerja & lab.</h1>
+          <p className="font-mono text-xs uppercase tracking-wider text-fg-muted">Di Balik Layar</p>
+          <h1 className="mt-3 font-display text-4xl font-bold tracking-tight">Di balik layar.</h1>
           <p className="mt-4 text-lg leading-relaxed text-fg-secondary">
-            Ini bukan portfolio. Ini ruang kerja saya, tempat saya belajar, membangun, dan sesekali gagal.
+            Tempat saya menyimpan hal yang sedang saya kerjakan, pelajari, coba, atau pikirkan.
           </p>
           <p className="mt-3 text-sm leading-relaxed text-fg-muted max-w-xl">
             Selamat datang di meja kerja saya. Di sini saya mendokumentasikan proses belajar, eksperimen, technical notes, dan hal-hal yang sedang saya eksplorasi di balik layar.

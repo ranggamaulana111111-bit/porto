@@ -6,7 +6,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 # porto-rangga
 
-Personal portfolio / digital workspace of Rangga (rangga.mrw). Built to feel like a "living workspace" rather than a classic portfolio. Indonesian copy, light warm-clay aesthetic (see `DESIGN.md`).
+Personal website / portfolio of Rangga (rangga.mrw). Built to feel like a personal journal with a strong engineering track record, not a classic technical portfolio. Indonesian copy, light warm-clay aesthetic (see `DESIGN.md`).
 
 ## Stack
 
@@ -36,7 +36,9 @@ Personal portfolio / digital workspace of Rangga (rangga.mrw). Built to feel lik
 - `components/reveal.tsx` — scroll-reveal wrapper (fadeUp / fadeIn, once).
 - `components/section-heading.tsx` — section header (optional index + title + optional description).
 - `components/sections/*.tsx` — one file per homepage/workspace section (all `"use client"`):
-  `hero`, `profile-snapshot`, `tentang-saya`, `selected-projects`, `experience`, `education`, `technical-stack`, `what-im-learning`, `currently-learning`, `workspace-teaser`, `yang-sedang-dibangun`, `cara-bekerja`, `catatan`, `rencana`, `anonymous-messages`, `contact`.
+  `hero`, `currently`, `tentang-saya`, `selected-projects`, `experience`, `education`, `technical-stack`, `what-im-learning`, `outside-work`, `journal-teaser`, `workspace-teaser`, `yang-sedang-dibangun`, `cara-bekerja`, `catatan`, `rencana`, `anonymous-messages`, `contact`.
+- `components/sections/outside-work.tsx` renders nothing while `content.json` `outside` is empty (auto-hide); fill the array to publish entries.
+- `todayStatus.fragments` (`content.json`) drives the "Yang sedang terjadi" rows; the `Dengar` fragment (type `listen`) renders a live now-playing line with a playlist link.
 - Other routes: `app/workspace/`, `app/stack/`, `app/messages/`, `app/cv/`, `app/project/[slug]/`, `app/catatan/[slug]/`, plus `app/api/` (`now-playing`, `messages`, `admin/*`, `youtube-search`).
 - `lib/motion.ts` — shared framer-motion variants (`fadeUp`, `fadeIn`, `stagger`).
 - `app/robots.ts`, `app/sitemap.ts` — SEO (sitemap covers all routes incl. `/[slug]` pages).
