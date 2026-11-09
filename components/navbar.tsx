@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence, MotionConfig } from "framer-motion";
 import { navItems, profile } from "@/lib/content";
@@ -9,6 +9,8 @@ import { openCommandPalette } from "@/components/command-palette";
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("home");
+  const [scrolled, setScrolled] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const sections = navItems
@@ -29,15 +31,33 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
+      if (e.key === "Escape") {
+        setOpen(false);
+        toggleRef.current?.focus();
+      }
     };
     document.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
+
+    const desktop = window.matchMedia("(min-width: 1024px)");
+    const onChange = (e: MediaQueryListEvent) => {
+      if (e.matches) setOpen(false);
+    };
+    desktop.addEventListener("change", onChange);
+
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
+      desktop.removeEventListener("change", onChange);
     };
   }, [open]);
 
@@ -51,9 +71,15 @@ export function Navbar() {
         className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 sm:px-6 sm:pt-6"
       >
         <nav
-          className="flex w-full max-w-4xl items-center justify-between gap-2 rounded-[var(--radius-pill)] border bg-bg-card px-2 py-2 shadow-[var(--shadow-card)] transition-all duration-300"
+          aria-label="Navigasi utama"
+          className={`flex w-full max-w-4xl items-center justify-between gap-2 rounded-[var(--radius-pill)] border bg-bg-card px-2 py-2 transition-shadow duration-300 ${
+            scrolled ? "shadow-[var(--shadow-card-hover)]" : "shadow-[var(--shadow-card)]"
+          }`}
         >
-          <a href="#home" className="ml-2 font-display text-sm font-semibold tracking-tight text-fg sm:text-base">
+          <a
+            href="#home"
+            className="ml-2 inline-flex min-h-11 items-center font-display text-sm font-semibold tracking-tight text-fg sm:text-base"
+          >
             {profile.shortName}
           </a>
 
@@ -86,7 +112,7 @@ export function Navbar() {
                         transition={{ type: "spring", stiffness: 340, damping: 32 }}
                       />
                     )}
-                    {item.label}
+                    <span className="relative z-10">{item.label}</span>
                   </a>
                 )}
               </li>
@@ -105,13 +131,14 @@ export function Navbar() {
 
             <a
               href="#contact"
-              className="hidden rounded-[var(--radius-pill)] bg-accent px-3.5 py-1.5 text-sm font-medium text-white shadow-[var(--shadow-button)] hover:bg-accent-strong transition-colors lg:inline-flex"
+              className="hidden min-h-11 items-center rounded-[var(--radius-pill)] bg-accent px-3.5 text-sm font-medium text-white shadow-[var(--shadow-button)] transition-colors hover:bg-accent-strong lg:inline-flex"
             >
               Hubungi
             </a>
 
             <button
-              aria-label="Buka menu"
+              ref={toggleRef}
+              aria-label={open ? "Tutup menu" : "Buka menu"}
               aria-expanded={open}
               aria-controls="mobile-menu"
               onClick={() => setOpen((o) => !o)}
@@ -130,14 +157,28 @@ export function Navbar() {
       <AnimatePresence>
         {open && (
           <motion.div
+            key="mobile-backdrop"
+            aria-hidden="true"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            onClick={() => setOpen(false)}
+            className="fixed inset-0 z-30 bg-fg/10 lg:hidden"
+          />
+        )}
+        {open && (
+          <motion.div
+            key="mobile-menu"
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-x-4 top-[72px] z-40 rounded-[var(--radius-clay-lg)] border border-border bg-bg-card p-3 shadow-[var(--shadow-card-hover)] lg:hidden"
+            className="fixed inset-x-4 top-[84px] z-40 max-h-[calc(100dvh-7rem)] overflow-y-auto overscroll-contain rounded-[var(--radius-clay-lg)] border border-border bg-bg-card p-3 shadow-[var(--shadow-card-hover)] sm:top-[92px] lg:hidden"
             id="mobile-menu"
           >
             <motion.ul
+              aria-label="Navigasi seluler"
               className="flex flex-col gap-1"
               initial="hidden"
               animate="show"
@@ -154,7 +195,7 @@ export function Navbar() {
                       onClick={() => setOpen(false)}
                       className="block rounded-[var(--radius-pill)] bg-accent-soft px-4 py-2.5 text-sm font-medium text-accent-strong border border-accent/20"
                     >
-                      {item.label} →
+                      {item.label}
                     </Link>
                   ) : (
                     <a
