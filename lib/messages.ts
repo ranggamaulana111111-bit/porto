@@ -7,15 +7,33 @@ export interface AnonymousMessage {
   senderName: string | null;
   youtubeId: string | null;
   songTitle: string | null;
+  songChannel: string | null;
+  pinned: boolean;
+  isOwner: boolean;
   createdAt: string;
 }
+
+type StoredMessage = Omit<
+  AnonymousMessage,
+  "songChannel" | "pinned" | "isOwner"
+> & {
+  songChannel?: string | null;
+  pinned?: boolean;
+  isOwner?: boolean;
+};
 
 const DATA_PATH = join(process.cwd(), "data", "messages.json");
 
 function readMessages(): AnonymousMessage[] {
   if (!existsSync(DATA_PATH)) return [];
   const raw = readFileSync(DATA_PATH, "utf-8");
-  return JSON.parse(raw) as AnonymousMessage[];
+  const parsed = JSON.parse(raw) as StoredMessage[];
+  return parsed.map((message) => ({
+    ...message,
+    songChannel: message.songChannel ?? null,
+    pinned: message.pinned ?? false,
+    isOwner: message.isOwner ?? false,
+  }));
 }
 
 function writeMessages(messages: AnonymousMessage[]) {
@@ -24,16 +42,18 @@ function writeMessages(messages: AnonymousMessage[]) {
 }
 
 export function getAllMessages(): AnonymousMessage[] {
-  return readMessages().sort(
-    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-  );
+  return readMessages().sort((a, b) => {
+    if (a.pinned !== b.pinned) return a.pinned ? -1 : 1;
+    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+  });
 }
 
 export function addMessage(
   text: string,
   senderName: string | null,
   youtubeId: string | null,
-  songTitle: string | null
+  songTitle: string | null,
+  songChannel: string | null
 ): AnonymousMessage {
   const messages = readMessages();
   const newMsg: AnonymousMessage = {
@@ -42,11 +62,26 @@ export function addMessage(
     senderName: senderName?.slice(0, 50) || null,
     youtubeId,
     songTitle,
+    songChannel: songChannel?.slice(0, 120) || null,
+    pinned: false,
+    isOwner: false,
     createdAt: new Date().toISOString(),
   };
   messages.push(newMsg);
   writeMessages(messages);
   return newMsg;
+}
+
+export function updateMessage(
+  id: string,
+  patch: Partial<Pick<AnonymousMessage, "pinned" | "isOwner">>
+): AnonymousMessage | null {
+  const messages = readMessages();
+  const index = messages.findIndex((m) => m.id === id);
+  if (index === -1) return null;
+  messages[index] = { ...messages[index], ...patch };
+  writeMessages(messages);
+  return messages[index];
 }
 
 export function deleteMessage(id: string): boolean {

@@ -15,13 +15,31 @@ function toPublic(message: AnonymousMessage) {
     text: message.text,
     youtubeId: message.youtubeId,
     songTitle: message.songTitle,
+    songChannel: message.songChannel,
+    pinned: message.pinned,
+    isOwner: message.isOwner,
     createdAt: message.createdAt,
   };
 }
 
-export async function GET() {
+export async function GET(req: NextRequest) {
   const messages = getAllMessages().map(toPublic);
-  return NextResponse.json(messages);
+  const limitParam = req.nextUrl.searchParams.get("limit");
+
+  if (!limitParam) {
+    return NextResponse.json(messages);
+  }
+
+  const limit = Math.min(Math.max(Number(limitParam) || 1, 1), 50);
+  const offset = Math.max(Number(req.nextUrl.searchParams.get("offset")) || 0, 0);
+  const page = messages.slice(offset, offset + limit);
+
+  return NextResponse.json(page, {
+    headers: {
+      "X-Total-Count": String(messages.length),
+      "X-Has-More": String(offset + page.length < messages.length),
+    },
+  });
 }
 
 const YOUTUBE_ID_RE = /^[a-zA-Z0-9_-]{11}$/;
@@ -37,7 +55,13 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  let body: { text?: string; senderName?: string; youtubeId?: string; songTitle?: string };
+  let body: {
+    text?: string;
+    senderName?: string;
+    youtubeId?: string;
+    songTitle?: string;
+    songChannel?: string;
+  };
   try {
     body = await req.json();
   } catch {
@@ -61,6 +85,7 @@ export async function POST(req: NextRequest) {
 
   let youtubeId: string | null = null;
   let songTitle: string | null = null;
+  let songChannel: string | null = null;
 
   if (body.youtubeId && typeof body.youtubeId === "string") {
     const id = body.youtubeId.trim();
@@ -72,9 +97,13 @@ export async function POST(req: NextRequest) {
       body.songTitle && typeof body.songTitle === "string"
         ? body.songTitle.slice(0, 120)
         : null;
+    songChannel =
+      body.songChannel && typeof body.songChannel === "string"
+        ? sanitizeText(body.songChannel).slice(0, 120)
+        : null;
   }
 
-  addMessage(text, senderName, youtubeId, songTitle);
+  addMessage(text, senderName, youtubeId, songTitle, songChannel);
 
   return NextResponse.json(
     { success: true, message: "Pesan tampil di dinding pesan." },

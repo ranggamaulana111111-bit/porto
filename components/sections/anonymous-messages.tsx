@@ -31,9 +31,9 @@ export function AnonymousMessages() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/api/messages")
+    fetch("/api/messages?limit=5")
       .then((r) => r.json())
-      .then((data) => setMessages(data.slice(0, 5)))
+      .then((data) => setMessages(data))
       .catch(() => {})
       .finally(() => setLoading(false));
   }, []);

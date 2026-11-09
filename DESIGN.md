@@ -107,3 +107,11 @@ When designing or adding UI, check against these before shipping:
 ## Documented Exception (R-10 glassmorphism)
 
 Minimal `backdrop-blur-sm` (`bg-fg/20 backdrop-blur-sm`) is allowed **only** on modal/dialog overlays (command palette at `components/command-palette.tsx`) to give the dialog depth against the page behind it. Not used on cards, CTAs, nav, or any decorative surface. Chosen and documented 2026-09-14 in the antislop audit (audit finding #10).
+
+## Documented Pattern (song player)
+
+A song attached to a message renders as a now-playing bar (`components/song-player.tsx`): square artwork, title and channel, one accent play/pause button, a thin seek line, and the video revealed only while playing. Added 2026-11-09 for the messages page because a message with a song reads better as a compact player than a bare thumbnail, while a single accent control keeps it at dials 2/2/2. Seek position and duration come from the YouTube IFrame API, so the line shows real playback data, not decoration. The video stays visible with native controls hidden to keep the embed honest.
+
+## Documented Exception (messages wall layout)
+
+The `/messages` page uses a wider two-column layout (sticky form on the left, message masonry on the right) and a bottom-sheet form on phones. This steps outside the single-column journal measure for one reason: the wall is a utility page whose job is scanning many short messages, and a 3xl single column forces long scrolling while leaving desktop width unused. It stays at the same dials (2/2/2), uses existing tokens and `Clay*` components, and keeps the site voice. The bottom-sheet overlay reuses the documented glass exception above. Added 2026-10-23.

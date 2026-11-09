@@ -54,3 +54,16 @@ export const MessageCircle = (p: IconProps) => (
     <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
   </svg>
 );
+
+export const Play = (p: IconProps) => (
+  <svg {...base(p)} fill="currentColor" stroke="none">
+    <path d="M8 5.5v13a1 1 0 0 0 1.5.9l10-6.5a1 1 0 0 0 0-1.8l-10-6.5A1 1 0 0 0 8 5.5Z" />
+  </svg>
+);
+
+export const Pause = (p: IconProps) => (
+  <svg {...base(p)} fill="currentColor" stroke="none">
+    <rect x="6" y="5" width="4" height="14" rx="1" />
+    <rect x="14" y="5" width="4" height="14" rx="1" />
+  </svg>
+);

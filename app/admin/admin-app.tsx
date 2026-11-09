@@ -10,13 +10,42 @@ function AdminMessageCard({
   msg,
   token,
   onDeleted,
+  onUpdated,
 }: {
   msg: AnonymousMessage;
   token: string;
   onDeleted: () => void;
+  onUpdated: () => void;
 }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
+
+  async function handlePatch(patch: { pinned?: boolean; isOwner?: boolean }) {
+    setBusy(true);
+    setError("");
+    try {
+      const res = await fetch(
+        `/api/admin/messages?id=${encodeURIComponent(msg.id)}`,
+        {
+          method: "PATCH",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(patch),
+        }
+      );
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || "Gagal memperbarui pesan.");
+      }
+      onUpdated();
+    } catch (err) {
+      setError((err as Error).message);
+    } finally {
+      setBusy(false);
+    }
+  }
 
   async function handleDelete() {
     if (!window.confirm("Yakin hapus pesan ini?")) return;
@@ -75,6 +104,16 @@ function AdminMessageCard({
         <span className="rounded-full border border-border bg-bg-inset px-2.5 py-0.5 font-medium text-fg-secondary">
           {msg.senderName || "Anonim"}
         </span>
+        {msg.isOwner && (
+          <span className="rounded-full border border-accent/30 bg-accent-soft px-2.5 py-0.5 font-medium text-accent-strong">
+            Pemilik
+          </span>
+        )}
+        {msg.pinned && (
+          <span className="rounded-full border border-border bg-bg-card px-2.5 py-0.5 font-medium text-fg-secondary">
+            Disematkan
+          </span>
+        )}
         <span>{new Date(msg.createdAt).toLocaleString("id-ID")}</span>
         <span>·</span>
         <span className="font-mono text-[10px]">{msg.id.slice(0, 8)}</span>
@@ -82,14 +121,30 @@ function AdminMessageCard({
 
       {error && <p className="mt-2 text-sm text-accent-strong">{error}</p>}
 
-      <div className="mt-4">
+      <div className="mt-4 flex flex-wrap gap-2">
+        <ClayButton
+          variant="secondary"
+          size="sm"
+          disabled={busy}
+          onClick={() => handlePatch({ pinned: !msg.pinned })}
+        >
+          {msg.pinned ? "Lepas sematan" : "Sematkan"}
+        </ClayButton>
+        <ClayButton
+          variant="secondary"
+          size="sm"
+          disabled={busy}
+          onClick={() => handlePatch({ isOwner: !msg.isOwner })}
+        >
+          {msg.isOwner ? "Hapus badge pemilik" : "Tandai pemilik"}
+        </ClayButton>
         <ClayButton
           variant="secondary"
           size="sm"
           disabled={busy}
           onClick={handleDelete}
         >
-          {busy ? "Menghapus..." : "Hapus pesan"}
+          {busy ? "Memproses..." : "Hapus pesan"}
         </ClayButton>
       </div>
     </ClayCard>
@@ -338,6 +393,7 @@ export default function AdminApp() {
                 msg={msg}
                 token={token}
                 onDeleted={fetchMessages}
+                onUpdated={fetchMessages}
               />
             ))}
           </div>
