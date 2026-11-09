@@ -761,6 +761,750 @@
         "Design token di satu file memudahkan konsistensi warna dan tipografi",
         "Animasi harus menghormati prefers-reduced-motion sejak awal"
       ]
+    },
+    {
+      "slug": "v-office",
+      "title": "NEXUS 3D Virtual Office",
+      "kind": "Virtual office 3D",
+      "year": "2026",
+      "tier": "selected",
+      "status": "building",
+      "summary": "Kantor virtual 3D di browser: 16 ruangan, monitor yang membuka NOC, Panel FTTH, dan Portofolio lewat iframe, dengan backend Laravel untuk invoice, tugas, drive, dan vault.",
+      "role": "Pembuat & Developer",
+      "stack": [
+        "Next.js",
+        "TypeScript",
+        "Three.js",
+        "Zustand",
+        "Laravel 11",
+        "MySQL 8"
+      ],
+      "technologies": [
+        {
+          "name": "Next.js",
+          "role": "Frontend shell"
+        },
+        {
+          "name": "TypeScript",
+          "role": "Language"
+        },
+        {
+          "name": "Three.js",
+          "role": "Render ruang 3D"
+        },
+        {
+          "name": "React Three Fiber",
+          "role": "Integrasi Three.js dengan React"
+        },
+        {
+          "name": "Zustand",
+          "role": "State kamera dan UI"
+        },
+        {
+          "name": "Laravel 11",
+          "role": "API dan logika bisnis"
+        },
+        {
+          "name": "MySQL 8",
+          "role": "Database"
+        },
+        {
+          "name": "Laravel Sanctum",
+          "role": "Autentikasi API"
+        }
+      ],
+      "challenge": "Ruang kerja, invoice, tugas, dan tiga situs yang sudah berjalan tersebar di aplikasi berbeda. Membuat kantor virtual berarti menyatukan semuanya tanpa menulis ulang situs lama.",
+      "solution": "Next.js dan Three.js merender gedung serta 16 ruangan. Laravel 11 menyimpan data modul kerja. Situs NOC, Panel FTTH, dan Portofolio dibuka di dalam ruangan lewat iframe, reverse proxy, dan PostMessage.",
+      "result": "Repo berisi frontend 3D dan core-api Laravel dengan 14 controller. Proyek masih dalam pengembangan.",
+      "metrics": [
+        {
+          "value": "16",
+          "label": "Ruangan 3D"
+        },
+        {
+          "value": "14",
+          "label": "Controller API"
+        }
+      ],
+      "link": "https://github.com/ranggamaulana111111-bit/v-office",
+      "learnings": [
+        "Raycasting Three.js harus dibatasi ke objek yang bisa diklik supaya kamera tidak bereaksi ke seluruh kanvas",
+        "Iframe situs lama butuh reverse proxy dan PostMessage agar tetap satu sesi",
+        "Modul bisnis lebih mudah dirawat saat tetap di Laravel, bukan dipindah ke state 3D"
+      ],
+      "caseStudy": {
+        "context": "NEXUS adalah kantor virtual 3D yang menjadi pintu masuk ke pekerjaan harian: billing, tugas, drive, perencanaan, dan tiga situs yang sudah berjalan.",
+        "problem": "Setiap modul punya aplikasi sendiri. Berpindah konteks terus-menerus membuat pekerjaan kecil terasa berat, dan situs lama tidak mungkin ditulis ulang sekaligus.",
+        "approach": "Ruang 3D dipakai sebagai navigasi. Setiap ruangan mewakili satu modul, dan monitor di dalamnya membuka aplikasi yang sudah ada.",
+        "implementation": "Next.js, TypeScript, React Three Fiber, dan Zustand untuk kanvas serta kamera. Laravel 11 dengan Sanctum dan MySQL 8 untuk API, invoice PDF, tugas, drive, album, vault, dan pengaturan kantor. Bridge iframe memakai reverse proxy dan PostMessage.",
+        "features": [
+          {
+            "title": "16 ruangan 3D",
+            "description": "Gedung kaca dengan 16 ruangan yang bisa di-zoom dan diklik untuk masuk ke modul kerja."
+          },
+          {
+            "title": "Monitor situs lama",
+            "description": "NOC, Panel FTTH, dan Portofolio terbuka di layar ruangan lewat iframe dan PostMessage."
+          },
+          {
+            "title": "Billing PT",
+            "description": "Invoice PDF, data klien, dan arus kas dalam satu modul."
+          },
+          {
+            "title": "Tugas dan perencanaan",
+            "description": "Papan tugas dan gudang perencanaan untuk proyek berikutnya."
+          },
+          {
+            "title": "Drive dan vault",
+            "description": "Penyimpanan multi-disk, album foto, dan vault untuk item rahasia."
+          },
+          {
+            "title": "Monitoring domain",
+            "description": "Daftar domain yang dipantau dan log agen AI."
+          }
+        ],
+        "challenges": [
+          "Raycasting harus dibatasi ke objek yang bisa diklik agar kamera tidak bereaksi ke seluruh kanvas",
+          "Iframe situs lama butuh reverse proxy dan PostMessage agar tetap satu sesi",
+          "Modul bisnis lebih mudah dirawat saat tetap di Laravel, bukan dipindah ke state 3D"
+        ],
+        "result": "Frontend 3D dan core-api sudah ada di repo. Proyek masih dalam pengembangan.",
+        "lessons": [
+          "Raycasting Three.js harus dibatasi ke objek yang bisa diklik supaya kamera tidak bereaksi ke seluruh kanvas",
+          "Iframe situs lama butuh reverse proxy dan PostMessage agar tetap satu sesi",
+          "Modul bisnis lebih mudah dirawat saat tetap di Laravel, bukan dipindah ke state 3D"
+        ]
+      }
+    },
+    {
+      "slug": "halaman-informasi-akademik",
+      "title": "Halaman Informasi Akademik",
+      "kind": "Portal akademik statis",
+      "year": "2026",
+      "tier": "experiment",
+      "status": "production",
+      "summary": "Portal tiga halaman untuk jadwal, kalender akademik, pengumuman, dan profil program studi. Statis tanpa framework, dengan deploy Docker/Nginx dan GitHub Pages.",
+      "role": "Pembuat & Developer",
+      "stack": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Nginx",
+        "Docker",
+        "GitHub Pages"
+      ],
+      "technologies": [
+        {
+          "name": "HTML",
+          "role": "Struktur halaman"
+        },
+        {
+          "name": "CSS",
+          "role": "Layout dan tema"
+        },
+        {
+          "name": "JavaScript",
+          "role": "Interaksi dan reveal"
+        },
+        {
+          "name": "Nginx",
+          "role": "Server statis"
+        },
+        {
+          "name": "Docker",
+          "role": "Paket deploy"
+        },
+        {
+          "name": "GitHub Pages",
+          "role": "Hosting alternatif"
+        }
+      ],
+      "challenge": "Informasi akademik sering dibuka dari ponsel dengan koneksi tidak stabil. Halaman harus ringan dan tetap terbaca tanpa JavaScript.",
+      "solution": "HTML, CSS, dan JavaScript tanpa framework. Skip link, guard reveal, dan dua jalur deploy: Docker dengan Nginx atau GitHub Pages.",
+      "result": "Tiga halaman (beranda, akademik, profil) berjalan sebagai situs statis.",
+      "metrics": [
+        {
+          "value": "3",
+          "label": "Halaman"
+        },
+        {
+          "value": "2",
+          "label": "Jalur deploy"
+        }
+      ],
+      "link": "https://github.com/ranggamaulana111111-bit/rekayasa-web",
+      "learnings": [
+        "Guard reveal membuat konten tetap terlihat saat JavaScript gagal dimuat",
+        "Aset lokal lebih aman daripada CDN saat jaringan kampus tidak stabil",
+        "Dua jalur deploy menuntut struktur path yang sama di Docker dan GitHub Pages"
+      ],
+      "caseStudy": {
+        "context": "Halaman Informasi Akademik adalah portal statis untuk jadwal, kalender, pengumuman, dan profil program studi.",
+        "problem": "Informasi akademik sering dibuka dari ponsel dengan koneksi tidak stabil. Halaman harus ringan dan tetap terbaca tanpa JavaScript.",
+        "approach": "Tiga halaman statis dengan HTML, CSS, dan JavaScript tanpa framework. Navigasi memakai anchor dan skip link.",
+        "implementation": "Halaman beranda, akademik, dan profil. Deploy lewat Docker dengan Nginx atau GitHub Pages. Reveal guard memastikan konten tetap tampil jika JavaScript gagal.",
+        "features": [
+          {
+            "title": "Beranda",
+            "description": "Sorotan studi, pengumuman, dan pintasan ke halaman akademik."
+          },
+          {
+            "title": "Halaman akademik",
+            "description": "Jadwal, kalender akademik, dan informasi layanan akademik."
+          },
+          {
+            "title": "Halaman profil",
+            "description": "Profil program studi dan informasi pendukung."
+          },
+          {
+            "title": "Dua jalur deploy",
+            "description": "Docker dengan Nginx untuk server sendiri, GitHub Pages untuk hosting statis."
+          }
+        ],
+        "challenges": [
+          "Reveal berbasis JavaScript bisa menyembunyikan konten saat skrip gagal",
+          "Path aset harus konsisten di Docker dan GitHub Pages"
+        ],
+        "result": "Tiga halaman berjalan sebagai situs statis.",
+        "lessons": [
+          "Guard reveal membuat konten tetap terlihat saat JavaScript gagal dimuat",
+          "Aset lokal lebih aman daripada CDN saat jaringan kampus tidak stabil",
+          "Dua jalur deploy menuntut struktur path yang sama di Docker dan GitHub Pages"
+        ]
+      }
+    },
+    {
+      "slug": "portofolio-aldi-rifaldi",
+      "title": "Portofolio Aldi Rifaldi",
+      "kind": "Portofolio quantity surveyor",
+      "year": "2026",
+      "tier": "experiment",
+      "status": "production",
+      "summary": "Situs personal branding untuk quantity surveyor: hero, profil, BoQ, kompetensi, project, timeline, kontak, dan overlay CV dalam satu halaman Vue.",
+      "role": "Developer",
+      "stack": [
+        "Vue 3",
+        "Vite",
+        "JavaScript",
+        "CSS"
+      ],
+      "technologies": [
+        {
+          "name": "Vue 3.5",
+          "role": "Framework UI"
+        },
+        {
+          "name": "Vite 8",
+          "role": "Build tool"
+        },
+        {
+          "name": "JavaScript",
+          "role": "Language"
+        },
+        {
+          "name": "CSS",
+          "role": "Layout dan tema"
+        },
+        {
+          "name": "GitHub Actions",
+          "role": "Deploy"
+        }
+      ],
+      "challenge": "Keahlian cost engineering sulit dibuktikan lewat daftar skill. Situs harus menunjukkan cara kerja lewat project dan rincian biaya.",
+      "solution": "Satu halaman Vue dengan urutan dari hero sampai kontak. Komponen BoQ dan project blueprint memperlihatkan proses, overlay CV memudahkan unduhan.",
+      "result": "Situs satu halaman dengan 13 komponen Vue, siap deploy lewat GitHub Actions.",
+      "metrics": [
+        {
+          "value": "13",
+          "label": "Komponen Vue"
+        },
+        {
+          "value": "1",
+          "label": "Halaman"
+        }
+      ],
+      "link": "https://github.com/ranggamaulana111111-bit/static",
+      "learnings": [
+        "Komponen BoQ perlu hierarki angka yang jelas agar mudah dipindai",
+        "Overlay CV lebih cepat diakses daripada membuka halaman baru",
+        "Animasi angka hanya berguna jika angkanya memang punya konteks"
+      ],
+      "caseStudy": {
+        "context": "Situs personal branding untuk quantity surveyor yang perlu menunjukkan ketelitian cost engineering lewat project dan rincian biaya.",
+        "problem": "Keahlian cost engineering sulit dibuktikan lewat daftar skill. Pengunjung perlu melihat proses dan bukti, bukan klaim.",
+        "approach": "Satu halaman Vue dengan urutan dari hero sampai kontak. Komponen BoQ dan project blueprint memperlihatkan cara kerja, overlay CV memudahkan unduhan.",
+        "implementation": "Vue 3.5 dan Vite 8. Komponen hero, about, BoQ, competencies, projects, timeline, contact, CV overlay, animated number, dan corner marks. Deploy lewat GitHub Actions.",
+        "features": [
+          {
+            "title": "BoQ",
+            "description": "Rincian biaya yang menunjukkan cara membaca pekerjaan konstruksi."
+          },
+          {
+            "title": "Project blueprint",
+            "description": "Kartu project dengan konteks pekerjaan dan peran cost engineer."
+          },
+          {
+            "title": "Kompetensi",
+            "description": "Keahlian cost engineering yang dipasangkan dengan bukti project."
+          },
+          {
+            "title": "Overlay CV",
+            "description": "CV dapat dibuka tanpa meninggalkan halaman."
+          }
+        ],
+        "challenges": [
+          "Menjaga angka biaya tetap terbaca di layar kecil",
+          "Menyusun urutan konten agar tidak terasa seperti daftar skill"
+        ],
+        "result": "Situs satu halaman dengan 13 komponen Vue, siap deploy lewat GitHub Actions.",
+        "lessons": [
+          "Komponen BoQ perlu hierarki angka yang jelas agar mudah dipindai",
+          "Overlay CV lebih cepat diakses daripada membuka halaman baru",
+          "Animasi angka hanya berguna jika angkanya memang punya konteks"
+        ]
+      }
+    },
+    {
+      "slug": "lins-official",
+      "title": "lins_official",
+      "kind": "Landing page produk",
+      "year": "2026",
+      "tier": "experiment",
+      "status": "production",
+      "summary": "Landing page satu produk untuk pashmina viscose bamboo: hero dengan aksen 3D, filosofi, lookbook tujuh foto, penjelasan material, dan CTA ke Shopee.",
+      "role": "Pembuat & Developer",
+      "stack": [
+        "Vite",
+        "JavaScript",
+        "Three.js",
+        "CSS"
+      ],
+      "technologies": [
+        {
+          "name": "Vite 8",
+          "role": "Build tool"
+        },
+        {
+          "name": "JavaScript",
+          "role": "Language"
+        },
+        {
+          "name": "Three.js",
+          "role": "Aksen silk veil"
+        },
+        {
+          "name": "CSS",
+          "role": "Layout dan tema"
+        }
+      ],
+      "challenge": "Pashmina dinilai dari rasa bahan dan jatuhnya kain. Halaman harus menyampaikan itu tanpa keranjang atau checkout.",
+      "solution": "Vite dan JavaScript dengan hero Three.js, lookbook tujuh foto, dialog detail produk, dan CTA langsung ke Shopee atau DM Instagram.",
+      "result": "Landing page statis tanpa backend. Newsletter masih demo di frontend.",
+      "metrics": [
+        {
+          "value": "7",
+          "label": "Foto lookbook"
+        },
+        {
+          "value": "1",
+          "label": "Produk"
+        }
+      ],
+      "link": "https://github.com/ranggamaulana111111-bit/produklin",
+      "learnings": [
+        "Aksen 3D harus berhenti di hero agar tidak mengganggu teks produk",
+        "Dialog detail lebih ringan daripada halaman produk terpisah untuk katalog satu item",
+        "CTA ke Shopee harus jelas tanpa membuat pengunjung mencari tombol beli"
+      ],
+      "caseStudy": {
+        "context": "Landing page satu produk untuk pashmina viscose bamboo dari lins_official.",
+        "problem": "Pashmina dinilai dari rasa bahan dan jatuhnya kain. Halaman harus menyampaikan itu tanpa keranjang atau checkout.",
+        "approach": "Urutan halaman mengikuti cara orang memilih pashmina: hero, filosofi, lookbook, material, lalu kartu produk.",
+        "implementation": "Vite dan JavaScript. Hero memakai Three.js silk-veil. Lookbook berisi tujuh foto. Dialog detail produk dan CTA ke Shopee atau DM Instagram. Newsletter masih demo di frontend.",
+        "features": [
+          {
+            "title": "Hero silk veil",
+            "description": "Aksen Three.js yang memberi kesan kain bergerak tanpa menutup teks."
+          },
+          {
+            "title": "Lookbook",
+            "description": "Tujuh foto yang menunjukkan jatuhnya pashmina."
+          },
+          {
+            "title": "Material",
+            "description": "Penjelasan viscose bamboo dan alasan bahan ini dipilih."
+          },
+          {
+            "title": "Detail produk",
+            "description": "Dialog berisi foto dan informasi produk, dengan CTA ke Shopee atau DM Instagram."
+          }
+        ],
+        "challenges": [
+          "Aksen 3D harus tetap ringan di ponsel",
+          "Tidak ada backend, jadi newsletter hanya demo di frontend"
+        ],
+        "result": "Landing page statis tanpa backend.",
+        "lessons": [
+          "Aksen 3D harus berhenti di hero agar tidak mengganggu teks produk",
+          "Dialog detail lebih ringan daripada halaman produk terpisah untuk katalog satu item",
+          "CTA ke Shopee harus jelas tanpa membuat pengunjung mencari tombol beli"
+        ]
+      }
+    },
+    {
+      "slug": "blablabla-shop",
+      "title": "BlaBlaBla Shop",
+      "kind": "Latihan e-commerce statis",
+      "year": "2026",
+      "tier": "experiment",
+      "status": "completed",
+      "summary": "Latihan membangun halaman toko online statis: nav, banner, empat kartu produk, dan tombol checkout, tanpa framework atau backend.",
+      "role": "Pembuat",
+      "stack": [
+        "HTML",
+        "CSS"
+      ],
+      "technologies": [
+        {
+          "name": "HTML",
+          "role": "Struktur halaman"
+        },
+        {
+          "name": "CSS",
+          "role": "Layout dan tema"
+        }
+      ],
+      "challenge": "Latihan menyusun layout toko online dari nol tanpa framework.",
+      "solution": "HTML dan CSS dengan section beranda, produk, tentang, dan kontak, plus gambar produk lokal.",
+      "result": "Satu halaman statis dengan empat kartu produk. Tombol checkout belum terhubung ke pembayaran.",
+      "metrics": [
+        {
+          "value": "4",
+          "label": "Produk"
+        },
+        {
+          "value": "0",
+          "label": "Dependency"
+        }
+      ],
+      "link": "https://github.com/ranggamaulana111111-bit/jwebstatic",
+      "learnings": [
+        "Grid produk lebih rapi saat tinggi gambar disamakan",
+        "Navigasi anchor cukup untuk satu halaman tanpa router",
+        "Tombol checkout tanpa backend hanya bisa jadi latihan tampilan"
+      ]
+    },
+    {
+      "slug": "prodesa-on-prem",
+      "title": "Prodesa On-Prem",
+      "kind": "Infrastruktur server desa",
+      "year": "2026",
+      "tier": "experiment",
+      "status": "building",
+      "summary": "Deployment Prodesa di server milik desa: Debian, Docker, Caddy, PostgreSQL, MinIO, WireGuard, plus backup, healthcheck, dan watchdog berbasis systemd.",
+      "role": "Pembuat & Operator",
+      "stack": [
+        "Debian",
+        "Docker",
+        "Caddy",
+        "PostgreSQL",
+        "MinIO",
+        "WireGuard",
+        "Bash",
+        "systemd"
+      ],
+      "technologies": [
+        {
+          "name": "Debian",
+          "role": "Sistem operasi server"
+        },
+        {
+          "name": "Docker",
+          "role": "Runtime aplikasi"
+        },
+        {
+          "name": "Caddy",
+          "role": "TLS dan reverse proxy"
+        },
+        {
+          "name": "PostgreSQL",
+          "role": "Database"
+        },
+        {
+          "name": "MinIO",
+          "role": "Penyimpanan dokumen"
+        },
+        {
+          "name": "WireGuard",
+          "role": "Akses admin"
+        },
+        {
+          "name": "Bash",
+          "role": "Skrip instalasi"
+        },
+        {
+          "name": "systemd",
+          "role": "Timer backup dan healthcheck"
+        }
+      ],
+      "challenge": "Data warga harus tetap di desa dan sistem tetap jalan dengan internet terbatas, tanpa data center pusat.",
+      "solution": "Satu server per desa dengan Docker Compose, akses admin lewat WireGuard, TLS dari Caddy, dan timer systemd untuk backup, healthcheck, serta watchdog.",
+      "result": "Repo berisi lima skrip instalasi, runbook operasi, dan timer backup/healthcheck/watchdog. Status pilot, menunggu hardware.",
+      "metrics": [
+        {
+          "value": "5",
+          "label": "Skrip instalasi"
+        },
+        {
+          "value": "3",
+          "label": "Timer systemd"
+        }
+      ],
+      "link": "https://github.com/ranggamaulana111111-bit/serverdesa",
+      "learnings": [
+        "Backup baru berguna setelah restore diuji, bukan hanya setelah file dibuat",
+        "Akses admin lewat WireGuard lebih aman daripada membuka panel ke internet",
+        "Runbook harus ditulis untuk orang desa, bukan hanya untuk developer"
+      ],
+      "caseStudy": {
+        "context": "Prodesa On-Prem menjalankan aplikasi administrasi desa di server milik desa, bukan di data center pusat.",
+        "problem": "Data warga harus tetap di desa dan sistem tetap jalan dengan internet terbatas. Server pusat menjadi satu titik gagal untuk semua desa.",
+        "approach": "Satu server per desa dengan Docker Compose. Akses admin lewat WireGuard, TLS dari Caddy, dan timer systemd untuk backup, healthcheck, serta watchdog.",
+        "implementation": "Debian, Docker, Caddy, PostgreSQL, dan MinIO. Lima skrip instalasi dari preflight sampai deploy, plus runbook backup/restore, upgrade, dan penanganan masalah.",
+        "features": [
+          {
+            "title": "Instalasi bertahap",
+            "description": "Skrip preflight, instal OS, jaringan, WireGuard, dan deploy dipisah agar mudah diulang."
+          },
+          {
+            "title": "Backup dan restore",
+            "description": "Timer backup harian dan skrip restore-test untuk memastikan data bisa dipulihkan."
+          },
+          {
+            "title": "Healthcheck dan watchdog",
+            "description": "Pemeriksaan layanan berkala dan autoheal saat kontainer berhenti."
+          },
+          {
+            "title": "Akses admin",
+            "description": "WireGuard menjaga panel admin tetap tertutup dari internet."
+          },
+          {
+            "title": "Runbook operasi",
+            "description": "Panduan harian, upgrade, dan penanganan masalah untuk operator desa."
+          }
+        ],
+        "challenges": [
+          "Hardware belum tersedia, jadi status masih pilot",
+          "Operator desa tidak selalu punya latar belakang teknis",
+          "Internet desa tidak stabil, sehingga layanan harus tetap jalan lokal"
+        ],
+        "result": "Repo berisi lima skrip instalasi, runbook operasi, dan tiga timer systemd. Status pilot, menunggu hardware.",
+        "lessons": [
+          "Backup baru berguna setelah restore diuji, bukan hanya setelah file dibuat",
+          "Akses admin lewat WireGuard lebih aman daripada membuka panel ke internet",
+          "Runbook harus ditulis untuk orang desa, bukan hanya untuk developer"
+        ]
+      }
+    },
+    {
+      "slug": "my-pink-diary",
+      "title": "My Pink Diary",
+      "kind": "Aplikasi catatan harian",
+      "year": "2026",
+      "tier": "experiment",
+      "status": "completed",
+      "summary": "Aplikasi diary Flutter bertema pink: login, tulis catatan, lihat dan edit catatan, profil, dengan penyimpanan SQLite lokal.",
+      "role": "Pembuat",
+      "stack": [
+        "Flutter",
+        "Dart",
+        "SQLite"
+      ],
+      "technologies": [
+        {
+          "name": "Flutter",
+          "role": "Framework aplikasi"
+        },
+        {
+          "name": "Dart",
+          "role": "Language"
+        },
+        {
+          "name": "SQLite",
+          "role": "Penyimpanan lokal"
+        },
+        {
+          "name": "sqflite_common_ffi",
+          "role": "SQLite di desktop"
+        }
+      ],
+      "challenge": "Catatan pribadi harus tetap tersimpan tanpa server dan bisa dibuka di ponsel maupun desktop.",
+      "solution": "Flutter dengan sqflite_common_ffi agar SQLite jalan di Android, iOS, Windows, Linux, dan macOS. Autentikasi lokal dan layar catatan terpisah.",
+      "result": "Delapan layar dan satu database lokal. Aplikasi selesai.",
+      "metrics": [
+        {
+          "value": "8",
+          "label": "Layar"
+        },
+        {
+          "value": "1",
+          "label": "Database lokal"
+        }
+      ],
+      "link": "https://github.com/ranggamaulana111111-bit/catatan_syahda",
+      "learnings": [
+        "sqflite butuh inisialisasi berbeda di desktop dan mobile",
+        "Layar tulis dan lihat catatan lebih jelas saat dipisah",
+        "Tema warna kuat harus tetap menjaga kontras teks"
+      ]
+    },
+    {
+      "slug": "travelpack",
+      "title": "TravelPack",
+      "kind": "Aplikasi daftar bawaan",
+      "year": "2026",
+      "tier": "experiment",
+      "status": "academic",
+      "summary": "Aplikasi Flutter untuk menyusun daftar bawaan perjalanan: kategori, prioritas, progres packing, dan log, dengan database SQLite lokal.",
+      "role": "Pembuat",
+      "stack": [
+        "Flutter",
+        "Dart",
+        "SQLite"
+      ],
+      "technologies": [
+        {
+          "name": "Flutter",
+          "role": "Framework aplikasi"
+        },
+        {
+          "name": "Dart",
+          "role": "Language"
+        },
+        {
+          "name": "SQLite",
+          "role": "Penyimpanan lokal"
+        },
+        {
+          "name": "sqflite_common_ffi",
+          "role": "SQLite di desktop"
+        }
+      ],
+      "challenge": "Daftar bawaan mudah tercecer. Pengguna perlu melihat mana yang sudah dikemas dan mana yang belum.",
+      "solution": "Flutter dan SQLite dengan model packing item serta packing log, kategori, prioritas, progress bar, dan halaman monitor.",
+      "result": "Delapan layar dan dua tabel lokal. Aplikasi selesai untuk tugas kuliah.",
+      "metrics": [
+        {
+          "value": "8",
+          "label": "Layar"
+        },
+        {
+          "value": "2",
+          "label": "Tabel SQLite"
+        }
+      ],
+      "link": "https://github.com/ranggamaulana111111-bit/aplikasi_travel_list",
+      "learnings": [
+        "Progress packing lebih mudah dibaca saat dihitung dari log, bukan dari status item saja",
+        "Kategori dan prioritas perlu badge yang berbeda agar cepat dipindai",
+        "Empty state membantu saat daftar bawaan belum diisi"
+      ]
+    },
+    {
+      "slug": "kenangan-coffee",
+      "title": "Kenangan Coffee",
+      "kind": "Aplikasi kedai kopi",
+      "year": "2026",
+      "tier": "experiment",
+      "status": "academic",
+      "summary": "Aplikasi Flutter untuk kedai kopi: katalog menu, keranjang, pesanan, login pembeli, dan pengelolaan menu, dengan SQLite lokal.",
+      "role": "Pembuat",
+      "stack": [
+        "Flutter",
+        "Dart",
+        "SQLite"
+      ],
+      "technologies": [
+        {
+          "name": "Flutter",
+          "role": "Framework aplikasi"
+        },
+        {
+          "name": "Dart",
+          "role": "Language"
+        },
+        {
+          "name": "SQLite",
+          "role": "Penyimpanan lokal"
+        }
+      ],
+      "challenge": "Alur pemesanan kedai kopi harus memisahkan sisi pembeli dan sisi pengelola menu.",
+      "solution": "Flutter dengan model buyer, coffee menu, dan order. Layar landing, keranjang, serta add/edit menu dipisahkan, dengan tema navy, gold, dan cream.",
+      "result": "Sebelas layar dan tiga model data. Aplikasi selesai untuk tugas kuliah.",
+      "metrics": [
+        {
+          "value": "11",
+          "label": "Layar"
+        },
+        {
+          "value": "3",
+          "label": "Model data"
+        }
+      ],
+      "link": "https://github.com/ranggamaulana111111-bit/kopken",
+      "learnings": [
+        "Pemisahan sisi pembeli dan pengelola membuat navigasi lebih jelas",
+        "Gambar menu perlu penanganan berbeda di mobile dan desktop",
+        "Tema gelap dengan aksen gold tetap harus lolos kontras teks"
+      ]
+    },
+    {
+      "slug": "brewpos",
+      "title": "BrewPOS",
+      "kind": "Aplikasi kasir kedai",
+      "year": "2026",
+      "tier": "experiment",
+      "status": "academic",
+      "summary": "Aplikasi kasir Flutter untuk kedai kopi: transaksi, keranjang, meja, resep, bahan baku, dan riwayat, dengan SQLite lokal.",
+      "role": "Pembuat",
+      "stack": [
+        "Flutter",
+        "Dart",
+        "SQLite"
+      ],
+      "technologies": [
+        {
+          "name": "Flutter",
+          "role": "Framework aplikasi"
+        },
+        {
+          "name": "Dart",
+          "role": "Language"
+        },
+        {
+          "name": "SQLite",
+          "role": "Penyimpanan lokal"
+        }
+      ],
+      "challenge": "Kasir kedai harus menangani pesanan, stok bahan, meja, dan riwayat transaksi dalam satu alur.",
+      "solution": "Flutter dengan sepuluh model data dan tab dapur, inventaris, meja, serta menu. Dialog pesanan menghubungkan menu ke keranjang dan transaksi.",
+      "result": "Tiga belas halaman dan sepuluh model data. Aplikasi selesai untuk tugas kuliah.",
+      "metrics": [
+        {
+          "value": "13",
+          "label": "Halaman"
+        },
+        {
+          "value": "10",
+          "label": "Model data"
+        }
+      ],
+      "link": "https://github.com/ranggamaulana111111-bit/kasir",
+      "learnings": [
+        "Transaksi perlu menyimpan detail item agar riwayat tetap akurat",
+        "Stok bahan dan resep lebih mudah dirawat saat dipisah dari menu",
+        "Tab dapur, meja, dan inventaris mengurangi perpindahan layar saat jam sibuk"
+      ]
     }
   ],
   "currentWork": [
