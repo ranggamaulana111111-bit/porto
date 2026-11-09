@@ -601,6 +601,166 @@
         "Foreign key dan relasi di SQLite jadi lebih jelas setelah mempraktikkannya di app sungguhan",
         "State management (Provider) menyederhanakan banyak screen yang saling berbagi data"
       ]
+    },
+    {
+      "slug": "smart-school",
+      "title": "Smart School",
+      "kind": "School Management SaaS",
+      "year": "2026",
+      "tier": "selected",
+      "status": "building",
+      "summary": "Platform SaaS multi-tenant untuk operasional sekolah: absensi QR/RFID, penilaian, jurnal KBM, early warning system, dan portal orang tua dengan data terisolasi per tenant.",
+      "role": "Pembuat & Developer",
+      "stack": [
+        "Laravel 12",
+        "PHP 8.2",
+        "MySQL 8",
+        "Tailwind CSS 4",
+        "Vite 6",
+        "SQLite"
+      ],
+      "technologies": [
+        {
+          "name": "Laravel 12",
+          "role": "Core application"
+        },
+        {
+          "name": "PHP 8.2",
+          "role": "Language"
+        },
+        {
+          "name": "MySQL 8",
+          "role": "Data layer"
+        },
+        {
+          "name": "Tailwind CSS 4",
+          "role": "UI styling"
+        },
+        {
+          "name": "Vite 6",
+          "role": "Build tool"
+        },
+        {
+          "name": "SQLite",
+          "role": "Test database"
+        }
+      ],
+      "challenge": "Operasional sekolah tersebar di banyak proses: absensi, nilai, jadwal, jurnal kelas, dan komunikasi orang tua. Data yang tidak terhubung membuat pemantauan siswa lambat.",
+      "solution": "Membangun platform multi-tenant dengan isolasi tenant_id di setiap query, RBAC lima peran, absensi QR/RFID dua mode, penilaian berbobot, jurnal KBM, dan EWS otomatis.",
+      "result": "Repositori memuat PRD dan modul inti: dashboard sekolah, absensi QR/RFID, penilaian, jadwal mengajar, jurnal KBM, EWS, portal orang tua, dan master data PTK/siswa.",
+      "metrics": [
+        {
+          "value": "5",
+          "label": "Peran RBAC"
+        },
+        {
+          "value": "QR/RFID",
+          "label": "Mode Absensi"
+        }
+      ],
+      "link": "https://github.com/ranggamaulana111111-bit/smartscholl",
+      "learnings": [
+        "Isolasi tenant harus konsisten di semua query, bukan dicek per halaman",
+        "Absensi gerbang dan presensi mata pelajaran butuh alur yang berbeda",
+        "EWS hanya berguna kalau ambang batasnya jelas dan bisa ditindaklanjuti"
+      ],
+      "caseStudy": {
+        "context": "Smart School dibangun sebagai platform SaaS multi-tenant untuk menghubungkan manajemen sekolah, guru, siswa, dan orang tua dalam satu sistem.",
+        "problem": "Data absensi, nilai, jadwal, dan komunikasi orang tua tersebar. Sekolah sulit melihat kondisi siswa secara real-time dan menindaklanjuti masalah kehadiran atau nilai.",
+        "approach": "Semua data dikaitkan ke tenant_id sejak query, dengan lima peran (super_admin, admin_sekolah, guru, siswa, orang_tua). Wali kelas diposisikan sebagai relasi rombel, bukan role terpisah.",
+        "implementation": "Laravel 12 dengan MySQL 8 dan Tailwind CSS 4. Absensi mendukung scan QR lewat kamera dan tap kartu NFC/RFID, dengan mode gerbang maupun presensi mapel. Penilaian memakai bobot Tugas, Formatif, UTS, dan UAS, serta import/export .xlsx/.csv.",
+        "features": [
+          {
+            "title": "Dashboard sekolah",
+            "description": "Ringkasan kehadiran siswa dan guru, statistik mengajar, serta aktivitas terbaru."
+          },
+          {
+            "title": "Absensi QR/RFID",
+            "description": "Scan QR lewat kamera atau tap kartu pelajar, dengan mode gerbang, presensi mapel, dan absen manual."
+          },
+          {
+            "title": "Penilaian",
+            "description": "Grid nilai per kelas, bulk entry, import/export template, dan bobot otomatis Tugas, Formatif, UTS, UAS."
+          },
+          {
+            "title": "Jurnal KBM",
+            "description": "Jadwal mengajar interaktif dan jurnal kelas yang wajib diisi guru, plus tugas dan deadline pengumpulan."
+          },
+          {
+            "title": "Early Warning System",
+            "description": "Trigger otomatis ke Guru BK atau Wali Kelas saat absensi di bawah 80 persen, alpa lebih dari 3 hari, atau nilai di bawah KKM."
+          },
+          {
+            "title": "Portal orang tua",
+            "description": "Pantau kehadiran, nilai, rapor digital, dan pengumuman sekolah."
+          },
+          {
+            "title": "Multi-tenancy dan RBAC",
+            "description": "Isolasi data per tenant dengan lima peran, plus audit trail untuk perubahan nilai dan absensi."
+          }
+        ],
+        "result": "Repositori publik berisi PRD, arsitektur multi-tenant, dan modul inti di atas. Proyek masih dalam pengembangan.",
+        "lessons": [
+          "Isolasi tenant harus konsisten di semua query, bukan dicek per halaman",
+          "Absensi gerbang dan presensi mata pelajaran butuh alur yang berbeda",
+          "EWS hanya berguna kalau ambang batasnya jelas dan bisa ditindaklanjuti"
+        ]
+      }
+    },
+    {
+      "slug": "portofolio",
+      "title": "Portofolio rangga.mrw",
+      "kind": "Personal Website",
+      "year": "2026",
+      "tier": "experiment",
+      "status": "production",
+      "summary": "Situs personal dan jurnal digital rangga.mrw: beranda, workspace, stack, CV, catatan, papan pesan anonim, dan halaman detail project.",
+      "role": "Pembuat & Developer",
+      "stack": [
+        "Next.js 16",
+        "React 19",
+        "TypeScript",
+        "Tailwind CSS v4",
+        "framer-motion"
+      ],
+      "technologies": [
+        {
+          "name": "Next.js 16",
+          "role": "App framework"
+        },
+        {
+          "name": "React 19",
+          "role": "UI library"
+        },
+        {
+          "name": "TypeScript",
+          "role": "Language"
+        },
+        {
+          "name": "Tailwind CSS v4",
+          "role": "UI styling"
+        },
+        {
+          "name": "framer-motion",
+          "role": "Motion"
+        }
+      ],
+      "challenge": "Portofolio klasik biasanya berupa daftar skill dan screenshot. Situs ini perlu terasa seperti jurnal kerja yang jujur, bukan halaman marketing.",
+      "solution": "Membangun situs data-driven dengan content.json sebagai sumber konten tunggal, design token di globals.css, dan halaman terpisah untuk workspace, stack, CV, catatan, pesan, serta detail project.",
+      "result": "Live di ranggamrw.my.id, dengan 6 rute halaman dan API untuk now-playing, pesan anonim, serta admin.",
+      "metrics": [
+        {
+          "value": "6",
+          "label": "Rute halaman"
+        }
+      ],
+      "link": "https://github.com/ranggamaulana111111-bit/porto",
+      "live": "https://ranggamrw.my.id",
+      "learnings": [
+        "Memisahkan konten ke content.json membuat copy tidak tersebar di JSX",
+        "Design token di satu file memudahkan konsistensi warna dan tipografi",
+        "Animasi harus menghormati prefers-reduced-motion sejak awal"
+      ]
     }
   ],
   "currentWork": [
